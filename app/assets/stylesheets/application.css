@@ -15,12 +15,18 @@
  *= require_self
  */
 
-.splash-body {
-  background-color: #212121;
-  color: #e1e1e1;
+.splash-logo {
+  width: 640px;
+  height: 640px;
 }
 
-.splash-nav {
-  background-color: #212121;
-  color: #e1e1e1;
+.header-panel {
+  height: 960px;
+}
+
+.header-logo {
+  width: 640px;
+  height: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
