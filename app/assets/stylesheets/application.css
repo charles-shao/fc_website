@@ -15,18 +15,22 @@
  *= require_self
  */
 
-.splash-logo {
-  width: 640px;
-  height: 640px;
-}
-
-.header-panel {
-  height: 960px;
-}
-
-.header-logo {
-  width: 640px;
-  height: 640px;
-  margin-left: auto;
+.container-splash {
+  padding-right: 0px;
+  padding-left: 0px;
   margin-right: auto;
+  margin-left: auto;
+}
+
+/*.header-panel {
+  height: 960px;
+}*/
+
+.splash-header {
+  padding-top: 160px;
+}
+
+.splash-logo {
+  width: 100%;
+  height: 100%;
 }

@@ -20,6 +20,9 @@
               <%= link_to 'Apply for FC', new_user_application_path %>
             </li>
             <li>
+              <%= link_to 'Message Boards', "#" %>
+            </li>
+            <li>
               <%= link_to 'Sign out', sign_out_path, method: :delete %>
             </li>
           <% else %>
@@ -41,11 +44,11 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <%= yield %>
-      </div>
     </div>
+
+
+    <%= yield %>
+
   </body>
 
 </html>
