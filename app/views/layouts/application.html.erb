@@ -17,7 +17,9 @@
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
             <li>
-              <i class='fa fa-user'></i>
+              <%= link_to 'Apply for FC', new_user_application_path %>
+            </li>
+            <li>
               <%= link_to 'Sign out', sign_out_path, method: :delete %>
             </li>
           <% else %>
@@ -29,7 +31,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div id="flash">

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Apply to FC</h2>
+
+    <%= form_for @user_application do |form| %>
+      <div class="form-group">
+        <%= form.label :game %>
+        <%= form.text_field :game, class: 'form-control', disabled: 'disabled' %>
+      </div>
+
+      <%= form.fields_for :user_application_answers do |builder| %>
+        <div class="form-group">
+          <%= builder.label :content, builder.object.application_question.content %>
+          <%= builder.text_field :content, class: 'form-control' %>
+          <%= builder.hidden_field :application_question_id, class: 'form-control' %>
+        </div>
+      <% end %>
+
+      <div class="form-actions">
+        <%= form.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
