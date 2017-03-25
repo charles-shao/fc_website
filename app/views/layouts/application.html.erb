@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FcWebsite</title>
+    <title>Last Bastion</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +12,7 @@
 
     <nav class="navbar">
       <div class="container">
-        <a class="navbar-brand" href="#">FC Website</a>
+        <%= link_to "Last Bastion", root_path, class: "navbar-brand" %>
 
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
