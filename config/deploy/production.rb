@@ -41,7 +41,7 @@ set :ec2_config, "config/ec2.yml"
 
 set :ec2_project_tag, "fc_website"
 
-set :ec2_roles_tag, "unicorn"
+set :ec2_roles_tag, "web"
 
 set :ec2_stages_tag, "production"
 

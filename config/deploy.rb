@@ -1,6 +1,10 @@
 # config valid only for current version of Capistrano
 lock "3.8.0"
 
+set :rvm_ruby_version, "2.4.0"
+
+set :rvm_type, :user
+
 set :application, "fc_website"
 
 set :repo_url, "git@github.com:charles-shao/fc_website.git"
@@ -22,17 +26,13 @@ set :deploy_to, "/home/deploy/apps/fc_website"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, fetch(:linked_files, []).push("config/local_env.yml", "config/puma.rb", "config/secrets.yml")
+set :linked_files, fetch(:linked_files, []).push("config/local_env.yml", "config/puma.rb", "config/secrets.yml")
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+set :linked_dirs, fetch(:linked_dirs, []).push("log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system")
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
-set :rvm_ruby_version, "2.4.0"
-
-set :rvm_type, :system
