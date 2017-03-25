@@ -25,4 +25,8 @@ test:
 
 production:
   <<: *default
-  database: fc_website_production
+  database: <%= ENV["WEB_DB_DATABASE"] %>
+  username: <%= ENV["WEB_DB_USERNAME"] %>
+  password: <%= ENV["WEB_DB_PASSWORD"] %>
+  host: <%= ENV["WEB_DB_HOST"] %>
+  pool: <%= ENV["WEB_DB_POOL"] %>
