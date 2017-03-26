@@ -5,26 +5,22 @@
       <table class="table">
         <thead class="thead-inverse">
             <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
             <th>Actions</th>
         </thead>
 
         <tbody>
-          <% @users.each do |user| %>
+          <% @roles.each do |role| %>
             <tr>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.role&.name %></td>
+                <td><%= role.name %></td>
                 <td>
-                  <%= link_to "Edit", edit_member_path(user) %>
+                  <%= link_to "Edit", edit_role_path(role) %>
                 </td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
-      <%# link_to "Create", new_application_question_path, class: "btn btn-primary" %>
+      <%= link_to "Create", new_role_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
