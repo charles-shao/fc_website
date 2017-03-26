@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  resources :users, controller: "users", only: [:index, :show, :edit, :update], as: "members"
+
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
@@ -19,5 +21,5 @@ Rails.application.routes.draw do
 
   resources :user_applications
   resources :application_questions
-  
+
 end

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Character</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+                <td><%=  %></td>
+                <td><%= user.email %></td>
+                <td><%=  %></td>
+                <td>
+                  <%= link_to "Edit", edit_member_path(user) %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%# link_to "Create", new_application_question_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
