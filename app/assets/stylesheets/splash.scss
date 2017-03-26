@@ -7,8 +7,6 @@
   background: rgba(0, 0, 0, 0.70);
   padding-right: 0px;
   padding-left: 0px;
-  margin-right: auto;
-  margin-left: auto;
   position: relative;
 }
 
@@ -47,4 +45,14 @@
   width: 100%;
   height: 560px;
   fill: #F8F8F8;
+}
+
+.container-stretch {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.container-stretch-body {
+  padding-top: 80px;
+  padding-bottom: 80px;
 }

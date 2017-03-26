@@ -24,54 +24,64 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row pt-5">
-    <div class="col-12">
-      <h1>Recent Notices</h1>
-    </div>
+<div class="container-stretch">
+  <div class="container">
+    <div class="container-stretch-body row">
+      <h1 class="display-4">Recent Notices</h1>
 
-    <div class="col-12">
-      <% @notices.each do |notice| %>
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="" alt="...">
-              </a>
+      <div class="col-12">
+        <% @notices.each do |notice| %>
+            <div class="media pt-5">
+              <div class="media-left">
+                <a href="#">
+                  <%= image_tag "ffxiv_twi.png", class: "media-object" %>
+                </a>
+              </div>
+
+              <div class="media-body pl-3">
+                <h4 class="media-heading">
+                  <%= notice.title %>
+                  <small>by <%= notice.user.email %> on the <%= notice.created_at %></small>
+                </h4>
+
+                <p><%= notice.content %></p>
+              </div>
             </div>
+        <% end %>
+      </div>
 
-            <div class="media-body">
-              <h4 class="media-heading">
-                <%= notice.title %>
-                <small>by <%= notice.user.email %> on the <%= notice.created_at %></small>
-              </h4>
-
-              <p><%= notice.content %></p>
-            </div>
-          </div>
-      <% end %>
     </div>
-
   </div>
 </div>
 
-<div class="container">
+<div class="container-stretch">
+  <div class="container">
+    <div class="container-stretch-body row">
+      <h1 class="display-4">
+        Progression
+        <small class="text-muted">Alexander: The Creator (Savage)</small>
+      </h1>
 
-  <h1 class="display">Progression</h1>
-  <h2>Alexander: The Creator (Savage)</h2>
-
-  <div class="row">
-    <% 6.times do %>
-      <div class="col-4">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">A12S</h4>
-            <p class="card-text">Cleared 01/01/16</p>
-            <a href="#" class="btn btn-outline-primary">View Parses</a>
+      <div class="row">
+        <% 4.times do %>
+          <div class="col-6">
+            <div class="card">
+              <img class="card-img-top" src="" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">A12S</h4>
+                <p class="card-text">Cleared 01/01/16</p>
+                <a href="#" class="btn btn-outline-primary">View Parses</a>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
 
+    </div>
+  </div>
+</div>
+
+<div class="container-stretch">
+  <div class="container">
+  </div>
 </div>

@@ -18,12 +18,11 @@
         <nav class="navbar navbar-light">
           <%= link_to "Last Bastion", root_path, class: "navbar-brand" %>
         </nav>
-
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
             <% if signed_in? %>
               <li class="nav-item">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <%= link_to 'Apply for FC', new_user_application_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
