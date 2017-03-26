@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   resources :user_applications
   resources :application_questions
+  resources :notices
 
 end

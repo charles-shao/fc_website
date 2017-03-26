@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table table-hover">
+        <thead>
+            <th>Posted At</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Published</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+          <% @notices.each do |notice| %>
+            <tr>
+                <td><%= notice.created_at %></td>
+                <td><%= notice.title %></td>
+                <td><%= notice.content %></td>
+                <td><%= notice.publish? ? "Yes" : "No" %></td>
+                <td>
+                  <%= link_to "Edit", edit_notice_path(notice) %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Create", new_notice_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

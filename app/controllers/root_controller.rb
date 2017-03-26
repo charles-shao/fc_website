@@ -1,6 +1,7 @@
 class RootController < ApplicationController
 
   def show
-  end 
+    @notices = Notice.ordered_by_created_at.published
+  end
 
 end
