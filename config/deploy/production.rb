@@ -73,7 +73,7 @@ set :normalize_asset_timestamps, %w{public/images public/javascripts public/styl
 # Defaults to nil (no asset cleanup is performed)
 # If you use Rails 4+ and you'd like to clean up old assets after each deploy,
 # set this to the number of versions to keep
-set :keep_assets, 3
+set :keep_assets, 2
 
 
 
