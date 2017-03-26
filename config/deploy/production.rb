@@ -62,7 +62,7 @@ set :assets_roles, [:web, :app]
 
 # Defaults to 'assets'
 # This should match config.assets.prefix in your rails config/application.rb
-set :assets_prefix, "prepackaged-assets"
+# set :assets_prefix, "prepackaged-assets"
 
 # RAILS_GROUPS env value for the assets:precompile task. Default to nil.
 set :rails_assets_groups, :assets
