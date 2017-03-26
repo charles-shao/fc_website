@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <h2 class="pt-5">Statics</h2>
       <table class="table">
         <thead class="thead-inverse">
             <th>Name</th>
@@ -12,7 +13,13 @@
           <% @statics.each do |static| %>
             <tr>
                 <td><%= static.name %></td>
-                <td><%= static.members %></td>
+                <td>
+                  <% if static.members.any? %>
+                    <%= static.members %>
+                  <% else %>
+                    None
+                  <% end %>
+                </td>
                 <td>
                   <%= link_to "Edit", edit_static_path(static) %>
                 </td>
@@ -21,8 +28,8 @@
         </tbody>
       </table>
 
-      <%= link_to "Create", new_static_path, class: "btn btn-primary" %>
-      <%= link_to "Back", dashboard_index_path, class: 'btn btn-default' %>
+      <%= link_to "Create", new_static_path, class: "btn btn-outline-primary" %>
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
 
     </div>
   </div>
