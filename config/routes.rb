@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   resources :application_questions
   resources :notices
   resources :roles
+  resources :statics
+  resources :static_members
 
 end

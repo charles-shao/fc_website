@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_applications, dependent: :destroy
   has_many :notices
+  has_many :statics_members
 
   accepts_nested_attributes_for :user_role, allow_destroy: true
 
