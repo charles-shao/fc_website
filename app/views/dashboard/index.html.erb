@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      <h3>Portal</h3>
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation" class="active">
           <%= link_to 'Home', root_path %>
         </li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-
+        <li role="presentation">
+          <%= link_to "Profile", profile_index_path %>
+        </li>
+        <li role="presentation">
+          <a href="#">Messages</a>
+        </li>
         <li role="presentation">
           <%= link_to "Members", members_path %>
         </li>
@@ -23,7 +27,7 @@
     </div>
 
     <div class="col-md-9">
-
+      <h3>Recent updates</h3>
     </div>
   </div>
 </div>

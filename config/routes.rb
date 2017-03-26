@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   root "root#show"
 
   resources :dashboard, only: [:index]
+  resources :profile, only: [:index]
 
   resources :user_applications
   resources :application_questions

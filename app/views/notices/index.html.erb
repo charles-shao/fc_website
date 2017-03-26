@@ -7,6 +7,7 @@
             <th>Posted At</th>
             <th>Title</th>
             <th>Content</th>
+            <th>Posted By</th>
             <th>Published</th>
             <th>Actions</th>
         </thead>
@@ -17,6 +18,7 @@
                 <td><%= notice.created_at %></td>
                 <td><%= notice.title %></td>
                 <td><%= notice.content %></td>
+                <td><%= notice.user.name || "(#{notice.user.email})" %></td>
                 <td><%= notice.publish? ? "Yes" : "No" %></td>
                 <td>
                   <%= link_to "Edit", edit_notice_path(notice) %>
