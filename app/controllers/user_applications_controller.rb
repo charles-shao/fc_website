@@ -13,7 +13,7 @@ class UserApplicationsController < ApplicationController
 
     if @user_application.save
       flash[:success] = "Thanks for applying, we'll get back to you soon!"
-      redirect_to root_path
+      redirect_to dashboard_index_path
     else
       flash[:danger] = @user_application.errors.full_messages.to_sentence
       render :new

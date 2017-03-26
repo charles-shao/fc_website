@@ -1,27 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-3">
       <h3>Portal</h3>
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" class="active">
-          <%= link_to 'Home', root_path %>
-        </li>
-        <li role="presentation">
-          <%= link_to "Profile", profile_index_path %>
-        </li>
-        <li role="presentation">
-          <a href="#">Messages</a>
-        </li>
-        <li role="presentation">
-          <%= link_to "Members", members_path %>
-        </li>
 
-        <li role="presentation">
-          <%= link_to "Notices", notices_path %>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to "Profile", profile_index_path, class: "nav-link" %>
         </li>
-
-        <li role="presentation">
-          <%= link_to "Manage Application Questions", application_questions_path %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Messages</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Members", members_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Notices", notices_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Manage Application Questions", application_questions_path, class: "nav-link" %>
         </li>
       </ul>
     </div>

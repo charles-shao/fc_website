@@ -12,38 +12,48 @@
 
   <body>
 
-    <nav class="navbar">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
       <div class="container">
-        <%= link_to "Last Bastion", root_path, class: "navbar-brand" %>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if signed_in? %>
-            <li>
-              <%= link_to 'Apply for FC', new_user_application_path %>
-            </li>
-            <li>
-              <%= link_to 'Dashboard', dashboard_index_path %>
-            </li>
-            <li>
-              <%= link_to 'Sign out', sign_out_path, method: :delete %>
-            </li>
-          <% else %>
-            <li><%= link_to 'Sign in', sign_in_path %></li>
-            <li><%= link_to 'Register', sign_up_path %></li>
-          <% end %>
-        </ul>
+        <nav class="navbar navbar-light">
+          <%= link_to "Last Bastion", root_path, class: "navbar-brand" %>
+        </nav>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ml-auto">
+            <% if signed_in? %>
+              <li class="nav-item">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <%= link_to 'Apply for FC', new_user_application_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Dashboard', dashboard_index_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign out', sign_out_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Sign in', sign_in_path %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to 'Register', sign_up_path %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
           <%= flash_message %>
         </div>
       </div>
     </div>
-
 
     <%= yield %>
 

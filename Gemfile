@@ -12,8 +12,15 @@ gem 'rails', '~> 5.0.2'
 # gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+#  Use bootstrap as default style
+gem 'bootstrap', '~> 4.0.0.alpha6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
