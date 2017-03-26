@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
 
   resources :user_applications
-
+  resources :application_questions
+  
 end

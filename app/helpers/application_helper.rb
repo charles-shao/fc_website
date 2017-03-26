@@ -11,4 +11,19 @@ module ApplicationHelper
     doc.to_html.html_safe
   end
 
+
+  def flash_message
+    messages = []
+    flash.each do |key, value|
+      messages << <<~html
+        <div class="alert alert-#{key} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          #{value}
+        </div>
+      html
+    end
+
+    messages.join("\n").html_safe
+  end
+
 end

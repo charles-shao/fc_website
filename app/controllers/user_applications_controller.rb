@@ -12,10 +12,10 @@ class UserApplicationsController < ApplicationController
     @user_application = current_user.user_applications.build(user_application_answers)
 
     if @user_application.save
-      flash[:notice] = "Thanks for applying, we'll get back to you soon!"
+      flash[:success] = "Thanks for applying, we'll get back to you soon!"
       redirect_to root_path
     else
-      flash[:error] = @user_application.errors.full_messages.to_sentence
+      flash[:danger] = @user_application.errors.full_messages.to_sentence
       render :new
     end
   end
