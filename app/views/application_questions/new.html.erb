@@ -1,7 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-
+  <div class="row justify-content-md-center mt-5">
+    <div class="col col-6">
       <h2>Creating Application Question</h2>
 
       <%= form_for @application_question do |form| %>
@@ -15,16 +14,17 @@
           <%= form.text_field :rank, class: 'form-control' %>
         </div>
 
-        <div class="checkbox">
-          <label>
-            <%= form.check_box :active %> Active
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= form.check_box :active, class: "form-check-input" %>
+
+            Active
           </label>
         </div>
 
-        <div class="form-actions">
-          <%= form.submit class: 'btn btn-primary' %>
-          <%= link_to "Back", application_questions_path, class: 'btn btn-default' %>
-        </div>
+        <%= form.submit class: 'btn btn-primary' %>
+        <%= link_to "Back", application_questions_path, class: 'btn btn-default' %>
+
       <% end %>
     </div>
   </div>
