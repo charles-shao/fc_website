@@ -51,7 +51,7 @@ class RaidContentsController < ApplicationController
     private
 
       def raid_content_params
-        params.require(:raid_content).permit(:name, :patch, :released_at)
+        params.require(:raid_content).permit(:name, :patch, :released_at, :image_file)
       end
 
 end

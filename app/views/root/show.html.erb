@@ -41,7 +41,7 @@
               <div class="media-body pl-3">
                 <h4 class="media-heading">
                   <%= notice.title %>
-                  <small>by <%= notice.user.email %> on the <%= notice.created_at %></small>
+                  <small>by <%= notice.user.name || "Anonymous" %> on the <%= notice.created_at %></small>
                 </h4>
 
                 <p><%= notice.content %></p>
@@ -62,23 +62,23 @@
         <small class="text-muted">Alexander: The Creator (Savage)</small>
       </h1>
 
-      <div class="row">
-        <% ["alexander-12-savage.jpg", "alexander-11-savage.jpg", "alexander-10-savage.jpg", "alexander-09-savage.jpg"].each_with_index do |prog, index| %>
-          <div class="col-6 pb-5">
-            <div class="card">
-              <%= image_tag prog, class: "card-img-top", alt: "a12s" %>
-              <div class="card-block">
-                <h4 class="card-title">A12S</h4>
-                <p class="card-text">Cleared 01/01/16</p>
-                <a href="#" class="btn btn-outline-primary disabled">View Parses</a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </div>
+      <% @static_progressions.each do |static_progression| %>
+        <div class="col-sm-6 p-3">
+          <div class="card">
+            <%= image_tag static_progression.raid_content.image_file || "alexander-12-savage.jpg", class: "card-img-top", alt: static_progression.raid_content.name %>
+            <div class="card-block">
+              <h4 class="card-title"><%= "#{static_progression.static.name} clears #{static_progression.raid_content.name}!" %></h4>
+              <p class="card-text">Cleared <%= static_progression.cleared_at %></p>
+
+              <a href="#" class="btn btn-info disabled">View Parses</a>
+              <a href="#" class="btn btn-info disabled">View Video</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted"><%= "Last updated #{time_ago_in_words(static_progression.updated_at)} ago" %></small>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
     </div>
   </div>
