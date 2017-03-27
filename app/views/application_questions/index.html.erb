@@ -17,7 +17,7 @@
                 <td><%= question.content %></td>
                 <td><%= question.active? ? "Active" : "Inactive" %></td>
                 <td>
-                  <%= link_to "Edit", edit_application_question_path(question) %>
+                  <%= link_to "Edit", edit_application_question_path(question), class: "btn btn-outline-warning" %>
                 </td>
             </tr>
           <% end %>

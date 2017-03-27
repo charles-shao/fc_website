@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   end
 
   resources :static_members
-
+  resources :raid_contents
+  
 end

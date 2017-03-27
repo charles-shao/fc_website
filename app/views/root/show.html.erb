@@ -63,10 +63,10 @@
       </h1>
 
       <div class="row">
-        <% 4.times do %>
+        <% ["alexander-12-savage.jpg", "alexander-11-savage.jpg", "alexander-10-savage.jpg", "alexander-09-savage.jpg"].each_with_index do |prog, index| %>
           <div class="col-6 pb-5">
             <div class="card">
-              <%= image_tag "alexander-12-savage.jpg", class: "card-img-top", alt: "a12s" %>
+              <%= image_tag prog, class: "card-img-top", alt: "a12s" %>
               <div class="card-block">
                 <h4 class="card-title">A12S</h4>
                 <p class="card-text">Cleared 01/01/16</p>

@@ -13,9 +13,9 @@
           <% @static_progressions.each do |static_progression| %>
             <tr>
                 <td><%= static_progression.raid_content.name %></td>
-                <td><%= static_progression.raid_content.cleared_at %></td>
+                <td><%= static_progression.cleared_at %></td>
                 <td>
-                  <%= link_to "Remove", static_static_progression, method: :delete, class: "btn btn-outline-danger" %>
+                  <%= link_to "Remove", static_static_progression_path(@static, static_progression), method: :delete, class: "btn btn-outline-danger" %>
                 </td>
             </tr>
           <% end %>

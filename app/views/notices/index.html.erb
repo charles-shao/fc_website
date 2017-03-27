@@ -21,7 +21,7 @@
                 <td><%= notice.user.name || "(#{notice.user.email})" %></td>
                 <td><%= notice.publish? ? "Yes" : "No" %></td>
                 <td>
-                  <%= link_to "Edit", edit_notice_path(notice) %>
+                  <%= link_to "Edit", edit_notice_path(notice), class: "btn btn-outline-warning" %>
                 </td>
             </tr>
           <% end %>

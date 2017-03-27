@@ -21,8 +21,8 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to "Edit", edit_static_path(static) %> |
-                  <%= link_to "Manage Progression", static_static_progressions_path(static) %>
+                  <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
+                  <%= link_to "Manage Progression", static_static_progressions_path(static), class: "btn btn-outline-info" %>
                 </td>
             </tr>
           <% end %>
