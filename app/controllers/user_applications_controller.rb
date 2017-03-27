@@ -12,6 +12,13 @@ class UserApplicationsController < ApplicationController
     @user_application = current_user.user_applications.build(user_application_answers)
 
     if @user_application.save
+      hook_details = DiscordWebhook.find_by(channel_name: "#applications")
+
+      if hook_details.present?
+        webhook = Discord::Webhook.new("New FC application from #{current_user.email}", hook_details)
+        webhook.post
+      end
+
       flash[:success] = "Thanks for applying, we'll get back to you soon!"
       redirect_to dashboard_index_path
     else

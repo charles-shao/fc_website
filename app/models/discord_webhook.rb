@@ -1,0 +1,2 @@
+class DiscordWebhook < ApplicationRecord
+end

@@ -4,14 +4,8 @@
       <h2>Free Company application</h2>
 
       <%= form_for @user_application do |form| %>
-
-        <div class="form-group row">
-          <%= form.label :game, class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
-            <%= form.text_field :game, class: "form-control", disabled: 'disabled' %>
-          </div>
-        </div>
-
+        <%= form.hidden_field :game %>
+        
         <%= form.fields_for :user_application_answers do |builder| %>
           <div class="form-group">
             <%= builder.label :content, builder.object.application_question.content %>

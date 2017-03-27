@@ -14,7 +14,7 @@ module Discord
     def post
       endpoint = "/channels/#{@channel_id}/messages"
 
-      self.class.post(endpoint, body, headers)
+      self.class.post(endpoint, body: body, headers: headers)
     end
 
     private
