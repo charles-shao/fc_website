@@ -24,7 +24,11 @@ Rails.application.routes.draw do
   resources :application_questions
   resources :notices
   resources :roles
-  resources :statics
+
+  resources :statics do
+    resources :static_progressions, only: [:index, :create, :destroy]
+  end
+
   resources :static_members
 
 end

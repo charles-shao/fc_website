@@ -1,0 +1,2 @@
+class RaidContent < ApplicationRecord
+end
