@@ -10,9 +10,12 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_role, allow_destroy: true
 
-
   def admin?
     role.present? && role.admin?
+  end
+
+  def friendly_name 
+    name || email
   end
 
 end

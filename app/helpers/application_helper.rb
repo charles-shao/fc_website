@@ -11,7 +11,6 @@ module ApplicationHelper
     doc.to_html.html_safe
   end
 
-
   def flash_message
     messages = []
     flash.each do |key, value|

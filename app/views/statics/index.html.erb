@@ -15,13 +15,16 @@
                 <td><%= static.name %></td>
                 <td>
                   <% if static.members.any? %>
-                    <%= static.members %>
+                    <% static.static_members.each do |static_member| %>
+                      <p><%= static_member.user.name %></p>
+                    <% end %>
                   <% else %>
                     None
                   <% end %>
                 </td>
                 <td>
                   <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
+                  <%= link_to "Manage Members", static_static_members_path(static), class: "btn btn-outline-info" %>
                   <%= link_to "Manage Progression", static_static_progressions_path(static), class: "btn btn-outline-info" %>
                 </td>
             </tr>

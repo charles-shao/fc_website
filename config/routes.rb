@@ -30,9 +30,9 @@ Rails.application.routes.draw do
 
   resources :statics do
     resources :static_progressions, only: [:index, :create, :destroy]
+    resources :static_members, only: [:index, :create, :destroy]
   end
 
-  resources :static_members
   resources :raid_contents
 
 end
