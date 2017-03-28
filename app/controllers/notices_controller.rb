@@ -1,7 +1,7 @@
 class NoticesController < ApplicationController
 
   def index
-    @notices = Notice.most_recent.limit(3)
+    @notices = Notice.most_recent
   end
 
   def view
