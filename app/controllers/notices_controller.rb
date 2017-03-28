@@ -1,7 +1,11 @@
 class NoticesController < ApplicationController
 
   def index
-    @notices = Notice.ordered_by_created_at
+    @notices = Notice.ordered_by_created_at.limit(3)
+  end
+
+  def view
+    @notices = Notice.ordered_by_created_at.page(params[:page])
   end
 
   def new
@@ -37,6 +41,15 @@ class NoticesController < ApplicationController
   end
 
   def destroy
+    @notice = Notice.find_by(id: params[:id])
+
+    if @notice.destroy
+      flash[:success] = "Successfully deleted notice."
+    else
+      flash[:danger] = @notice.errors.full_messages.to_sentence
+    end
+
+    redirect_to notices_path
   end
 
   private

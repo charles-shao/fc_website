@@ -31,23 +31,27 @@
 
       <div class="col-12">
         <% @notices.each do |notice| %>
-            <div class="media pt-5">
-              <div class="media-left">
-                <a href="#">
-                  <%= image_tag "ffxiv_twi.png", class: "media-object" %>
-                </a>
-              </div>
-
-              <div class="media-body pl-3">
-                <h4 class="media-heading">
-                  <%= notice.title %>
-                  <small>by <%= notice.user.name || "Anonymous" %> on the <%= notice.created_at %></small>
-                </h4>
-
-                <p><%= notice.content %></p>
-              </div>
+          <div class="media pt-5">
+            <div class="media-left">
+              <a href="#">
+                <%= image_tag "ffxiv_twi.png", class: "media-object" %>
+              </a>
             </div>
+
+            <div class="media-body pl-3">
+              <h4 class="media-heading">
+                <%= notice.title %>
+                <small>by <%= notice.user.name || "Anonymous" %> on the <%= notice.created_at %></small>
+              </h4>
+
+              <p><%= notice.content %></p>
+            </div>
+          </div>
         <% end %>
+      </div>
+
+      <div class="col-12 pt-5">
+        <%= link_to "View all notices", view_notices_path %>
       </div>
 
     </div>

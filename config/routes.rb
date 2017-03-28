@@ -22,7 +22,10 @@ Rails.application.routes.draw do
 
   resources :user_applications
   resources :application_questions
-  resources :notices
+  resources :notices do
+    get :view, on: :collection
+  end
+
   resources :roles
 
   resources :statics do
@@ -31,5 +34,5 @@ Rails.application.routes.draw do
 
   resources :static_members
   resources :raid_contents
-  
+
 end
