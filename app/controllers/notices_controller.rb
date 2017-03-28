@@ -1,11 +1,11 @@
 class NoticesController < ApplicationController
 
   def index
-    @notices = Notice.ordered_by_created_at.limit(3)
+    @notices = Notice.most_recent.limit(3)
   end
 
   def view
-    @notices = Notice.ordered_by_created_at.page(params[:page])
+    @notices = Notice.most_recent.page(params[:page])
   end
 
   def new

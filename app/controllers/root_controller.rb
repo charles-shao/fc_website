@@ -1,7 +1,7 @@
 class RootController < ApplicationController
 
   def show
-    @notices = Notice.ordered_by_created_at.published
+    @notices = Notice.most_recent.published
     @static_progressions = StaticProgression.all.includes(:raid_content, :static)
   end
 

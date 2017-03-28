@@ -2,7 +2,7 @@ class Notice < ApplicationRecord
 
   belongs_to :user
 
-  scope :ordered_by_created_at, -> { order(:created_at) }
+  scope :most_recent, -> { order(created_at: :desc) }
   scope :published, -> { where(publish: true) }
 
 end
