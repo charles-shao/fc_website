@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="pt-5">Manage Members</h2>
+      <h2 class="pt-5">Manage Members (<%= @static_members.count %>)</h2>
       <table class="table">
         <thead class="thead-inverse">
             <th>Name</th>
@@ -22,17 +22,29 @@
         </tbody>
       </table>
 
-      <%= form_for [:static, @static.static_members.new], class: "form-inline" do |form| %>
-        <%= form.label :user_id, "Member", class: "mr-sm-2" %>
-        <%= form.select :user_id, member_options, {}, class: "custom-select mb-2 mr-sm-2 mb-sm-0" %>
+      <% if @available_members.any? %>
+        <%= form_for [:static, @static.static_members.new] do |form| %>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <%= form.label :user_id, "Member" %>
+                <%= form.select :user_id, member_options, {}, class: "form-control" %>
+              </div>
+            </div>
 
-        <%= form.label :position, "Position", class: "mr-sm-2" %>
-        <%= form.select :position, position_options, {}, class: "custom-select mb-2 mr-sm-2 mb-sm-0" %>
+            <div class="col-4">
+              <div class="form-group">
+                <%= form.label :position, "Position" %>
+                <%= form.select :position, position_options, {}, class: "form-control" %>
+              </div>
+            </div>
+          </div>
 
-        <%= form.submit value: "Add Member", class: 'btn btn-outline-primary' %>
+          <%= form.submit value: "Add Member", class: 'btn btn-outline-primary' %>
+          <%= link_to "Back", statics_path, class: 'btn btn-secondary' %>
+        <% end %>
       <% end %>
 
-      <%= link_to "Back", statics_path, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>

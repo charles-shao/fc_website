@@ -3,6 +3,7 @@ class StaticMembersController < ApplicationController
   def index
     @static = Static.find_by(id: params[:static_id])
     @static_members = @static.static_members.includes(:user)
+    @available_members = User.all - @static.members
   end
 
   def create
@@ -20,6 +21,16 @@ class StaticMembersController < ApplicationController
   end
 
   def destroy
+    @static = Static.find_by(id: params[:static_id])
+    @static_members = @static.static_members.find_by(id: params[:id])
+
+    if @static_members.destroy
+      flash[:success] = "Successfully removed static member."
+    else
+      flash[:danger] = @static_members.errors.full_messages.to_sentence
+    end
+
+    redirect_to static_static_members_path(@static)    
   end
 
   private
