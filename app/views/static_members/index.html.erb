@@ -39,12 +39,14 @@
               </div>
             </div>
           </div>
-
-          <%= form.submit value: "Add Member", class: 'btn btn-outline-primary' %>
-          <%= link_to "Back", statics_path, class: 'btn btn-secondary' %>
+          
+          <div class="form-group">
+            <%= form.submit value: "Add Member", class: 'btn btn-outline-primary' %>
+          </div>
         <% end %>
       <% end %>
 
+      <%= link_to "Back", statics_path, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>

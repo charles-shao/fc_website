@@ -10,23 +10,43 @@
         </thead>
 
         <tbody>
-          <% @static_progressions.each do |static_progression| %>
-            <tr>
-                <td><%= static_progression.raid_content.name %></td>
-                <td><%= static_progression.cleared_at %></td>
-                <td>
-                  <%= link_to "Remove", static_static_progression_path(@static, static_progression), method: :delete, class: "btn btn-outline-danger" %>
-                </td>
-            </tr>
+          <% if @static_progressions.any? %>
+            <% @static_progressions.each do |static_progression| %>
+              <tr>
+                  <td><%= static_progression.raid_content.name %></td>
+                  <td><%= static_progression.cleared_at %></td>
+                  <td>
+                    <%= link_to "Remove", static_static_progression_path(@static, static_progression), method: :delete, class: "btn btn-outline-danger" %>
+                  </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr><td>None</td></tr>
           <% end %>
         </tbody>
       </table>
 
-      <%= form_for [:static, @static.static_progressions.new], class: "form-inline" do |form| %>
-        <%= form.label :raid_content_id, "Raid Content", class: "mr-sm-2" %>
-        <%= form.select :raid_content_id, progression_options, {}, class: "custom-select mb-2 mr-sm-2 mb-sm-0" %>
+      <!-- TODO: Read timezone off the users profile -->
+      <%= form_for [:static, @static.static_progressions.new(cleared_at: Time.now.in_time_zone("Australia/Sydney"))], class: "form-inline" do |form| %>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <%= form.label :raid_content_id, "Raid Content" %>
+              <%= form.select :raid_content_id, progression_options, {}, class: "form-control" %>
+            </div>
+          </div>
 
-        <%= form.submit value: "Add Clear", class: 'btn btn-outline-primary' %>
+          <div class="col-4">
+            <div class="form-group">
+              <%= form.label :cleared_at %>
+              <%= form.datetime_field :cleared_at, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit value: "Add Clear", class: 'btn btn-outline-primary' %>
+        </div>
       <% end %>
 
       <%= link_to "Back", statics_path, class: 'btn btn-secondary' %>

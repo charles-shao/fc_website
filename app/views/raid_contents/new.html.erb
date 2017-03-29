@@ -16,7 +16,7 @@
 
         <div class="form-group">
           <%= form.label :released_at %>
-          <%= form.date_select :released_at, {} %>
+          <%= form.datetime_field :released_at, value: DateTime.current.in_time_zone("Australia/Sydney").strftime("%Y-%m-%dT%T"), class: "form-control" %>
         </div>
 
         <div class="form-group">
