@@ -12,39 +12,7 @@
 
   <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
-      <div class="container">
-
-        <nav class="navbar navbar-light">
-          <%= link_to "Last Bastion", root_path, class: "navbar-brand" %>
-        </nav>
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav ml-auto">
-            <% if signed_in? %>
-              <li class="nav-item">
-                <%= link_to 'Apply for FC', new_user_application_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Dashboard', dashboard_index_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Sign out', sign_out_path, method: :delete, class: "nav-link" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to 'Sign in', sign_in_path, class: "nav-link" %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to 'Register', sign_up_path, class: "nav-link" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
+    <%= render partial: "layouts/header" %>
 
     <div class="container">
       <div class="row">
@@ -56,6 +24,7 @@
 
     <%= yield %>
 
+    <%= render partial: "layouts/footer" %>
   </body>
 
 </html>
