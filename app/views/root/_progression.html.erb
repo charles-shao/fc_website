@@ -9,7 +9,7 @@
       <% @static_progressions.each do |static_progression| %>
         <div class="col-sm-4 p-3">
           <div class="card">
-            <%= image_tag static_progression.raid_content.image_file || "alexander-12-savage.jpg", class: "card-img-top img-fluid", alt: static_progression.raid_content.name %>
+            <%= image_tag static_progression.raid_content.image_file || "default-avatar.png", class: "card-img-top img-fluid", alt: static_progression.raid_content.name %>
             <div class="card-block">
               <h4 class="card-title"><%= "#{static_progression.static.name} clears #{static_progression.raid_content.name}!" %></h4>
               <p class="card-text">Cleared <%= static_progression.cleared_at %></p>
