@@ -58,35 +58,9 @@
   </div>
 </div>
 
-<div class="container-stretch">
-  <div class="container">
-    <div class="container-stretch-body row">
-      <h1 class="display-4">
-        Progression
-        <small class="text-muted">Alexander: The Creator (Savage)</small>
-      </h1>
-
-      <% @static_progressions.each do |static_progression| %>
-        <div class="col-sm-6 p-3">
-          <div class="card">
-            <%= image_tag static_progression.raid_content.image_file || "alexander-12-savage.jpg", class: "card-img-top", alt: static_progression.raid_content.name %>
-            <div class="card-block">
-              <h4 class="card-title"><%= "#{static_progression.static.name} clears #{static_progression.raid_content.name}!" %></h4>
-              <p class="card-text">Cleared <%= static_progression.cleared_at %></p>
-
-              <a href="#" class="btn btn-info disabled">View Parses</a>
-              <a href="#" class="btn btn-info disabled">View Video</a>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"><%= "Last updated #{time_ago_in_words(static_progression.updated_at)} ago" %></small>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-  </div>
-</div>
+<% if @static_progressions.any? %>
+  <%= render partial: "progression" %>
+<% end %>
 
 <div class="container-stretch">
   <div class="container">
