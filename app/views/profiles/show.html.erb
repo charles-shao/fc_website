@@ -31,17 +31,22 @@
       <h2>FFXIV Character Details</h2>
 
       <div class="card-columns">
-
         <% @characters.each do |character| %>
-          <div class="card card-outline-success">
+          <div class="card">
             <!-- User avatar - perhaps pull from lodestone and cache it -->
             <%= image_tag "alexander-11-savage.jpg", class: "card-img-top img-fluid" %>
 
             <div class="card-block">
               <h4 class="card-title"><%= character.name %></h4>
               <p class="card-text"><%= "general class info" %></p>
-              <a href="#" class="btn btn-primary">Edit Details</a>
+              <a href="#" class="card-link">Edit Details</a>
+              <a href="#" class="card-link">Preview Public View</a>
             </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
             <div class="card-footer">
               <small class="text-muted">
                 <%= "Last updated #{time_ago_in_words(character.updated_at)} ago" %>
