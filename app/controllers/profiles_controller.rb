@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   def show
+    @characters = current_user.characters
   end
 
   def update
