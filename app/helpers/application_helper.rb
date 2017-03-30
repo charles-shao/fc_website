@@ -25,4 +25,10 @@ module ApplicationHelper
     messages.join("\n").html_safe
   end
 
+  def timezone_options
+    selected_option = current_user&.timezone || "Australia/Sydney"
+
+    options_for_select(ActiveSupport::TimeZone::MAPPING.values, selected_option)
+  end
+
 end

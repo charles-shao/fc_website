@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
   resources :profiles, only: :none do
-    get :show, on: :collection
+    collection do
+      get :show
+      patch :update
+      put :update
+    end
   end
 
   resources :user_applications

@@ -13,7 +13,7 @@ class UsersController < Clearance::UsersController
     @user = User.find_by(id: params[:id])
 
     if @user.update_attributes(member_params)
-      flash[:success] = "Successfully added role to user."
+      flash[:success] = "Successfully updated details."
       redirect_to members_path
     else
       flash[:danger] = @user.errors.full_messages.to_sentence
@@ -23,9 +23,8 @@ class UsersController < Clearance::UsersController
 
   private
 
-    # TODO: move logic to members controller because it conflicts
     def member_params
-      params.require(:user).permit(:name, :email, user_role_attributes: [:role_id])
+      params.require(:user).permit(:name, :email, :timezone, user_role_attributes: [:role_id])
     end
 
 end
