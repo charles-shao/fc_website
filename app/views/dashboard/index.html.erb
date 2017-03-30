@@ -6,10 +6,17 @@
     </div>
 
     <div class="col-9">
-      <h3>Recent updates</h3>
+      <h3>Recent events</h3>
 
-      <% @notices.each do |notice| %>
-        <%= notice.title %>
+      <% @events.each do |event| %>
+        [<%= event.created_at %>] <%= event.user.friendly_name %>
+        <% if event.sourceable_type.eql? "Notice" %>
+          <% if event.created? %>
+            posted a <%= link_to "notice", notice_path(event.sourceable_id) %>.
+          <% end %>
+
+        <% end %>
+
       <% end %>
     </div>
   </div>

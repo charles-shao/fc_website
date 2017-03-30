@@ -1,8 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    # Aggregate all the events
-    @notices = Notice.most_recent
+    @events = Event.most_recent.limit(25)
   end
 
 end

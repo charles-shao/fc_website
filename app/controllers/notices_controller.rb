@@ -8,6 +8,10 @@ class NoticesController < ApplicationController
     @notices = Notice.most_recent.page(params[:page])
   end
 
+  def show
+    @notice = Notice.find_by(id: params[:id])
+  end
+
   def new
     @notice = current_user.notices.build
   end
@@ -16,6 +20,7 @@ class NoticesController < ApplicationController
     @notice = current_user.notices.build(notice_params)
 
     if @notice.save
+      @notice.events.create(user: current_user, action: :create)
       flash[:success] = "Successfully created notice."
       redirect_to notices_path
     else
