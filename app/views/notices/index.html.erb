@@ -17,7 +17,7 @@
             <tr>
                 <td><%= notice.created_at %></td>
                 <td><%= notice.title %></td>
-                <td><%= notice.content %></td>
+                <td><%= truncate(notice.content, length: 150, omission: "...") %></td>
                 <td><%= notice.user.name || "(#{notice.user.email})" %></td>
                 <td><%= notice.publish? ? "Yes" : "No" %></td>
                 <td>
