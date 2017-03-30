@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       put :update
     end
   end
-  resources :characters
+  resources :characters do
+    resources :character_jobs, only: [:create, :update, :destroy]
+  end
   resources :user_applications
   resources :application_questions
   resources :notices do
