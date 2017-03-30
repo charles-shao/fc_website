@@ -1,4 +1,4 @@
-<div class="container-stretch">
+<div class="container-stretch container-alternate">
   <div class="container">
     <div class="container-stretch-body row">
       <h1 class="display-4">
@@ -9,9 +9,9 @@
       <% @static_progressions.each do |static_progression| %>
         <div class="col-sm-4 p-3">
           <div class="card">
-            <%= image_tag static_progression.raid_content.image_file || "default-avatar.png", class: "card-img-top img-fluid", alt: static_progression.raid_content.name %>
+            <%= image_tag (static_progression.raid_content.image_path), class: "card-img-top img-fluid", alt: static_progression.raid_content.name %>
             <div class="card-block">
-              <h4 class="card-title"><%= "#{static_progression.static.name} clears #{static_progression.raid_content.name}!" %></h4>
+              <h5 class="card-title"><%= "#{static_progression.static.name} clears #{static_progression.raid_content.name}!" %></h5>
               <p class="card-text">Cleared <%= static_progression.cleared_at %></p>
 
               <a href="#" class="btn btn-info disabled">View Parses</a>

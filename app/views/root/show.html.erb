@@ -44,7 +44,11 @@
                 <small>by <%= notice.user.name || "Anonymous" %> on the <%= notice.created_at %></small>
               </h4>
 
-              <p><%= notice.content %></p>
+              <p>
+                <%= truncate(notice.content, length: 150, omission: "...") do %>
+                  <%= link_to "read more", notice_path(notice) %>
+                <% end %>
+              </p>
             </div>
           </div>
         <% end %>
@@ -62,7 +66,6 @@
   <%= render partial: "progression" %>
 <% end %>
 
-<div class="container-stretch">
-  <div class="container">
-  </div>
-</div>
+<%= render partial: "about" %>
+<%= render partial: "games" %>
+<%= render partial: "application" %>

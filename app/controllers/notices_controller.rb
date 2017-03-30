@@ -10,6 +10,7 @@ class NoticesController < ApplicationController
 
   def show
     @notice = Notice.find_by(id: params[:id])
+    @referrer = request.referer || root_path
   end
 
   def new
