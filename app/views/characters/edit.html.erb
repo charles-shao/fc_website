@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col col-6">
+
+      <h2><%= "Editing #{@character.name}"%></h2>
+
+      <%= form_for @character do |form| %>
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <div><%= form.submit class: 'btn btn-outline-primary' %></div>
+          <div class="pl-1"><%= link_to "Back", profiles_path, class: 'btn btn-secondary' %></div>
+          <div class="ml-auto"><%= link_to "Delete", character_path(@character), class: "btn btn-outline-danger pull-right", method: :delete %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

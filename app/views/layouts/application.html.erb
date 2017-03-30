@@ -20,13 +20,15 @@
 
     <%= render partial: "layouts/header" %>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <%= flash_message %>
+    <% unless controller_name.eql? "root" %>
+      <div class="container">
+        <div class="row mt-4">
+          <div class="col-12">
+            <%= flash_message %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <%= yield %>
 
