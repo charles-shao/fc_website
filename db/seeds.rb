@@ -26,5 +26,25 @@ jobs = [
 ]
 
 jobs.each do |job|
-  Job.create(name: job[:name], role: job[:role])
+  Job.create(job)
+end
+
+# Raid content
+raids = [
+  { name: "Alexander - The Fist of the Father (Savage)", patch: "3.05", released_at: "2015-03-27", image_file: "" },
+  { name: "Alexander - The Cuff of the Father (Savage)", patch: "3.05", released_at: "2015-03-27", image_file: "" },
+  { name: "Alexander - The Arm of the Father (Savage)", patch: "3.05", released_at: "2015-03-27", image_file: "" },
+  { name: "Alexander - The Burden of the Father (Savage)", patch: "3.05", released_at: "2015-03-27", image_file: "" },
+  { name: "Alexander - The Fist of the Son (Savage)", patch: "3.2", released_at: "2016-02-23", image_file: "" },
+  { name: "Alexander - The Cuff of the Son (Savage)", patch: "3.2", released_at: "2016-02-23", image_file: "" },
+  { name: "Alexander - The Arm of the Son (Savage)", patch: "3.2", released_at: "2016-02-23", image_file: "" },
+  { name: "Alexander - The Burden of the Son (Savage)", patch: "3.2", released_at: "2016-02-23", image_file: "" },
+  { name: "Alexander - The Eyes of the Creator (Savage)", patch: "3.4", released_at: "2016-09-27", image_file: "alexander-09-savage.jpg" },
+  { name: "Alexander - The Breath of the Creator (Savage)", patch: "3.4", released_at: "2016-09-27", image_file: "alexander-10-savage.jpg" },
+  { name: "Alexander - The Heart of the Creator (Savage)", patch: "3.4", released_at: "2016-09-27", image_file: "alexander-11-savage.jpg" },
+  { name: "Alexander - The Soul of the Creator (Savage)", patch: "3.4", released_at: "2016-09-27", image_file: "alexander-15-savage.jpg" },
+]
+
+raids.each do |raid|
+  RaidContent.create(raid)
 end
