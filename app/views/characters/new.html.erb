@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col col-6">
+
+      <h2>Adding new character</h2>
+
+      <%= form_for @character do |form| %>
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <%= form.submit class: 'btn btn-outline-primary' %>
+        <%= link_to "Back", profiles_path, class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

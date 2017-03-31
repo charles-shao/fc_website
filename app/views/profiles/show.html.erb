@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row mt-5">
-    <div class="col col-6">
+    <div class="col-6">
 
       <div class="card">
         <h3 class="card-header">Profile Details</h3>
@@ -36,19 +36,19 @@
 
       <div class="row">
         <% @characters.each do |character| %>
-          <div class="col-sm-6">
+          <div class="col-sm-6 mt-2">
             <div class="card">
               <%= image_tag "default-avatar.png", class: "card-img-top img-fluid" %>
 
               <div class="card-block">
                 <h4 class="card-title"><%= character.name %></h4>
                 <p class="card-text"></p>
-                <%= link_to "Edit Details", edit_character_path(character), class: "card-link" %>
+                <%= link_to "Edit", edit_character_path(character), class: "card-link" %>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">SCH Lv.60</li>
-                <li class="list-group-item">MNK Lv.60</li>
-                <li class="list-group-item">SCH Lv.60</li>
+                <% character.character_jobs.each do |character_job| %>
+                  <li class="list-group-item"><%= "#{character_job.job.name} Lv.#{character_job.level}"%></li>
+                <% end %>
               </ul>
               <div class="card-footer">
                 <small class="text-muted">
@@ -59,25 +59,18 @@
           </div>
         <% end %>
 
+        <!-- New character panel -->
+        <div class="col-sm-6 mt-2">
+          <%= link_to "Add new character", new_character_path, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+
       </div>
     </div>
   </div>
 
   <div class="row mt-5">
     <div class="col-6">
-      <div class="card">
-        <h3 class="card-header">Add Character</h3>
-        <div class="card-block">
-          <%= form_for current_user.characters.build do |form| %>
-            <div class="form-group">
-              <%= form.label :name %>
-              <%= form.text_field :name, class: "form-control" %>
-            </div>
 
-            <%= form.submit value: "Add Character", class: 'btn btn-outline-primary' %>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 

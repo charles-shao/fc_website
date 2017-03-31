@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
 
   def new
+    @character = current_user.characters.build
   end
 
   def create
