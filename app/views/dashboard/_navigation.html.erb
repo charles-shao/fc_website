@@ -17,28 +17,28 @@
   <%= link_to "Statics", statics_path, class: "list-group-item" %>
 
   <% if can? :manage, Notice %>
-    <%= link_to notices_path, class: "list-group-item list-group-item-action justify-content-between" do %>
+    <%= link_to notices_path, class: "list-group-item justify-content-between" do %>
       Notices
       <span class="badge badge-danger badge-pill">Admin</span>
     <% end %>
   <% end %>
 
   <% if can? :manage, RaidContent %>
-    <%= link_to raid_contents_path, class: "list-group-item list-group-item-action justify-content-between" do %>
+    <%= link_to raid_contents_path, class: "list-group-item justify-content-between" do %>
       Raid Content
       <span class="badge badge-danger badge-pill">Admin</span>
     <% end %>
   <% end %>
 
   <% if can? :mange, ApplicationQuestion %>
-    <%= link_to application_questions_path, class: "list-group-item list-group-item-action justify-content-between" do %>
+    <%= link_to application_questions_path, class: "list-group-item justify-content-between" do %>
       Application Content
       <span class="badge badge-danger badge-pill">Admin</span>
     <% end %>
   <% end %>
 
   <% if can? :manage, Role %>
-    <%= link_to roles_path, class: "list-group-item list-group-item-action justify-content-between" do %>
+    <%= link_to roles_path, class: "list-group-item justify-content-between" do %>
       Manage Roles
       <span class="badge badge-danger badge-pill">Admin</span>
     <% end %>

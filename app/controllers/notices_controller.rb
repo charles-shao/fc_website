@@ -1,7 +1,10 @@
 class NoticesController < ApplicationController
 
   authorize_resource
-  
+  skip_authorize_resource only: [:view, :show]
+
+  before_action :require_login, except: [:view, :show]
+
   def index
     @notices = Notice.most_recent
   end
