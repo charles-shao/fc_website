@@ -6,4 +6,12 @@ class Role < ApplicationRecord
     name.eql? "Admin"
   end
 
+  def member?
+    name.eql? "Member"
+  end
+
+  def guest? 
+    name.eql? "Guest"
+  end
+
 end

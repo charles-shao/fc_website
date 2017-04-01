@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="pt-5">Users</h2>
+
+      <table class="table">
+        <thead class="thead-default">
+            <th>Name</th>
+            <th>Characters</th>
+            <th>Statics</th>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+                <td><%= link_to user.name, "#" %></td>
+                <td><%= user.characters %></td>
+                <td><%= user.statics %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 class ApplicationQuestionsController < ApplicationController
 
+  authorize_resource
+  
   def index
     @application_questions = ApplicationQuestion.ordered_by_rank
   end

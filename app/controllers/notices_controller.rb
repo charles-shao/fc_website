@@ -1,5 +1,7 @@
 class NoticesController < ApplicationController
 
+  authorize_resource
+  
   def index
     @notices = Notice.most_recent
   end

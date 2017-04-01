@@ -1,8 +1,6 @@
 class UsersController < Clearance::UsersController
 
-  def index
-    @users = User.all
-  end
+  authorize_resource
 
   def edit
     @user = User.find_by(id: params[:id])

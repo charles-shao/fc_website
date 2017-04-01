@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :users, controller: "users", only: [:index, :show, :edit, :update], as: "members"
+  resources :users, controller: "users"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -42,5 +42,5 @@ Rails.application.routes.draw do
   end
 
   resources :raid_contents
-
+  resources :members, only: [:index, :show, :edit, :update]
 end

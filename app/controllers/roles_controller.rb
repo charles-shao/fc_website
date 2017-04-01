@@ -1,5 +1,7 @@
 class RolesController < ApplicationController
 
+  authorize_resource
+  
   def index
     @roles = Role.all
   end
