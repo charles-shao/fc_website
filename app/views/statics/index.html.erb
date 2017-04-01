@@ -6,7 +6,7 @@
         <thead class="thead-default">
             <th>Name</th>
             <th>Members</th>
-            <% if [Static, StaticMember, StaticProgression].any? { |klass| can?(:manage, klass) } %>
+            <% if [Static, StaticCharacter, StaticProgression].any? { |klass| can?(:manage, klass) } %>
               <th>Actions</th>
             <% end %>
         </thead>
@@ -16,22 +16,22 @@
             <tr>
                 <td><%= static.name %></td>
                 <td>
-                  <% if static.members.any? %>
-                    <% static.static_members.each do |static_member| %>
-                      <p><%= static_member.user.name %></p>
+                  <% if static.characters.any? %>
+                    <% static.characters.each do |character| %>
+                      <p><%= character.name %></p>
                     <% end %>
                   <% else %>
                     None
                   <% end %>
                 </td>
-                <% if [Static, StaticMember, StaticProgression].any? { |klass| can?(:manage, klass) } %>
+                <% if [Static, StaticCharacter, StaticProgression].any? { |klass| can?(:manage, klass) } %>
                   <td>
                     <% if can? :manage, static %>
                       <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
                     <% end %>
 
-                    <% if can? :manage, StaticMember %>
-                      <%= link_to "Manage Members", static_static_members_path(static), class: "btn btn-outline-info" %>
+                    <% if can? :manage, StaticCharacter %>
+                      <%= link_to "Manage Members", static_static_characters_path(static), class: "btn btn-outline-info" %>
                     <% end %>
 
                     <% if can? :manage, StaticProgression %>

@@ -7,15 +7,17 @@
         <thead class="thead-default">
             <th>Name</th>
             <th>Characters</th>
-            <th>Statics</th>
         </thead>
 
         <tbody>
           <% @users.each do |user| %>
             <tr>
                 <td><%= link_to user.name, "#" %></td>
-                <td><%= user.characters %></td>
-                <td><%= user.statics %></td>
+                <td>
+                  <% user.characters.each do |character| %>
+                    <p><%= character.name %></p>
+                  <% end %>
+                </td>
             </tr>
           <% end %>
         </tbody>

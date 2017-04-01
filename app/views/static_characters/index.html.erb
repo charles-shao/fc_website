@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="pt-5">Manage Members (<%= @static_members.count %>)</h2>
+      <h2 class="pt-5">Manage Characters (<%= @static_characters.count %>)</h2>
       <table class="table">
         <thead class="thead-default">
             <th>Name</th>
@@ -10,25 +10,25 @@
         </thead>
 
         <tbody>
-          <% @static_members.each do |static_member| %>
+          <% @static_characters.each do |static_character| %>
             <tr>
-                <td><%= static_member.user.name %></td>
-                <td><%= static_member.position %></td>
+                <td><%= static_character.character.name %></td>
+                <td><%= static_character.position %></td>
                 <td>
-                  <%= link_to "Remove", static_static_member_path(@static, static_member), method: :delete, class: "btn btn-outline-danger" %>
+                  <%= link_to "Remove", static_static_character_path(@static, static_character), method: :delete, class: "btn btn-outline-danger" %>
                 </td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
-      <% if @available_members.any? %>
-        <%= form_for [:static, @static.static_members.new] do |form| %>
+      <% if @available_characters.any? %>
+        <%= form_for [:static, @static.static_characters.new] do |form| %>
           <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <%= form.label :user_id, "Member" %>
-                <%= form.select :user_id, member_options, {}, class: "form-control" %>
+                <%= form.label :character_id, "Character" %>
+                <%= form.select :character_id, character_options, {}, class: "form-control" %>
               </div>
             </div>
 
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group">
-            <%= form.submit value: "Add Member", class: 'btn btn-outline-primary' %>
+            <%= form.submit value: "Add Character", class: 'btn btn-outline-primary' %>
           </div>
         <% end %>
       <% end %>

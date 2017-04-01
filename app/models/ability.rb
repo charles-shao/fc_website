@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     elsif user.role.static_lead?
       can :manage, Static
-      can :manage, StaticMember
+      can :manage, StaticCharacter
       can :manage, StaticProgression
     elsif user.role.member?
 
