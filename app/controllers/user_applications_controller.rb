@@ -1,5 +1,7 @@
 class UserApplicationsController < ApplicationController
 
+  before_action :has_user_applied?
+
   def new
     @user_application = current_user.user_applications.build(game: "FFXIV")
 
@@ -31,6 +33,13 @@ class UserApplicationsController < ApplicationController
 
     def user_application_answers
       params.require(:user_application).permit(:game, user_application_answers_attributes: [:content, :application_question_id])
+    end
+
+    def has_user_applied?
+      if current_user.user_applications.pending_applications.any?
+        flash[:warning] = "We have already received your application. Hold tight!"
+        redirect_to dashboard_index_path
+      end
     end
 
 end

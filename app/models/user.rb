@@ -16,4 +16,8 @@ class User < ApplicationRecord
     name || email
   end
 
+  def has_pending_application?
+    user_applications.pending_applications.any?
+  end
+
 end
