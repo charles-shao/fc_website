@@ -6,7 +6,9 @@
         <thead class="thead-default">
             <th>Name</th>
             <th>Members</th>
-            <th>Actions</th>
+            <% if [Static, StaticMember, StaticProgression].any? { |klass| can?(:manage, klass) } %>
+              <th>Actions</th>
+            <% end %>
         </thead>
 
         <tbody>
@@ -22,11 +24,21 @@
                     None
                   <% end %>
                 </td>
-                <td>
-                  <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
-                  <%= link_to "Manage Members", static_static_members_path(static), class: "btn btn-outline-info" %>
-                  <%= link_to "Manage Progression", static_static_progressions_path(static), class: "btn btn-outline-info" %>
-                </td>
+                <% if [Static, StaticMember, StaticProgression].any? { |klass| can?(:manage, klass) } %>
+                  <td>
+                    <% if can? :manage, static %>
+                      <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
+                    <% end %>
+
+                    <% if can? :manage, StaticMember %>
+                      <%= link_to "Manage Members", static_static_members_path(static), class: "btn btn-outline-info" %>
+                    <% end %>
+
+                    <% if can? :manage, StaticProgression %>
+                      <%= link_to "Manage Progression", static_static_progressions_path(static), class: "btn btn-outline-info" %>
+                    <% end %>
+                  </td>
+                <% end %>
             </tr>
           <% end %>
         </tbody>

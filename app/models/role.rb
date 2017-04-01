@@ -6,11 +6,15 @@ class Role < ApplicationRecord
     name.eql? "Admin"
   end
 
+  def static_lead?
+    name.eql? "Static Lead"
+  end
+
   def member?
     name.eql? "Member"
   end
 
-  def guest? 
+  def guest?
     name.eql? "Guest"
   end
 
