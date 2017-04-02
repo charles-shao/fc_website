@@ -1,9 +1,12 @@
-//= require simulator/ability.js
-//= require simulator/damage_multiplier_ability.js
-//= require simulator/spell.js
+//= require simulator/actions/ability.js
+//= require simulator/actions/damage_multiplier_ability.js
+//= require simulator/actions/spell.js
 
-//= require simulator/timeline_spell_observer.js
-//= require simulator/timeline_effect_observer.js
+//= require simulator/observers/spell_observer.js
+//= require simulator/observers/effect_observer.js
+
+//= require simulator/action.js
+
 //= require simulator/timeline.js
 //= require simulator/simulation_view_model.js
 

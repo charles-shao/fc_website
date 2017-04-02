@@ -1,7 +1,7 @@
-// TimelineSpellObserver
+// SpellObserver
 //
 // Keeps track of skills and spells that have been used
-function TimelineSpellObserver(timeline, action, sequence) {
+function SpellObserver(timeline, action, sequence) {
   const BASE_MULTIPLIER = 1.0;
 
   var self = this;
@@ -11,11 +11,11 @@ function TimelineSpellObserver(timeline, action, sequence) {
   self.sequence = sequence;
 
   // delegate common variables for table view
-  self.name = action.name;
-  self.potency = action.potency();
+  self.name = action.type.name;
+  self.potency = action.type.potency();
 
   self.timeSinceEncounter = ko.computed(function() {
-    self.timeline.elapseTime(self.action.castTime());
+    self.timeline.elapseTime(self.action.type.castTime());
     return self.timeline.timeElapsed;
   });
 

@@ -11,11 +11,15 @@ function SimulationViewModel() {
   self.timeline = new Timeline();
 
   self.addSpellToQueue = function(spell) {
-    self.timeline.addToActionQueue(spell);
+    id = self.timeline.sequenceActionId();
+    action = new Action(id, spell);
+    self.timeline.addToActionQueue(action);
   };
 
   self.addDamageMultiplierToQueue = function(ability) {
-    self.timeline.addToActionQueue(ability);
+    id = self.timeline.sequenceActionId();
+    action = new Action(id, ability);
+    self.timeline.addToActionQueue(action);
   };
 
   self.removeActionFromQueue = function(action) {

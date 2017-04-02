@@ -5,12 +5,18 @@ function Timeline() {
   var self = this;
 
   self.timeElapsed = 0;
+  self.actionId = 1; // Increment on every action added. Does not decrease, used as a temp PK
   self.actionQueue = ko.observableArray([]);
   self.actionsObserved = ko.observableArray([]);
   self.effectsObserved = ko.observableArray([]);
 
   self.elapseTime = function(time) {
     self.timeElapsed = self.timeElapsed + time;
+  }
+
+  self.sequenceActionId = function() {
+    self.actionId = self.actionId++;
+    return self.actionId;
   }
 
   self.addToActionQueue = function(action) {
@@ -41,11 +47,11 @@ function Timeline() {
 
     // Repopulate observed spells
     $.each(self.actionQueue(), function(indexInArray, action) {
-      if (action instanceof Spell) {
-        self.actionsObserved.push(new TimelineSpellObserver(self, action, indexInArray));
-      } else if (action instanceof DamageMultiplierAbility) {
-        self.actionsObserved.push(new TimelineEffectObserver(self, action, indexInArray));
-        self.effectsObserved.push(new TimelineEffectObserver(self, action, indexInArray));
+      if (action.category == "Spell") {
+        self.actionsObserved.push(new SpellObserver(self, action, indexInArray));
+      } else if (action.category == "DamageMultiplierAbility") {
+        self.actionsObserved.push(new EffectObserver(self, action, indexInArray));
+        self.effectsObserved.push(new EffectObserver(self, action, indexInArray));
       }
     });
   };
