@@ -10,9 +10,5 @@ function DamageMultiplierAbility(obj) {
   self.animationLock = obj.animationLock;
   self.image = obj.image;
 
-  self.optionText = ko.computed(function() {
-    return `${self.name}: ${self.multiplier.toFixed(2)} multiplier`;
-  });
-
-  self.imagePath = `/assets/${self.image}`;
+  self.imagePath = "/assets/" + self.image;
 }

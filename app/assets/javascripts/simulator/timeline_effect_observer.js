@@ -15,7 +15,7 @@ function TimelineEffectObserver(timeline, action, sequence) {
 
   self.multiplier = action.multiplier;
   self.multiplierText = ko.computed(function() {
-    return `${self.multiplier.toFixed(2)}`;
+    return self.multiplier.toFixed(2);
   });
 
   self.timeSinceEncounter = ko.computed(function() {

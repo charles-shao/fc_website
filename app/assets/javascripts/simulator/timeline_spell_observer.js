@@ -21,7 +21,7 @@ function TimelineSpellObserver(timeline, action, sequence) {
 
   self.multiplier = calculateEffectiveMultipliers();
   self.multiplierText = ko.computed(function() {
-    return `${self.multiplier.toFixed(2)}`;
+    return self.multiplier.toFixed(2);
   });
   self.totalPotency = ko.computed(function() {
     var total = self.potency * self.multiplier;

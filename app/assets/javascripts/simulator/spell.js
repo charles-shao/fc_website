@@ -11,9 +11,5 @@ function Spell(obj) {
   self.animationLock = ko.observable(obj.animationLock);
   self.image = obj.image;
 
-  self.optionText = ko.computed(function() {
-    return `${self.name}: ${self.potency()} potency`;
-  });
-
-  self.imagePath = `/assets/${self.image}`;
+  self.imagePath = "/assets/" + self.image;
 }
