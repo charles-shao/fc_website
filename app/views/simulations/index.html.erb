@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Rotation Simulator</h2>
+      <table class="table">
+        <thead class="thead-default">
+          <th>Sequence</th>
+          <th>Time</th>
+          <th>Ability/ Skill</th>
+          <th>Base Potency</th>
+          <th>Self-multipliers</th>
+          <th>Target multipliers</th>
+          <th>Total potency</th>
+        </thead>
+        <tbody data-bind="foreach: timeline.skillsObservered">
+          <tr>
+            <td data-bind="text: sequence"></td>
+            <td data-bind="text: timeSinceEncounter"></td>
+            <td data-bind="text: skill.name"></td>
+            <td data-bind="text: skill.potency"></td>
+            <td>0</td>
+            <td>0</td>
+            <td data-bind="text: skill.potency"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-8">
+      <form class="form">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Ability/ Skill</label>
+          <div class="col-8">
+            <select data-bind="options: skills, optionsValue: 'id', optionsText: 'optionText', value: selectedSkill" class="form-control"></select>
+          </div>
+
+          <div class="col-2">
+            <button class="btn btn-primary" data-bind="click: addSkillToQueue">Queue</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-12 pt-5">
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
+
+<script>
+  function Timeline() {
+    var self = this;
+
+    self.timeElapsed = 0;
+    self.skillQueue = ko.observableArray([]);
+    self.skillsObservered = ko.observableArray([]);
+
+    self.elapseTime = function(time) {
+      self.timeElapsed = self.timeElapsed + time;
+    }
+
+    self.addToSkillQueue = function(skill) {
+      self.skillQueue.push(skill);
+      self.observeSkillUsage();
+    }
+
+    self.observeSkillUsage = function(){
+      // Clear current skills observed
+      self.timeElapsed = 0;
+      self.skillsObservered([]);
+
+      // Repopulate observed skills
+      $.each(self.skillQueue(), function(indexInArray, skill) {
+        self.skillsObservered.push(new TimelineSkillObserver(self, skill, indexInArray));
+      });
+    };
+  }
+
+  // Keeps track of events that have
+  function TimelineSkillObserver(timeline, skill, sequence) {
+    var self = this;
+    self.parent = timeline;
+
+    self.skill = skill;
+    self.sequence = sequence;
+    self.timeSinceEncounter = ko.computed(function() {
+      self.parent.elapseTime(self.skill.castTime());
+      return self.parent.timeElapsed;
+    });
+  }
+
+  function Skill(obj) {
+    var self = this;
+
+    self.id = obj.id;
+    self.name = obj.name;
+    self.propertyType = obj.propertyType;
+    self.potency = ko.observable(obj.potency);
+    self.castTime = ko.observable(obj.castTime);
+    self.animationLock = ko.observable(obj.animationLock);
+    self.optionText = ko.computed(function() {
+      return `${self.name}: ${self.potency()} potency`;
+    });
+
+    // self.castTimeReduction = ko.computed(function(percentage) {
+    //   return self.castTime() - (percentage * self.castTime());
+    // });
+  }
+
+  function SimulationViewModel() {
+    var self = this;
+    self.skills = ko.observableArray([]);
+    self.selectedSkill = ko.observable();
+    self.timeline = new Timeline();
+
+    self.addSkillToQueue = function(skill) {
+      $.each(self.skills(), function(indexInArray, skill){
+         if (skill.id.toString() === self.selectedSkill()) {
+           self.timeline.addToSkillQueue(skill);
+         }
+       });
+    }
+
+    // TODO: read from database
+    var skillObjects = [
+      { id: "1", name: "Fire", propertyType: "Spell", potency: 180, castTime: 2.5, animationLock: 0 },
+      { id: "2", name: "Blizzard", propertyType: "Spell", potency: 180, castTime: 2.5, animationLock: 0 },
+      { id: "3", name: "Fire III", propertyType: "Spell", potency: 240, castTime: 3.5, animationLock: 0 },
+      { id: "4", name: "Blizzard III", propertyType: "Spell", potency: 240, castTime: 3.5, animationLock: 0 }
+    ];
+
+    for (let skillObject of skillObjects) {
+      self.skills.push(new Skill(skillObject));
+    }
+  }
+
+  simulationViewModel = new SimulationViewModel();
+  ko.applyBindings(simulationViewModel);
+</script>

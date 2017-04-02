@@ -43,4 +43,5 @@ Rails.application.routes.draw do
 
   resources :raid_contents
   resources :members, only: [:index, :show, :edit, :update]
+  resources :simulations, only: [:index]
 end
