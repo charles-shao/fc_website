@@ -18,6 +18,21 @@ function Timeline() {
     self.observeActionUsage();
   }
 
+  self.removeFromActionQueue = function(observer) {
+    var action = observer.action;
+
+    self.actionQueue.remove(action);
+
+    if (action instanceof Spell) {
+      self.actionsObserved.remove(observer);
+    } else if (action instanceof DamageMultiplierAbility) {
+      self.actionsObserved.remove(observer);
+      self.effectsObserved.remove(observer);
+    }
+
+    self.observeActionUsage();
+  }
+
   self.observeActionUsage = function(){
     // Clear current spells observed
     self.timeElapsed = 0;

@@ -14,6 +14,7 @@
           <th>Self-multipliers</th>
           <th>Target multipliers</th>
           <th>Total potency</th>
+          <th></th>
         </thead>
         <tbody data-bind="foreach: timeline.actionsObserved">
           <tr>
@@ -25,38 +26,33 @@
             <td data-bind="text: multiplierText"></td>
             <td>0</td>
             <td data-bind="text: totalPotency"></td>
+            <td>
+              <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
           </tr>
         </tbody>
       </table>
 
     </div>
 
-    <div class="col-8">
-      <form class="form">
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Skill/ Spell</label>
-          <div class="col-8">
-            <select data-bind="options: spells, optionsValue: 'id', optionsText: 'optionText', value: selectedSpell" class="form-control"></select>
-          </div>
-
-          <div class="col-2">
-            <button class="btn btn-primary" data-bind="click: addSpellToQueue">Queue</button>
-          </div>
+    <div class="col-12">
+      <div class="row">
+        <h5>Spells</h5>
+        <div class="col-12" data-bind="foreach: spells">
+          <a href="#" data-bind="click: $root.addSpellToQueue">
+            <img src="" alt="" data-bind="attr: { src: imagePath }">
+          </a>
         </div>
+      </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Damage Multiplier Abilities</label>
-          <div class="col-8">
-            <select data-bind="options: damageMultiplierAbilities, optionsValue: 'id', optionsText: 'optionText', value: selectedDamageMultiplierAbility" class="form-control"></select>
-          </div>
-
-          <div class="col-2">
-            <button class="btn btn-primary" data-bind="click: addDamageMultiplierToQueue">Queue</button>
-          </div>
+      <div class="row">
+        <h5>Abilities</h5>
+        <div class="col-12" data-bind="foreach: damageMultiplierAbilities">
+          <a href="#" data-bind="click: $root.addDamageMultiplierToQueue">
+            <img src="" alt="" data-bind="attr: { src: imagePath }">
+          </a>
         </div>
-
-      </form>
+      </div>
     </div>
 
     <div class="col-12 pt-5">

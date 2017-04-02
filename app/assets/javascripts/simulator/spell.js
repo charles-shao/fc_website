@@ -9,7 +9,11 @@ function Spell(obj) {
   self.potency = ko.observable(obj.potency);
   self.castTime = ko.observable(obj.castTime);
   self.animationLock = ko.observable(obj.animationLock);
+  self.image = obj.image;
+
   self.optionText = ko.computed(function() {
     return `${self.name}: ${self.potency()} potency`;
   });
+
+  self.imagePath = `/assets/${self.image}`;
 }
