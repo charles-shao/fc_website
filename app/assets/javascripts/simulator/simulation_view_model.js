@@ -39,7 +39,7 @@ function SimulationViewModel() {
     self.spells.push(new Spell(obj));
   });
 
-  $.each(damageMultiplierAbility, function(indexInArray, obj) {
+  $.each(damageMultiplierAbilities, function(indexInArray, obj) {
     self.damageMultiplierAbilities.push(new DamageMultiplierAbility(obj));
   });
 
