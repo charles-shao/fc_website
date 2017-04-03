@@ -9,18 +9,18 @@
 // Critical Chance
 // Critical Variance
 // Total potency
-function ActionObserver(timeline, action, effectsActive, sequence) {
+function ActionObserver(timeline, action, actionEffectsActive, sequence) {
   var self = this;
 
   self.timeline = timeline;
   self.action = action;
-  self.effectsActive = effectsActive;
+  self.actionEffectsActive = actionEffectsActive;
 
   self.sequence = sequence;
   self.name = action.type.name;
 
   if (self.action.type instanceof Spell) {
-    var spellObserver = new SpellObserver(self.action, self.effectsActive);
+    var spellObserver = new SpellObserver(self.action, self.actionEffectsActive);
     self.timeSinceEncounter = elapsedTimeSinceEncounter(spellObserver);
     self.potency = spellObserver.potency;
     self.multiplierText = spellObserver.damageMultiplier.toFixed(2);

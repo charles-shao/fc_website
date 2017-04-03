@@ -26,6 +26,10 @@ function SpellObserver(action, actionEffectsActive) {
       criticalChance = criticalChance + effect.percentageGain;
       criticalVariance = criticalVariance + effect.varianceGain;
     }
+    // Refresh any timers on each effect
+
+    // Reduce the timers on each effect
+    effect.tick(self.castedTime)
   });
 
   self.damageMultiplier = dmgMultiplier;
