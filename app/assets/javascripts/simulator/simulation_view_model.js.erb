@@ -22,10 +22,10 @@ function SimulationViewModel() {
 
   self.totalPotency = ko.computed(function() {
     var total = 0;
-    $.each(self.timelime.actionsObserved(), function(index, actionObserver) {
-      // total = total + actionObserver.potency;
-      console.log(actionObserver)
-    });
+    // $.each(self.timelime.actionsObserved(), function(index, actionObserver) {
+    //   // total = total + actionObserver.potency;
+    //   console.log(actionObserver)
+    // });
     return total;
   });
 
