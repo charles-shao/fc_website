@@ -10,6 +10,9 @@ function Spell(obj) {
   self.castTime = ko.observable(obj.castTime);
   self.animationLock = ko.observable(obj.animationLock);
   self.image = obj.image;
+  self.additionalEffects = ko.observableArray([])
 
   self.imagePath = "/assets/" + self.image;
+
+
 }

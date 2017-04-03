@@ -1,18 +1,20 @@
 <%= javascript_include_tag "simulator/manifest.js" %>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12">
       <h2>Rotation Simulator</h2>
       <table class="table">
         <thead class="thead-default">
-          <th>Sequence</th>
+          <th>Seq.</th>
           <th>Time</th>
           <th>Skill/ Spell</th>
           <th>Active Effects</th>
           <th>Base Potency</th>
           <th>Self-multipliers</th>
           <th>Target multipliers</th>
+          <th>Critical Chance</th>
+          <th>Critical Variance</th>
           <th>Total potency</th>
           <th></th>
         </thead>
@@ -26,7 +28,9 @@
             </td>
             <td data-bind="text: actionObserver.potency"></td>
             <td data-bind="text: actionObserver.multiplierText"></td>
-            <td>0</td>
+            <td>1.00</td>
+            <td>10.00%</td>
+            <td>50.00%</td>
             <td data-bind="text: actionObserver.totalPotency"></td>
             <td>
               <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a>
@@ -36,29 +40,45 @@
       </table>
 
     </div>
+  </div>
 
+  <div class="row">
     <div class="col-12">
-      <div class="row">
-        <h5>Spells</h5>
-        <div class="col-12" data-bind="foreach: { data: spells, as: 'spell' }">
-          <a href="#" data-bind="click: $root.addActionToQueue">
-            <img src="" alt="" data-bind="attr: { src: spell.imagePath }">
-          </a>
-        </div>
-      </div>
-
-      <div class="row">
-        <h5>Abilities</h5>
-        <div class="col-12" data-bind="foreach: { data: damageMultiplierAbilities, as: 'buff' }">
-          <a href="#" data-bind="click: $root.addActionToQueue">
-            <img src="" alt="" data-bind="attr: { src: buff.imagePath }">
-          </a>
-        </div>
+      <h5>Spells</h5>
+      <div class="col-12" data-bind="foreach: { data: spells, as: 'spell' }">
+        <a href="#" data-bind="click: $root.addActionToQueue">
+          <img src="" alt="" data-bind="attr: { src: spell.imagePath }">
+        </a>
       </div>
     </div>
+  </div>
 
+  <div class="row">
+    <div class="col-12">
+      <h5>Damage Modifier Abilities</h5>
+      <div class="col-12" data-bind="foreach: { data: damageMultiplierAbilities, as: 'dma' }">
+        <a href="#" data-bind="click: $root.addActionToQueue">
+          <img src="" alt="" data-bind="attr: { src: dma.imagePath }">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h5>Critical Modifier Abilities</h5>
+      <div class="col-12" data-bind="foreach: { data: criticalMultiplierAbilities, as: 'cma' }">
+        <a href="#" data-bind="click: $root.addActionToQueue">
+          <img src="" alt="" data-bind="attr: { src: cma.imagePath }">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-12 pt-5">
       <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
     </div>
   </div>
+
 </div>

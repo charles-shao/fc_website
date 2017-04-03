@@ -17,7 +17,6 @@ function ActionObserver(timeline, action, effectsActive, sequence) {
   self.potency = self.observer.potency;
   self.totalPotency = self.observer.totalPotency;
   self.multiplierText = ko.computed(function() {
-    console.log(self.effectsActive);
     return self.observer.multiplier.toFixed(2);
   });
 

@@ -1,9 +1,9 @@
-function DamageMultiplierAbility(obj) {
+function CriticalMultiplierAbility(obj) {
   var self = this;
 
   self.id = obj.id;
   self.name = obj.name;
-  self.multiplier = obj.multiplier;
+  self.additiveBonus = obj.additiveBonus;
   self.duration = obj.duration;
   self.cooldown = obj.cooldown;
   self.animationLock = obj.animationLock;
