@@ -7,6 +7,8 @@ function DamageMultiplierAbility(obj) {
   self.id = obj.id;
   self.name = obj.name;
   self.multiplier = obj.multiplier;
+  self.duration = obj.duration;
+  self.cooldown = obj.cooldown;
   self.animationLock = obj.animationLock;
   self.image = obj.image;
 

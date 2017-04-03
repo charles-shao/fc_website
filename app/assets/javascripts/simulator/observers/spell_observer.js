@@ -1,28 +1,18 @@
 // SpellObserver
 //
 // Keeps track of skills and spells that have been used
-function SpellObserver(timeline, action, sequence) {
+function SpellObserver(action, effectsActive) {
   const BASE_MULTIPLIER = 1.0;
 
   var self = this;
-
-  self.timeline = timeline;
   self.action = action;
-  self.sequence = sequence;
+  self.effectsActive = effectsActive;
 
-  // delegate common variables for table view
-  self.name = action.type.name;
-  self.potency = action.type.potency();
-
-  self.timeSinceEncounter = ko.computed(function() {
-    self.timeline.elapseTime(self.action.type.castTime());
-    return self.timeline.timeElapsed;
-  });
+  // Common
+  self.potency = self.action.type.potency();
+  self.castedTime = self.action.type.castTime();
 
   self.multiplier = calculateEffectiveMultipliers();
-  self.multiplierText = ko.computed(function() {
-    return self.multiplier.toFixed(2);
-  });
   self.totalPotency = ko.computed(function() {
     var total = self.potency * self.multiplier;
     return total.toFixed(2);
@@ -31,8 +21,8 @@ function SpellObserver(timeline, action, sequence) {
   function calculateEffectiveMultipliers() {
     var totalMultiplier = BASE_MULTIPLIER;
 
-    $.each(self.timeline.effectsObserved(), function(indexInArray, dmgAbility) {
-      totalMultiplier = totalMultiplier * dmgAbility.multiplier;
+    $.each(self.effectsActive, function(indexInArray, effect) {
+      totalMultiplier = totalMultiplier * effect.multiplier;
     });
 
     return totalMultiplier;

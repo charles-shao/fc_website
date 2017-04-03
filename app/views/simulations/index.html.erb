@@ -9,23 +9,25 @@
           <th>Sequence</th>
           <th>Time</th>
           <th>Skill/ Spell</th>
-          <th>Ability</th>
+          <th>Active Effects</th>
           <th>Base Potency</th>
           <th>Self-multipliers</th>
           <th>Target multipliers</th>
           <th>Total potency</th>
           <th></th>
         </thead>
-        <tbody data-bind="foreach: timeline.actionsObserved">
+        <tbody data-bind="foreach: { data: timeline.actionsObserved, as: 'actionObserver' }">
           <tr>
-            <td data-bind="text: sequence"></td>
-            <td data-bind="text: timeSinceEncounter"></td>
-            <td data-bind="text: name"></td>
-            <td></td>
-            <td data-bind="text: potency"></td>
-            <td data-bind="text: multiplierText"></td>
+            <td data-bind="text: actionObserver.sequence"></td>
+            <td data-bind="text: actionObserver.timeSinceEncounter"></td>
+            <td data-bind="text: actionObserver.name"></td>
+            <td data-bind="foreach: { data: actionObserver.effectsActive, as: 'effect' }">
+              <p data-bind="text: effect.name"></p>
+            </td>
+            <td data-bind="text: actionObserver.potency"></td>
+            <td data-bind="text: actionObserver.multiplierText"></td>
             <td>0</td>
-            <td data-bind="text: totalPotency"></td>
+            <td data-bind="text: actionObserver.totalPotency"></td>
             <td>
               <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
@@ -38,18 +40,18 @@
     <div class="col-12">
       <div class="row">
         <h5>Spells</h5>
-        <div class="col-12" data-bind="foreach: spells">
-          <a href="#" data-bind="click: $root.addSpellToQueue">
-            <img src="" alt="" data-bind="attr: { src: imagePath }">
+        <div class="col-12" data-bind="foreach: { data: spells, as: 'spell' }">
+          <a href="#" data-bind="click: $root.addActionToQueue">
+            <img src="" alt="" data-bind="attr: { src: spell.imagePath }">
           </a>
         </div>
       </div>
 
       <div class="row">
         <h5>Abilities</h5>
-        <div class="col-12" data-bind="foreach: damageMultiplierAbilities">
-          <a href="#" data-bind="click: $root.addDamageMultiplierToQueue">
-            <img src="" alt="" data-bind="attr: { src: imagePath }">
+        <div class="col-12" data-bind="foreach: { data: damageMultiplierAbilities, as: 'buff' }">
+          <a href="#" data-bind="click: $root.addActionToQueue">
+            <img src="" alt="" data-bind="attr: { src: buff.imagePath }">
           </a>
         </div>
       </div>

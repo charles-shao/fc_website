@@ -8,7 +8,7 @@ function Timeline() {
   self.actionId = 1; // Increment on every action added. Does not decrease, used as a temp PK
   self.actionQueue = ko.observableArray([]);
   self.actionsObserved = ko.observableArray([]);
-  self.effectsObserved = ko.observableArray([]);
+  self.effectsActive = ko.observableArray([]);
 
   self.elapseTime = function(time) {
     self.timeElapsed = self.timeElapsed + time;
@@ -28,12 +28,10 @@ function Timeline() {
     var action = observer.action;
 
     self.actionQueue.remove(action);
+    self.actionsObserved.remove(observer);
 
-    if (action instanceof Spell) {
-      self.actionsObserved.remove(observer);
-    } else if (action instanceof DamageMultiplierAbility) {
-      self.actionsObserved.remove(observer);
-      self.effectsObserved.remove(observer);
+    if (action instanceof DamageMultiplierAbility) {
+      self.effectsActive.remove(observer);
     }
 
     self.observeActionUsage();
@@ -43,15 +41,15 @@ function Timeline() {
     // Clear current spells observed
     self.timeElapsed = 0;
     self.actionsObserved([]);
-    self.effectsObserved([]);
+    self.effectsActive([]);
 
     // Repopulate observed spells
     $.each(self.actionQueue(), function(indexInArray, action) {
-      if (action.category == "Spell") {
-        self.actionsObserved.push(new SpellObserver(self, action, indexInArray));
-      } else if (action.category == "DamageMultiplierAbility") {
-        self.actionsObserved.push(new EffectObserver(self, action, indexInArray));
-        self.effectsObserved.push(new EffectObserver(self, action, indexInArray));
+      actionObserver = new ActionObserver(self, action, self.effectsActive(), indexInArray)
+      self.actionsObserved.push(actionObserver);
+
+      if (action.category == "DamageMultiplierAbility") {
+        self.effectsActive.push(new EffectObserver(action));
       }
     });
   };

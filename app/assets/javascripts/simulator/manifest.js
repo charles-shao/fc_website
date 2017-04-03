@@ -4,6 +4,7 @@
 
 //= require simulator/observers/spell_observer.js
 //= require simulator/observers/effect_observer.js
+//= require simulator/observers/action_observer.js
 
 //= require simulator/action.js
 
