@@ -6,16 +6,4 @@ function Action(identifier, type) {
 
   self.id = identifier;
   self.type = type;
-  self.category = determineCategory();
-
-  function determineCategory() {
-    if (self.type instanceof Spell) {
-      return "Spell";
-    } else if (self.type instanceof DamageMultiplierAbility) {
-      return "DamageMultiplierAbility"
-    } else {
-      return null;
-    }
-  }
-
 }

@@ -1,30 +1,40 @@
 // SpellObserver
 //
 // Keeps track of skills and spells that have been used
-function SpellObserver(action, effectsActive) {
+function SpellObserver(action, actionEffectsActive) {
   const BASE_MULTIPLIER = 1.0;
+  const BASE_CRITICAL_CHANCE = 10;
+  const BASE_CRITICAL_VARIANCE = 1.5;
 
   var self = this;
   self.action = action;
-  self.effectsActive = effectsActive;
+  self.actionEffectsActive = actionEffectsActive;
 
   // Common
   self.potency = self.action.type.potency();
   self.castedTime = self.action.type.castTime();
 
-  self.multiplier = calculateEffectiveMultipliers();
-  self.totalPotency = ko.computed(function() {
-    var total = self.potency * self.multiplier;
-    return total.toFixed(2);
+  // Run calculations for spell result
+  dmgMultiplier = BASE_MULTIPLIER;
+  criticalChance = BASE_CRITICAL_CHANCE;
+  criticalVariance = BASE_CRITICAL_VARIANCE;
+
+  $.each(self.actionEffectsActive, function(indexInArray, effect) {
+    if (effect instanceof DamageEffectObserver) {
+      dmgMultiplier = dmgMultiplier * effect.multiplier;
+    } else if (effect instanceof CriticalEffectObserver) {
+      criticalChance = criticalChance + effect.percentageGain;
+      criticalVariance = criticalVariance + effect.varianceGain;
+    }
   });
 
-  function calculateEffectiveMultipliers() {
-    var totalMultiplier = BASE_MULTIPLIER;
+  self.damageMultiplier = dmgMultiplier;
+  self.criticalChance = criticalChance;
+  self.criticalVariance = criticalVariance;
 
-    $.each(self.effectsActive, function(indexInArray, effect) {
-      totalMultiplier = totalMultiplier * effect.multiplier;
-    });
+  self.totalPotency = ko.computed(function() {
+    var total = self.potency * self.damageMultiplier;
+    return total;
+  });
 
-    return totalMultiplier;
-  }
 }

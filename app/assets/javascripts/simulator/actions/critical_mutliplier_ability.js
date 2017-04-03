@@ -3,7 +3,8 @@ function CriticalMultiplierAbility(obj) {
 
   self.id = obj.id;
   self.name = obj.name;
-  self.additiveBonus = obj.additiveBonus;
+  self.percentageGain = obj.percentageGain;
+  self.varianceGain = obj.varianceGain;
   self.duration = obj.duration;
   self.cooldown = obj.cooldown;
   self.animationLock = obj.animationLock;

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-12">
       <h2>Rotation Simulator</h2>
-      <table class="table">
+      <table class="table table-sm">
         <thead class="thead-default">
           <th>Seq.</th>
           <th>Time</th>
@@ -15,7 +15,7 @@
           <th>Target multipliers</th>
           <th>Critical Chance</th>
           <th>Critical Variance</th>
-          <th>Total potency</th>
+          <th>Total potency</th>          
           <th></th>
         </thead>
         <tbody data-bind="foreach: { data: timeline.actionsObserved, as: 'actionObserver' }">
@@ -29,8 +29,8 @@
             <td data-bind="text: actionObserver.potency"></td>
             <td data-bind="text: actionObserver.multiplierText"></td>
             <td>1.00</td>
-            <td>10.00%</td>
-            <td>50.00%</td>
+            <td data-bind="text: actionObserver.criticalChance"></td>
+            <td data-bind="text: actionObserver.criticalVariance"></td>
             <td data-bind="text: actionObserver.totalPotency"></td>
             <td>
               <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a>

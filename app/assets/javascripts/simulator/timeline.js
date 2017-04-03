@@ -48,8 +48,10 @@ function Timeline() {
       actionObserver = new ActionObserver(self, action, self.effectsActive(), indexInArray)
       self.actionsObserved.push(actionObserver);
 
-      if (action.category == "DamageMultiplierAbility") {
-        self.effectsActive.push(new EffectObserver(action));
+      if (action.type instanceof DamageMultiplierAbility) {
+        self.effectsActive.push(new DamageEffectObserver(action));
+      } else if (action.type instanceof CriticalMultiplierAbility) {
+        self.effectsActive.push(new CriticalEffectObserver(action));
       }
     });
   };

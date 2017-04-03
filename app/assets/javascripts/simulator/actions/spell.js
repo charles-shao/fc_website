@@ -13,6 +13,4 @@ function Spell(obj) {
   self.additionalEffects = ko.observableArray([])
 
   self.imagePath = "/assets/" + self.image;
-
-
 }

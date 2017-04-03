@@ -3,11 +3,9 @@
 //
 function SimulationViewModel() {
   var self = this;
-  // Spells
+
   self.spells = ko.observableArray([]);
-  // dmg+%
   self.damageMultiplierAbilities = ko.observableArray([]);
-  // crit+%
   self.criticalMultiplierAbilities = ko.observableArray([]);
 
   self.timeline = new Timeline();
@@ -41,7 +39,8 @@ function SimulationViewModel() {
   ];
 
   var criticalMultiplierAbilities = [
-    { id: "11", name: "Internal Release", additiveBonus: 0.1, duration: 15, cooldown: 60, animationLock: 1, image: "internal_release.png" }
+    { id: "11", name: "Internal Release", percentageGain: 10, varianceGain: 0, duration: 15, cooldown: 60, animationLock: 1, image: "internal_release.png" }
+    // { id: "12", name: "Battle Litany", percentageGain: 0.15, duration: 20, cooldown: 180, animationLock: 1, image: "battle_litany.png" }
   ];
 
   $.each(spellObjects, function(indexInArray, obj) {
@@ -53,6 +52,6 @@ function SimulationViewModel() {
   });
 
   $.each(criticalMultiplierAbilities, function(indexInArray, obj) {
-    self.criticalMultiplierAbilities.push(new DamageMultiplierAbility(obj));
+    self.criticalMultiplierAbilities.push(new CriticalMultiplierAbility(obj));
   });
 }
