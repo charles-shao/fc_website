@@ -10,5 +10,5 @@ function CriticalMultiplierAbility(obj) {
   self.animationLock = obj.animationLock;
   self.image = obj.image;
 
-  self.imagePath = "/assets/" + self.image;
+  self.imagePath = self.image;
 }
