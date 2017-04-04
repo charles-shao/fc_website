@@ -17,3 +17,5 @@
 //= require turbolinks
 //= require knockout
 //= require cable.js
+//= require highcharts
+//= require highcharts/highcharts-more

@@ -31,7 +31,7 @@ function Timeline() {
     self.actionsObserved.remove(observer);
 
     if (action instanceof DamageMultiplierAbility) {
-      self.effectsActive.remove(observer);
+      self.actionEffectsActive.remove(observer);
     }
 
     self.observeActionUsage();
@@ -41,7 +41,7 @@ function Timeline() {
     // Clear current spells observed
     self.timeElapsed = 0;
     self.actionsObserved([]);
-    self.effectsActive([]);
+    self.actionEffectsActive([]);
 
     // Repopulate observed spells
     $.each(self.actionQueue(), function(indexInArray, action) {

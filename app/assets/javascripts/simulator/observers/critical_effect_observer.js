@@ -7,9 +7,15 @@ function CriticalEffectObserver(action) {
   self.percentageGain = self.action.type.percentageGain;
   self.varianceGain = self.action.type.varianceGain;
   self.duration = self.action.type.duration;
-  self.castedTime = 0;
+  self.castedTime = self.action.type.animationLock;
 
   self.tick = function(time) {
     self.duration = self.duration - time;
   };
+
+  self.animationLockTick = function() {
+    self.duration = self.duration - self.castedTime;
+    console.log(self.duration)
+  }
+
 }

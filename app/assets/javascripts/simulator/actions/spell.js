@@ -8,6 +8,7 @@ function Spell(obj) {
   self.name = obj.name;
   self.potency = ko.observable(obj.potency);
   self.castTime = ko.observable(obj.castTime);
+  self.cooldown = ko.observable(obj.cooldown);
   self.animationLock = ko.observable(obj.animationLock);
   self.image = obj.image;
   self.additionalEffects = ko.observableArray([])

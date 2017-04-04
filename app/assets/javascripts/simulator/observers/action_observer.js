@@ -52,4 +52,10 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
     return self.timeline.timeElapsed;
   }
 
+  // Consider animation lock delay for all except for the most recently casted one
+  $.each(self.actionEffectsActive, function(indexInArray, effect) {
+    if (indexInArray != self.actionEffectsActive.length - 1) {
+      effect.animationLockTick();
+    }
+  });
 }
