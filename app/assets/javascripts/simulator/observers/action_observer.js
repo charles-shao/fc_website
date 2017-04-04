@@ -31,6 +31,7 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
     self.totalPotency = spellObserver.totalPotency().toFixed(2) + " ≈ (" + criticalDmg.toFixed(2) + ")";
   } else if (self.action.type instanceof DamageMultiplierAbility) {
     var damageEffectObserver = new DamageEffectObserver(self.action);
+
     self.timeSinceEncounter = elapsedTimeSinceEncounter(damageEffectObserver);
     self.potency = null;
     self.multiplierText = null;
@@ -39,6 +40,7 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
     self.totalPotency = null;
   } else if (self.action.type instanceof CriticalMultiplierAbility) {
     var criticalEffectObserver = new CriticalEffectObserver(self.action);
+
     self.timeSinceEncounter = elapsedTimeSinceEncounter(criticalEffectObserver);
     self.potency = null;
     self.multiplierText = null;
@@ -51,11 +53,4 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
     self.timeline.elapseTime(observer.castedTime);
     return self.timeline.timeElapsed;
   }
-
-  // Consider animation lock delay for all except for the most recently casted one
-  $.each(self.actionEffectsActive, function(indexInArray, effect) {
-    if (indexInArray != self.actionEffectsActive.length - 1) {
-      effect.animationLockTick();
-    }
-  });
 }
