@@ -1,8 +1,15 @@
+<%= include_gon(namespace: 'simulation', init: true) %>
 <%= javascript_include_tag "simulator/manifest.js" %>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="col-2">
+      <h2>Options</h2>
+      <label>Job</label>
+      <select data-bind="options: jobs, optionsText: 'name', optionsValue: 'id'" class="form-control">
+      </select>
+    </div>
+    <div class="col-10">
       <h2>Rotation Simulator</h2>
       <table class="table table-sm">
         <thead class="thead-default">

@@ -4,6 +4,7 @@
 function SimulationViewModel() {
   var self = this;
 
+  self.jobs = ko.observableArray(simulation.jobs);
   self.spells = ko.observableArray([]);
   self.damageMultiplierAbilities = ko.observableArray([]);
   self.criticalMultiplierAbilities = ko.observableArray([]);
