@@ -25,7 +25,7 @@
             <td data-bind="text: actionObserver.name"></td>
             <td data-bind="foreach: { data: actionObserver.actionEffectsActive, as: 'effect' }">
               <img src="" alt="" data-bind="attr: { src: effect.action.type.imagePath }" style="width: 24px; height: 24px;">
-              <sub data-bind="text: effect.duration"></sub>
+              <sub data-bind="text: effect.displayDuration"></sub>
             </td>
             <td data-bind="text: actionObserver.potency"></td>
             <td data-bind="text: actionObserver.multiplierText"></td>
@@ -40,6 +40,22 @@
         </tbody>
       </table>
 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <h5>Result</h5>
+      <table class="table table-sm">
+        <thead class="thead-inverse">
+          <th>Total Potency</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-bind="text: totalPotency"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 

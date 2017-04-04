@@ -14,13 +14,22 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
 
   self.timeline = timeline;
   self.action = action;
-  self.actionEffectsActive = actionEffectsActive;
+  self.actionEffectsActive = ko.observableArray(actionEffectsActive);
 
   self.sequence = sequence;
   self.name = action.type.name;
 
+  // Check for any expiring buffs or about to expire
+  $.each(self.actionEffectsActive(), function(index, effect) {
+    if (effect != null && effect.duration <= 0) {
+      self.actionEffectsActive.remove(effect);
+    }
+  });
+
   if (self.action.type instanceof Spell) {
-    var spellObserver = new SpellObserver(self.action, self.actionEffectsActive);
+    // The cast
+    var spellObserver = new SpellObserver(self.action, self.actionEffectsActive());
+
     self.timeSinceEncounter = elapsedTimeSinceEncounter(spellObserver);
     self.potency = spellObserver.potency;
     self.multiplierText = spellObserver.damageMultiplier.toFixed(2);
@@ -30,6 +39,7 @@ function ActionObserver(timeline, action, actionEffectsActive, sequence) {
     criticalDmg = spellObserver.totalPotency() * spellObserver.criticalVariance;
     self.totalPotency = spellObserver.totalPotency().toFixed(2) + " ≈ (" + criticalDmg.toFixed(2) + ")";
   } else if (self.action.type instanceof DamageMultiplierAbility) {
+    // Buffs
     var damageEffectObserver = new DamageEffectObserver(self.action);
 
     self.timeSinceEncounter = elapsedTimeSinceEncounter(damageEffectObserver);
