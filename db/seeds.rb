@@ -42,6 +42,17 @@ jobs.each do |job|
   Job.create(job)
 end
 
+# Actions
+actions = [
+  { id: 1, name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_path: 'blizzard.png'},
+  { id: 2, name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_path: 'fire.png'}
+]
+
+job = Job.find_by(name: "Black Mage")
+actions.each do |action|
+  job.actions.create(action)
+end
+
 # Raid content
 raids = [
   { name: "Alexander - The Fist of the Father (Savage)", patch: "3.05", released_at: "2015-03-27", image_file: "" },

@@ -79,6 +79,8 @@ function SimulationViewModel() {
     // { id: "12", name: "Battle Litany", percentageGain: 0.15, duration: 20, cooldown: 180, animationLock: 1, image: "battle_litany.png" }
   ];
 
+  // action
+  // ['id', 'name', 'potency', 'cost', 'resource', 'cast_time', 'animation_lock', 'duration', 'cooldown', 'category', 'modifier', 'image_path']
   $.each(spellObjects, function(indexInArray, obj) {
     self.spells.push(new Spell(obj));
   });

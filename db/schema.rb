@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401144425) do
+ActiveRecord::Schema.define(version: 20170404221223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "potency"
+    t.integer  "cost"
+    t.string   "resource"
+    t.decimal  "cast_time"
+    t.decimal  "animation_lock"
+    t.integer  "duration"
+    t.integer  "cooldown"
+    t.string   "category"
+    t.decimal  "modifier"
+    t.string   "image_path"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "application_questions", force: :cascade do |t|
     t.string   "content"
@@ -54,6 +70,13 @@ ActiveRecord::Schema.define(version: 20170401144425) do
     t.string   "action"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "job_actions", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
