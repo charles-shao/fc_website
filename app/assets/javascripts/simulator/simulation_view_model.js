@@ -32,11 +32,6 @@ function SimulationViewModel() {
   };
 
   // TODO: read from database
-  spellEffects = [
-    { id: "100", name: "Astral Fire", multiplier: 1.4, duration: 12 },
-    { id: "101", name: "Astral Fire II", multiplier: 1.6, duration: 12 },
-    { id: "102", name: "Astral Fire III", multiplier: 1.8, duration: 12 }
-  ];
 
   var spellObjects = [
     {
@@ -69,15 +64,6 @@ function SimulationViewModel() {
     { id: "3", name: "Fire III", potency: 240, castTime: 3.5, cooldown: 2.5, image: '<%= image_path "actions/fire_iii.png" %>' },
     { id: "2", name: "Blizzard", potency: 180, castTime: 2.5, cooldown: 2.5, image: '<%= image_path "actions/blizzard.png" %>' },
     { id: "4", name: "Blizzard III", potency: 240, castTime: 3.5, cooldown: 2.5, image: '<%= image_path "actions/blizzard_iii.png" %>' }
-  ];
-
-  var damageMultiplierAbilities = [
-    { id: "10", name: "Raging Strikes", multiplier: 1.2, duration: 20, cooldown: 180, animationLock: 0.75, image: '<%= image_path "actions/raging_strikes.png" %>' }
-  ];
-
-  var criticalMultiplierAbilities = [
-    { id: "11", name: "Internal Release", percentageGain: 10, varianceGain: 0, duration: 15, cooldown: 60, animationLock: 0.75, image: '<%= image_path "actions/internal_release.png" %>' }
-    // { id: "12", name: "Battle Litany", percentageGain: 0.15, duration: 20, cooldown: 180, animationLock: 1, image: "battle_litany.png" }
   ];
 
   // action
