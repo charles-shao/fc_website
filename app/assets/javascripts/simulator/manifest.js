@@ -1,10 +1,4 @@
-//= require simulator/actions/critical_mutliplier_ability.js
-//= require simulator/actions/damage_multiplier_ability.js
-//= require simulator/actions/spell.js
-
-//= require simulator/observers/spell_observer.js
-//= require simulator/observers/critical_effect_observer.js
-//= require simulator/observers/damage_effect_observer.js
+//= require simulator/observers/gcd_observer.js
 //= require simulator/observers/action_observer.js
 
 //= require simulator/job.js

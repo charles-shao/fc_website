@@ -42,25 +42,29 @@
             <th>Crit Chance</th>
             <th>Crit Variance</th>
             <th>Total Potency</th>
-            <th></th>
+            <th>Clear</th>
           </tr>
         </thead>
         <tbody data-bind="foreach: { data: routine.slots, as: 'slot' }">
           <!-- if action is empty from the slot, popupate a drop down box to replace -->
-          <tr data-bind="with: slot.action">
+          <tr>
             <td data-bind="text: slot.id"></td>
             <td></td>
-            <td data-bind="text: name"></td>
+            <td data-bind="with: slot.action">
+              <p data-bind="text: name"></p>
+            </td>
             <td></td>
-            <td data-bind="text: potency"></td>
+            <td data-bind="with: slot.action">
+              <p data-bind="text: potency"></p>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td>
-              <a href="#" data-bind="click: slot.clearAction">Clear Action<a> |
-              <a href="#" data-bind="click: $root.removeSlotFromRoutine">Clear Slot<a>
+              <a href="#" data-bind="click: slot.clearAction">Action<a> |
+              <a href="#" data-bind="click: $root.removeSlotFromRoutine">Slot<a>
             </td>
           </tr>
         </tbody>

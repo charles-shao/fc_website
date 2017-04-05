@@ -5,6 +5,7 @@ function Slot(index, action) {
   self.action = ko.observable(action);
 
   self.clearAction = function() {
+    console.log("action cleared")
     self.action(null);
   };
 

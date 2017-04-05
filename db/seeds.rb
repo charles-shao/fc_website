@@ -44,8 +44,9 @@ end
 
 # Actions
 actions = [
-  { id: 1, name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_path: 'blizzard.png'},
-  { id: 2, name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_path: 'fire.png'}
+  { name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard.png'},
+  { name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire.png'},
+  { name: "Raging Strikes", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 20, cooldown: 180, category: 'dmg_buff', modifier: 1.2, image_name: 'raging_strikes.png'}
 ]
 
 job = Job.find_by(name: "Black Mage")
