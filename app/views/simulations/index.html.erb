@@ -45,7 +45,26 @@
             <th></th>
           </tr>
         </thead>
-        <tbody data-bind="foreach: { data: timeline.actionsObserved, as: 'actionObserver' }">
+        <tbody data-bind="foreach: { data: routine.slots, as: 'slot' }">
+          <!-- if action is empty from the slot, popupate a drop down box to replace -->
+          <tr data-bind="with: slot.action">
+            <td data-bind="text: slot.id"></td>
+            <td></td>
+            <td data-bind="text: name"></td>
+            <td></td>
+            <td data-bind="text: potency"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <a href="#" data-bind="click: slot.clearAction">Clear Action<a> |
+              <a href="#" data-bind="click: $root.removeSlotFromRoutine">Clear Slot<a>
+            </td>
+          </tr>
+        </tbody>
+        <!-- <tbody data-bind="foreach: { data: timeline.actionsObserved, as: 'actionObserver' }">
           <tr>
             <td data-bind="text: actionObserver.sequence"></td>
             <td data-bind="text: actionObserver.timeSinceEncounter"></td>
@@ -61,10 +80,10 @@
             <td data-bind="text: actionObserver.criticalVariance"></td>
             <td data-bind="text: actionObserver.totalPotency"></td>
             <td>
-              <!-- <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+              <a href="#" data-bind="click: $root.removeActionFromQueue"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
 
     </div>
@@ -76,7 +95,7 @@
 
       <div data-bind="with: selectedJob">
         <div data-bind="foreach: { data: actions, as: 'action' }">
-          <a href="#">
+          <a href="" data-bind="click: $root.addActionToRoutine">
             <img data-bind="attr: { src: action.imagePath }">
           </a>
         </div>

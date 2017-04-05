@@ -9,6 +9,8 @@
 
 //= require simulator/job.js
 //= require simulator/action.js
+//= require simulator/slot.js
+//= require simulator/routine.js
 
 //= require simulator/timeline.js
 //= require simulator/simulation_view_model.js
