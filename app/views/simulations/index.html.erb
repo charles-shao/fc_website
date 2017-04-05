@@ -3,26 +3,32 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2">
+    <div class="col-12">
+      <div id="simulation-chart" style="min-width: 100%; height: 480px; margin 0 auto;"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
       <h2>Options</h2>
       <label>Job</label>
-      <select data-bind="options: jobs, optionsText: 'name', optionsValue: 'id'" class="form-control">
+      <select data-bind="options: jobs, optionsText: 'name', value: selectedJob" class="form-control">
       </select>
     </div>
-    <div class="col-10">
+    <div class="col-9">
       <h2>Rotation Simulator</h2>
       <table class="table table-sm">
         <thead class="thead-default">
           <th>Seq.</th>
           <th>Time</th>
-          <th>Skill/ Spell</th>
-          <th>Active Effects</th>
-          <th>Base Potency</th>
+          <th>Action</th>
+          <th>Effects</th>
+          <th>Potency</th>
           <th>Self-multipliers</th>
-          <th>Target multipliers</th>
-          <th>Critical Chance</th>
-          <th>Critical Variance</th>
-          <th>Total potency</th>
+          <th>Target Multipliers</th>
+          <th>Crit Chance</th>
+          <th>Crit Variance</th>
+          <th>Total Potency</th>
           <th></th>
         </thead>
         <tbody data-bind="foreach: { data: timeline.actionsObserved, as: 'actionObserver' }">
@@ -50,52 +56,18 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-6">
-      <h5>Result</h5>
-      <table class="table table-sm">
-        <thead class="thead-inverse">
-          <th>Total Potency</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-bind="text: totalPotency"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="row">
+  <div class="row pt-5">
     <div class="col-12">
-      <h5>Spells</h5>
-      <div class="col-12" data-bind="foreach: { data: spells, as: 'spell' }">
-        <a href="#" data-bind="click: $root.addActionToQueue">
-          <img src="" alt="" data-bind="attr: { src: spell.imagePath }">
-        </a>
-      </div>
-    </div>
-  </div>
+      <h2>Actions</h2>
 
-  <div class="row">
-    <div class="col-12">
-      <h5>Damage Modifier Abilities</h5>
-      <div class="col-12" data-bind="foreach: { data: damageMultiplierAbilities, as: 'dma' }">
-        <a href="#" data-bind="click: $root.addActionToQueue">
-          <img src="" alt="" data-bind="attr: { src: dma.imagePath }">
-        </a>
+      <div data-bind="with: selectedJob">
+        <div data-bind="foreach: { data: actions, as: 'action' }">
+          <a href="#">
+            <img data-bind="attr: { src: action.imagePath }">
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12">
-      <h5>Critical Modifier Abilities</h5>
-      <div class="col-12" data-bind="foreach: { data: criticalMultiplierAbilities, as: 'cma' }">
-        <a href="#" data-bind="click: $root.addActionToQueue">
-          <img src="" alt="" data-bind="attr: { src: cma.imagePath }">
-        </a>
-      </div>
     </div>
   </div>
 

@@ -4,10 +4,20 @@
 function SimulationViewModel() {
   var self = this;
 
-  self.jobs = ko.observableArray(simulation.jobs);
+  // Populate jobs via gon
+  jobs = [];
+  $.each(simulation.jobs, function(index, job) {
+    jobs.push(new Job(job));
+  });
+  self.jobs = ko.observableArray(jobs);
+  self.selectedJob = ko.observable();
+
+
+
   self.spells = ko.observableArray([]);
   self.damageMultiplierAbilities = ko.observableArray([]);
   self.criticalMultiplierAbilities = ko.observableArray([]);
+
 
   self.timeline = new Timeline();
 
@@ -20,15 +30,6 @@ function SimulationViewModel() {
   self.removeActionFromQueue = function(action) {
     self.timeline.removeFromActionQueue(action);
   };
-
-  self.totalPotency = ko.computed(function() {
-    var total = 0;
-    // $.each(self.timelime.actionsObserved(), function(index, actionObserver) {
-    //   // total = total + actionObserver.potency;
-    //   console.log(actionObserver)
-    // });
-    return total;
-  });
 
   // TODO: read from database
   spellEffects = [
@@ -81,15 +82,4 @@ function SimulationViewModel() {
 
   // action
   // ['id', 'name', 'potency', 'cost', 'resource', 'cast_time', 'animation_lock', 'duration', 'cooldown', 'category', 'modifier', 'image_path']
-  $.each(spellObjects, function(indexInArray, obj) {
-    self.spells.push(new Spell(obj));
-  });
-
-  $.each(damageMultiplierAbilities, function(indexInArray, obj) {
-    self.damageMultiplierAbilities.push(new DamageMultiplierAbility(obj));
-  });
-
-  $.each(criticalMultiplierAbilities, function(indexInArray, obj) {
-    self.criticalMultiplierAbilities.push(new CriticalMultiplierAbility(obj));
-  });
 }
