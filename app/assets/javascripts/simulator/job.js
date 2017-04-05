@@ -6,7 +6,9 @@ function Job(obj) {
 
   actions = [];
   $.each(obj.actions, function(index, action) {
-    actions.push(new Action(action));
+    actionBase = new ActionBase(action);
+    action = Object.freeze(actionBase);
+    actions.push(action);
   });
   self.actions = ko.observableArray(actions);
 }

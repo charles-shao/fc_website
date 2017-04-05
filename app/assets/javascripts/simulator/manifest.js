@@ -1,7 +1,9 @@
 //= require simulator/observers/gcd_observer.js
+//= require simulator/observers/effect_observer.js
 //= require simulator/observers/action_observer.js
 
 //= require simulator/job.js
+//= require simulator/action_base.js
 //= require simulator/action.js
 //= require simulator/slot.js
 //= require simulator/routine.js

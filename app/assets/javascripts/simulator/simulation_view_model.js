@@ -14,7 +14,6 @@ function SimulationViewModel() {
 
   // Routines
   self.routine = new Routine();
-  // Implicitly wraps slot around action
   self.addActionToRoutine = function() {
     self.routine.addAction(this);
   };
@@ -31,21 +30,7 @@ function SimulationViewModel() {
     console.log("add routines to player")
   };
 
-  // Keep until routines are implemented
-  // self.timeline = new Timeline();
-
-  // self.addActionToQueue = function(type) {
-  //   id = self.timeline.sequenceActionId();
-  //   action = new Action(id, type);
-  //   self.timeline.addToActionQueue(action);
-  // }
-  //
-  // self.removeActionFromQueue = function(action) {
-  //   self.timeline.removeFromActionQueue(action);
-  // };
-
   // TODO: read from database
-
   var spellObjects = [
     {
       id: "1",
