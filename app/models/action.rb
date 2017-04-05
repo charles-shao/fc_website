@@ -15,6 +15,7 @@ class Action < ApplicationRecord
       cooldown: cooldown,
       category: category,
       modifier: modifier,
+      gcd_locked: gcd_locked,
       image_path: ActionController::Base.helpers.image_path("actions/#{image_name}")
     }
   end

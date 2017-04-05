@@ -12,24 +12,25 @@ function SimulationViewModel() {
   self.jobs = ko.observableArray(jobs);
   self.selectedJob = ko.observable();
 
-
-
-  self.spells = ko.observableArray([]);
-  self.damageMultiplierAbilities = ko.observableArray([]);
-  self.criticalMultiplierAbilities = ko.observableArray([]);
-
+  // Players
+  self.playerName = ko.observable();
+  self.players = ko.observableArray([])
+  self.savePlayerScript = function() {
+    player = new Player(self.playerName(), self.selectedJob());
+    self.players.push(player)
+  };
 
   self.timeline = new Timeline();
 
-  self.addActionToQueue = function(type) {
-    id = self.timeline.sequenceActionId();
-    action = new Action(id, type);
-    self.timeline.addToActionQueue(action);
-  }
-
-  self.removeActionFromQueue = function(action) {
-    self.timeline.removeFromActionQueue(action);
-  };
+  // self.addActionToQueue = function(type) {
+  //   id = self.timeline.sequenceActionId();
+  //   action = new Action(id, type);
+  //   self.timeline.addToActionQueue(action);
+  // }
+  //
+  // self.removeActionFromQueue = function(action) {
+  //   self.timeline.removeFromActionQueue(action);
+  // };
 
   // TODO: read from database
 

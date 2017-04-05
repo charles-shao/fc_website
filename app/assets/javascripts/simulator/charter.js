@@ -1,9 +1,10 @@
 $(document).ready(function() {
   data = [
-    [2.5, 0.7695],
-    [5, 0.7648],
-    [7,5, 0.7645],
-    [10, 1.7645]
+    [0, 0],
+    [2.5, 180],
+    [5, 216],
+    [7.5, 230],
+    [10, 216]
   ]
 
   Highcharts.chart('simulation-chart', {
@@ -17,7 +18,10 @@ $(document).ready(function() {
       text: document.ontouchstart === undefined ? 'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
     },
     xAxis: {
-      type: 'datetime'
+      type: 'linear',
+      title: {
+        text: 'Encounter Time'
+      }
     },
     yAxis: {
       title: {

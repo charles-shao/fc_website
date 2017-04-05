@@ -12,5 +12,6 @@ function Action(obj) {
   self.cooldown = obj.cooldown;
   self.category = obj.category;
   self.modifier = parseFloat(obj.modifier);
+  self.gcdLocked = obj.gcd_locked;
   self.imagePath = obj.image_path;
 }
