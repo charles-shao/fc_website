@@ -45,7 +45,7 @@
             <th>Seq.</th>
             <th>Time</th>
             <th>Action</th>
-            <th>Effects</th>
+            <th class="col-4">Effects</th>
             <th>Potency</th>
             <th>Self-multipliers</th>
             <th>Target Multipliers</th>
@@ -61,8 +61,12 @@
             <td data-bind="text: encounterTime"></td>
             <td data-bind="text: name"></td>
             <td data-bind="foreach: { data: effects, as: 'action' }">
-              <img src="" data-bind="attr: { src: action.imagePath }" style="width: 24px; height: 24px;">
-              <sub data-bind="text: duration"></sub>
+              <figure class="figure">
+                <img src="" data-bind="attr: { src: action.imagePath }" style="width: 24px; height: 24px;">
+                <figcaption class="figure-caption text-center">
+                  <sub data-bind="text: duration"></sub>
+                </figcaption>
+              </figure>
             </td>
             <td data-bind="text: effectivePotency"></td>
             <td data-bind="text: multiplier"></td>
@@ -71,8 +75,8 @@
             <td></td>
             <!-- /ko -->
             <td>
-              <a href="#" data-bind="click: slot.clear">Result<a> |
-              <a href="#" data-bind="click: $root.removeSlotFromRoutine">Slot<a>
+              <a href="#" data-bind="click: slot.clear" class="btn btn-sm btn-outline-danger">Action<a>
+              <a href="#" data-bind="click: $root.removeSlotFromRoutine" class="btn btn-sm btn-outline-danger">Slot<a>
             </td>
           </tr>
         </tbody>

@@ -11,7 +11,6 @@
 //= require simulator/routine.js
 //= require simulator/viewer.js
 
-//= require simulator/timeline.js
 //= require simulator/simulation_view_model.js
 //= require simulator/charter.js
 
