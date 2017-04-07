@@ -1,6 +1,7 @@
-function Routine() {
+function Routine(chart) {
   var self = this;
 
+  self.chart = chart;
   self.slots = ko.observableArray([]);
   var effectObserver = new EffectObserver();
   var gcdObserver = new GcdObserver();
@@ -21,6 +22,13 @@ function Routine() {
 
     slot = new Slot(currentIndex(), observers)
     self.slots.push(slot);
+
+    // FIX DURATION
+    self.chart.series[0].addPoint({
+      x: slot.viewer.encounterTime,
+      y: slot.viewer.effectivePotency
+    });
+
   }
 
   self.removeSlot = function(slot) {
