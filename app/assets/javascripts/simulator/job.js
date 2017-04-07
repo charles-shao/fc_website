@@ -5,10 +5,12 @@ function Job(obj) {
   self.name = obj.name;
 
   actions = [];
-  $.each(obj.actions, function(index, action) {
-    actionBase = new ActionBase(action);
+  for (var i in obj.actions) {
+    base = obj.actions[i];
+    actionBase = new ActionBase(base);
     action = Object.freeze(actionBase);
     actions.push(action);
-  });
+  }
+
   self.actions = ko.observableArray(actions);
 }

@@ -2,17 +2,24 @@ function Routine() {
   var self = this;
 
   self.slots = ko.observableArray([]);
-  self.effectObserver = new EffectObserver();
+  var effectObserver = new EffectObserver();
+  var gcdObserver = new GcdObserver();
+  var encounterObserver = new EncounterObserver();
 
   self.addAction = function(actionBase) {
     action = new Action(actionBase);
 
-    // Any effects are stored separately for calculations
-    if (action.isDmgBuff()) {
-      self.effectObserver.add(action);
+    actionObserver = new ActionObserver(action)
+    if (action.isDmgBuff()) { effectObserver.add(action) }
+
+    observers = {
+      actionObserver: actionObserver,
+      effectObserver: effectObserver,
+      gcdObserver: gcdObserver,
+      encounterObserver: encounterObserver
     }
 
-    slot = new Slot(currentIndex(), action, self.effectObserver)
+    slot = new Slot(currentIndex(), observers)
     self.slots.push(slot);
   }
 
@@ -21,6 +28,10 @@ function Routine() {
 
     // Recalculate everything
   };
+
+  self.recalibrate = function() {
+
+  }
 
   function currentIndex() {
     return self.slots().length;

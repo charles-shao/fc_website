@@ -1,19 +1,12 @@
-function Slot(index, action, effectObserver) {
+function Slot(index, observers) {
   var self = this;
 
   self.id = index;
+  executor = new Executor(observers);
 
-  actionObserver = new ActionObserver(action, effectObserver)
-  self.actionObserver = ko.observable(actionObserver);
+  self.viewer = new Viewer(executor);
 
-  self.clearActionObserver = function() {
-    self.actionObserver(null);
+  self.clear = function() {
+    self.executor = null;
   };
-
-  // Required when users want to fill in an empty slot
-  // self.addActionObserver = function(action, effectsObserver) {
-  //   new ActionObserver(action, effectsObserver)
-  //   self.actionObserver(actionObserver);
-  // }
-
 }

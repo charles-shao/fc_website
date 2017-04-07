@@ -1,24 +1,27 @@
 function EffectObserver() {
   var self = this;
 
-  self.effects = [];
+  self.actions = [];
 
-  self.add = function(effect) {
-    self.effects.push(effect);
+  self.add = function(action) {
+    self.actions.push(action);
   }
 
-  self.remove = function(effect) {
-    ko.utils.arrayRemoveItem(self.effects, effect);
+  self.remove = function(action) {
+    ko.utils.arrayRemoveItem(self.actions, action);
   }
 
   self.tick = function(time) {
-    $.each(self.effects, function(index, effect) {
-      effect.duration = effect.duration - time;
+    $.each(self.actions, function(index, action) {
+      action.duration = action.duration - time;
 
-      if (effect.duration <= 0) {
-        self.remove(effect);
+      if (expirable(action.duration, time)) {
+        self.remove(action);
       }
     });
   }
 
+  function expirable(duration, time) {
+    return (duration <= 0) || (duration < time);
+  }
 }

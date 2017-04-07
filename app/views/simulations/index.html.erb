@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div id="simulation-chart" style="min-width: 100%; height: 480px; margin 0 auto;"></div>
+      <div id="simulation-chart" style="min-width: 100%; height: 240px; margin 0 auto;"></div>
     </div>
   </div>
 
@@ -51,33 +51,27 @@
             <th>Target Multipliers</th>
             <th>Crit Chance</th>
             <th>Crit Variance</th>
-            <th>Total Potency</th>
             <th>Clear</th>
           </tr>
         </thead>
         <tbody data-bind="foreach: { data: routine.slots, as: 'slot' }">
           <tr>
             <td data-bind="text: slot.id"></td>
-            <td></td>
-            <!-- ko with: slot.actionObserver -->
-            <td data-bind="text: action.name"></td>
-            <!-- /ko -->
-            <!-- ko with: slot.actionObserver -->
+            <!-- ko with: slot.viewer -->
+            <td data-bind="text: encounterTime"></td>
+            <td data-bind="text: name"></td>
             <td data-bind="foreach: { data: effects, as: 'action' }">
               <img src="" data-bind="attr: { src: action.imagePath }" style="width: 24px; height: 24px;">
               <sub data-bind="text: duration"></sub>
             </td>
-            <!-- /ko -->
-            <!-- ko with: slot.actionObserver -->
             <td data-bind="text: effectivePotency"></td>
+            <td data-bind="text: multiplier"></td>
+            <td data-bind="text: targetMultiplier"></td>
+            <td></td>
+            <td></td>
             <!-- /ko -->
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
-              <a href="#" data-bind="click: slot.clearActionObserver">Action<a> |
+              <a href="#" data-bind="click: slot.clear">Result<a> |
               <a href="#" data-bind="click: $root.removeSlotFromRoutine">Slot<a>
             </td>
           </tr>
