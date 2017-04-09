@@ -1,4 +1,4 @@
-function EncounterObserver(startTime = 0) {
+function EncounterObserver(startTime) {
   var time = startTime;
 
   this.extend = function(seconds) {
