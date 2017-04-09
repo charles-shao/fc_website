@@ -1,6 +1,7 @@
 function Action(base) {
   const SPELL = "spell";
   const DMG_BUFF = "dmg_buff";
+  const CRIT_BUFF = "crit_buff";
 
   var self = this;
 
@@ -18,6 +19,7 @@ function Action(base) {
   self.modifier = base.modifier;
   self.gcdLocked = base.gcdLocked;
   self.imagePath = base.imagePath;
+  self.objectName = base.objectName;
 
   self.isSpell = function() {
     return (SPELL === base.category);
@@ -25,5 +27,9 @@ function Action(base) {
 
   self.isDmgBuff = function() {
     return (DMG_BUFF === base.category);
+  }
+
+  self.isCritBuff = function() {
+    return (CRIT_BUFF === base.category);
   }
 }

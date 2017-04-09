@@ -1,18 +1,17 @@
 // Copy of all the attributes from the database
 function ActionBase(obj) {
-  var self = this;
-
-  self.id = obj.id;
-  self.name = obj.name;
-  self.potency = obj.potency;
-  self.cost = obj.cost;
-  self.resource = obj.resource;
-  self.castTime = parseFloat(obj.cast_time);
-  self.animationLock = parseFloat(obj.animation_lock);
-  self.duration = obj.duration;
-  self.cooldown = obj.cooldown;
-  self.category = obj.category;
-  self.modifier = parseFloat(obj.modifier);
-  self.gcdLocked = obj.gcd_locked;
-  self.imagePath = obj.image_path;
+  this.id = obj.id;
+  this.name = obj.name;
+  this.potency = obj.potency;
+  this.cost = obj.cost;
+  this.resource = obj.resource;
+  this.castTime = parseFloat(obj.cast_time);
+  this.animationLock = parseFloat(obj.animation_lock);
+  this.duration = obj.duration;
+  this.cooldown = obj.cooldown;
+  this.category = obj.category;
+  this.modifier = parseFloat(obj.modifier);
+  this.gcdLocked = obj.gcd_locked;
+  this.imagePath = obj.image_path;
+  this.objectName = obj.object_name;
 }

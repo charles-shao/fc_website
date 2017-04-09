@@ -1,12 +1,14 @@
 function Slot(index, observers) {
   var self = this;
 
-  self.id = index;
-  executor = new Executor(observers);
+  this.id = index;
 
-  self.viewer = new Viewer(executor);
+  var objectName = observers.actionObserver.action.objectName;
+  var actionBehaviour = new jobActions.actions[objectName](observers);
+
+  this.viewer = new Viewer(observers.actionObserver.action, actionBehaviour);
 
   self.clear = function() {
-    self.executor = null;
+    // self.executor = null;
   };
 }

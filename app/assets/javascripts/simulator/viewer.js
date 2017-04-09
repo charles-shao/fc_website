@@ -1,11 +1,10 @@
-function Viewer(executor) {
+function Viewer(action, actionBehaviour) {
   var self = this;
 
-  self.name = executor.action.name;
-  self.encounterTime = executor.encounterTime;
-  self.effects = executor.effects;
-  self.effectivePotency = executor.effectivePotency;
-  self.multiplier = executor.multiplier.toFixed(2);
+  self.name = action.name;
+  self.encounterTime = 0;
+  self.effects = [];
+  self.effectivePotency = actionBehaviour.potency();
+  self.multiplier = 0;
   self.targetMultiplier = 1.0.toFixed(2);
-
 }
