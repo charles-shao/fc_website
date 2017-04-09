@@ -1,5 +1,5 @@
 function EncounterObserver(startTime) {
-  var time = startTime;
+  var time = startTime || 0;
 
   this.extend = function(seconds) {
     time += seconds;
