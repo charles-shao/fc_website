@@ -43,10 +43,40 @@ jobs.each do |job|
 end
 
 # Actions
+cross_class = [
+  { name: "Raging Strikes", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 20, cooldown: 180, category: 'dmg_buff', modifier: 1.2, image_name: 'raging_strikes.png'}
+];
+
 actions = [
+  # THM specific spells
   { name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard.png'},
   { name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire.png'},
-  { name: "Raging Strikes", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 20, cooldown: 180, category: 'dmg_buff', modifier: 1.2, image_name: 'raging_strikes.png'}
+  { name: "Transpose", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 12, category: 'alter', modifier: 0, image_name: 'transpose.png'},
+  { name: "Thunder", potency: 30, cost: 0, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder.png'},
+  { name: "Surecast", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 10, cooldown: 30, category: 'alter', modifier: 0, image_name: 'surecast.png'},
+  { name: "Sleep", potency: 0, cost: 0, resource: nil, cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'crowd_control', modifier: 0, image_name: 'sleep.png'},
+  { name: "Blizzard II", potency: 50, cost: 0, resource: 'mp', cast_time: 2.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard_ii.png'},
+  { name: "Scathe", potency: 100, cost: 0, resource: 'mp', cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'scathe.png'},
+  { name: "Fire II", potency: 100, cost: 0, resource: 'mp', cast_time: 3.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire_ii.png'},
+  { name: "Thunder II", potency: 50, cost: 0, resource: 'mp', cast_time: 3, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder_ii.png'},
+  { name: "Swiftcast", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 10, cooldown: 60, category: 'alter', modifier: 0, image_name: 'swiftcast.png'},
+  { name: "Manaward", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 20, cooldown: 120, category: 'shield', modifier: 0, image_name: 'manaward.png'},
+  { name: "Fire III", potency: 240, cost: 0, resource: 'mp', cast_time: 3.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire_iii.png'},
+  { name: "Blizzard III", potency: 240, cost: 0, resource: 'mp', cast_time: 3.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard_iii.png'},
+  { name: "Lethargy", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 30, category: 'crowd_control', modifier: 0, image_name: 'lethargy.png'},
+  { name: "Thunder III", potency: 70, cost: 0, resource: 'mp', cast_time: 3.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder_iii.png'},
+  { name: "Aetherial Manipulation", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 60, category: 'alter', modifier: 0, image_name: 'aetherial_manipulation.png'},
+  # BLM specific spells
+  { name: "Convert", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 180, category: 'alter', modifier: 0, image_name: 'convert.png'},
+  { name: "Freeze", potency: 100, cost: 0, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'freeze.png'},
+  { name: "Apocatastasis", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 12, cooldown: 180, category: 'spell', modifier: 0, image_name: 'apocatastasis.png'},
+  { name: "Manawall", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 20, cooldown: 120, category: 'spell', modifier: 0, image_name: 'manawall.png'},
+  { name: "Flare", potency: 260, cost: 0, resource: 'mp', cast_time: 4, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'flare.png'},
+  { name: "Ley Lines", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 30, cooldown: 90, category: 'alter', modifier: 1.15, image_name: 'ley_lines.png'},
+  { name: "Sharpcast", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 10, cooldown: 60, category: 'alter', modifier: 0, image_name: 'sharpcast.png'},
+  { name: "Enochian", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 30, cooldown: 60, category: 'alter', modifier: 0.05, image_name: 'enochian.png'},
+  { name: "Blizzard IV", potency: 280, cost: 0, resource: 'mp', cast_time: 3.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard_iv.png'},
+  { name: "Fire IV", potency: 280, cost: 0, resource: 'mp', cast_time: 3.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire_iv.png'},
 ]
 
 job = Job.find_by(name: "Black Mage")

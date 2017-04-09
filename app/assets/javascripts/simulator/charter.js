@@ -10,7 +10,7 @@ function Charter() {
     legend: { enabled: false },
     plotOptions: { },
     series: [{
-      type: 'scatter',
+      type: 'spline',
       name: 'Potency',
       data: []
     }],

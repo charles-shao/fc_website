@@ -30,7 +30,7 @@
       <div data-bind="with: selectedJob">
         <div data-bind="foreach: { data: actions, as: 'action' }">
           <a href="" data-bind="click: $root.addActionToRoutine">
-            <img data-bind="attr: { src: action.imagePath }">
+            <img data-bind="attr: { src: action.imagePath }" style="width: 40px; height: 40px;">
           </a>
         </div>
       </div>
