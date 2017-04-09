@@ -14,10 +14,10 @@ function SimulationViewModel() {
     jobs.push(new Job(job));
   });
   self.jobs = ko.observableArray(jobs);
-  self.selectedJob = ko.observable(jobs[6]);
+  self.selectedJob = ko.observable(jobs[2]);
 
   // Routines
-  self.routine = new Routine(chart);
+  self.routine = new Routine(chart, self.selectedJob());
   self.addActionToRoutine = function() {
     self.routine.addAction(this);
   };

@@ -1,3 +1,4 @@
+//= require simulator/observers/job_observer.js
 //= require simulator/observers/encounter_observer.js
 //= require simulator/observers/gcd_observer.js
 //= require simulator/observers/effect_observer.js

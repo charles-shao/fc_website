@@ -7,7 +7,7 @@ class SimulationsController < ApplicationController
   private
 
     def load_jobs
-      jobs = Job.includes(:actions).inject([]) do |jobs_memo, job|
+      jobs = Job.includes(:actions).order(:name).inject([]) do |jobs_memo, job|
         actions = job.actions.inject([]) do |actions_memo, action|
           actions_memo << action.json_attributes
         end
@@ -15,7 +15,8 @@ class SimulationsController < ApplicationController
         jobs_memo.push << {
           id: job.id,
           name: job.name,
-          actions: actions
+          actions: actions,
+          identifier: job.identifier
         }
       end
 

@@ -1,4 +1,4 @@
-function Routine(chart) {
+function Routine(chart, job) {
   var self = this;
 
   self.chart = chart;
@@ -7,6 +7,7 @@ function Routine(chart) {
   var effectObserver = new EffectObserver();
   var gcdObserver = new GcdObserver();
   var encounterObserver = new EncounterObserver();
+  var jobObserver = new JobObserver(job);
 
   self.addAction = function(actionBase) {
     action = new Action(actionBase);
@@ -16,7 +17,8 @@ function Routine(chart) {
       actionObserver: actionObserver,
       effectObserver: effectObserver,
       gcdObserver: gcdObserver,
-      encounterObserver: encounterObserver
+      encounterObserver: encounterObserver,
+      jobObserver: jobObserver
     }
 
     slot = new Slot(currentIndex(), observers)

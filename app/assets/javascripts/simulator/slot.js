@@ -3,8 +3,9 @@ function Slot(index, observers) {
 
   this.id = index;
 
-  var objectName = observers.actionObserver.action.objectName;
-  var actionBehaviour = new jobActions.actions[objectName](observers);
+  var actionObjectName = observers.actionObserver.action.objectName;
+  var jobIdentifier = observers.jobObserver.job.identifier;
+  var actionBehaviour = new jobActions[jobIdentifier].actions[actionObjectName](observers);
 
   this.viewer = new Viewer(actionBehaviour.viewerAttr());
 }

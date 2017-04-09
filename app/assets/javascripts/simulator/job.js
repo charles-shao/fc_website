@@ -3,6 +3,7 @@ function Job(obj) {
 
   self.id = ko.observable(obj.id);
   self.name = obj.name;
+  self.identifier = obj.identifier;
 
   actions = [];
   for (var i in obj.actions) {
