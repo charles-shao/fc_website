@@ -6,8 +6,8 @@
 //= require simulator/job.js
 //= require simulator/action_base.js
 //= require simulator/action.js
+//= require simulator/effect.js
 //= require simulator/slot.js
-//= require simulator/executor.js
 //= require simulator/routine.js
 //= require simulator/viewer.js
 

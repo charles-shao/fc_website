@@ -6,9 +6,5 @@ function Slot(index, observers) {
   var objectName = observers.actionObserver.action.objectName;
   var actionBehaviour = new jobActions.actions[objectName](observers);
 
-  this.viewer = new Viewer(observers.actionObserver.action, actionBehaviour);
-
-  self.clear = function() {
-    // self.executor = null;
-  };
+  this.viewer = new Viewer(actionBehaviour.viewerAttr());
 }
