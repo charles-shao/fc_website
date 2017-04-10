@@ -1,5 +1,6 @@
 blm.actions.Blizzard = function(observers) {
   var action = observers.actionObserver.action;
+  var castTime = action.castTime;
   var afMultiplier = blm.utils.baseDmgMultiplier;
 
   // The presence of Astral Fire should reduce the potency of the ice action
@@ -8,12 +9,16 @@ blm.actions.Blizzard = function(observers) {
   if (indexOfAstralFire > -1) {
     astralFire = observers.effectObserver.effects[indexOfAstralFire].obj;
     afMultiplier = afMultiplier * astralFire.attributes().iceDmgMultiplier;
+
+    // The presence of Astral Fire should reduce the cast time of the ice spell
+    // when at 3 stacks
+    castTime = castTime * astralFire.attributes().iceCastTimeMultiplier;
   }
 
   var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
+
   // Apply Astral Fire multipliers before handling Umbral Ice stacks
   multiplier = multiplier * afMultiplier;
-
   var potency = jobActions.utils.calculatePotency(action, multiplier);
 
   if (indexOfAstralFire > -1) {
@@ -38,12 +43,17 @@ blm.actions.Blizzard = function(observers) {
     }
   }
 
+  // Apply cast time
+  observers.encounterObserver.extend(castTime);
+
+  // Table viewer wrapper
   this.viewerAttr = function() {
     return {
       name: action.name,
       potency: potency,
       multiplier: multiplier,
-      activeEffects: observers.effectObserver.effects
+      activeEffects: observers.effectObserver.effects,
+      encounterTime: observers.encounterObserver.timeAt()
     };
   }
 }
