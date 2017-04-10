@@ -25,11 +25,10 @@ function Routine(chart, job) {
     self.slots.push(slot);
 
     // FIX DURATION
-    self.chart.series[0].addPoint({
-      x: slot.viewer.encounterTime,
-      y: slot.viewer.effectivePotency
-    });
-
+    // self.chart.series[0].addPoint({
+    //   x: slot.viewer.encounterTime,
+    //   y: slot.viewer.effectivePotency
+    // });
   }
 
   self.removeSlot = function(slot) {

@@ -7,8 +7,7 @@ function Slot(index, observers) {
   var actionBehaviour = new jobActions[jobIdentifier].actions[actionObjectName](observers);
 
   // TODO: check if the action behaviour is valid before passing it to the view
-
-  this.viewer = new Viewer(actionBehaviour.viewerAttr());
+  this.viewer = actionBehaviour.viewer; //new Viewer(actionBehaviour.viewerAttr());
 
   this.isValidAction = function() {
     return validAction;

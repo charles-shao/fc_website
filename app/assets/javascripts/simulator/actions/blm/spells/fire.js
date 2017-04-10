@@ -6,18 +6,20 @@ blm.actions.Fire = function(observers) {
   indexOfAstralFire = observers.effectObserver.indexOf(blm.traits.AstralFire);
   indexOfUmbralIce = observers.effectObserver.indexOf(blm.traits.UmbralIce);
 
+  var effects = observers.effectObserver.activeEffects();
+
   // The presence of Umbral Ice should reduce the potency of the fire action
   // by the base * scalar depending on the number of stacks
 
   if (indexOfUmbralIce > -1) {
-    umbralIce = observers.effectObserver.effects[indexOfUmbralIce].obj;
+    umbralIce = effects[indexOfUmbralIce].obj;
     multiplier = multiplier * umbralIce.attributes().fireDmgMultiplier;
 
     // The presence of Umbral Ice should reduce the cast time of the fire spell
     // when at 3 stacks
     castTime = castTime * umbralIce.attributes().fireCastTimeMultiplier;
   } else if (indexOfAstralFire > -1) {
-    astralFire = observers.effectObserver.effects[indexOfAstralFire].obj;
+    astralFire = effects[indexOfAstralFire].obj;
 
     multiplier = multiplier * astralFire.attributes().fireDmgMultiplier;
   }
@@ -29,20 +31,20 @@ blm.actions.Fire = function(observers) {
   if (indexOfUmbralIce > -1) {
     observers.effectObserver.removeAtIndex(indexOfUmbralIce);
   } else {
-    // Grant Astral Fire if none is found in effects
+    // Grant stack of Astral Fire if found in effects
     if (indexOfAstralFire > -1) {
-      effect = observers.effectObserver.effects[indexOfAstralFire];
+      effect = effects[indexOfAstralFire];
       astralFire = effect.obj;
 
       // Grant additional stack, up to a maximum of 3
       astralFire.increaseStack();
 
       effect.refreshDuration(astralFire.attributes().duration);
+
+      // Update observer
+      observers.effectObserver.replaceAtIndex(indexOfAstralFire, new Effect(astralFire));
     } else {
       astralFire = new blm.traits.AstralFire();
-
-      // Grant initial stack
-      astralFire.increaseStack();
 
       effect = new Effect(astralFire);
       observers.effectObserver.add(effect);
@@ -56,13 +58,11 @@ blm.actions.Fire = function(observers) {
   // to 100%
 
   // Table viewer wrapper
-  this.viewerAttr = function() {
-    return {
-      name: action.name,
-      potency: potency,
-      multiplier: multiplier,
-      activeEffects: observers.effectObserver.effects,
-      encounterTime: observers.encounterObserver.timeAt()
-    };
-  }
+  this.viewer = new Viewer({
+    name: action.name,
+    potency: potency,
+    multiplier: multiplier,
+    activeEffects: effects,
+    encounterTime: observers.encounterObserver.timeAt()
+  });
 }

@@ -9,7 +9,6 @@ var utils = {
 
     for (var i in effects) {
       effect = effects[i];
-      console.log(effect)
       base = base * effect.dmgMultiplier;
     }
 
