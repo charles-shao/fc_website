@@ -15,10 +15,11 @@ blm.actions.Transpose = function(observers) {
     umbralIce = new blm.traits.UmbralIce();
     // Replace index of AF with UI
     observers.effectObserver.replaceAtIndex(indexOfAstralFire, new Effect(umbralIce));
+  } else {
+    // Do nothing, cannot transpose with neither
   }
 
   // If weaved between GCDs then do not count towards encounter time
-
 
   this.viewer = new Viewer({
     name: action.name,

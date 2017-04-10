@@ -7,4 +7,12 @@ blm.traits.Enochian = function() {
     { name: "Enochian", duration: 15, dmgMultiplier: 1.05, refreshable: false }
   ]
 
+  this.attributes = function() {
+    return valuesAtStack[currentStack()];
+  }
+  
+  var currentStack = function() {
+    return stack;
+  }
+
 }

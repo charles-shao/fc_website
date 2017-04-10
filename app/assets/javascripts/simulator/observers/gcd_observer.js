@@ -1,24 +1,27 @@
-function GcdObserver() {
+function GcdObserver(baseGcd) {
+  // If no base GCD is found then fallback to the default
   const BASE_GCD = 2.5;
 
-  var self = this;
+  var onGlobalCooldown = false;
+  var gcdAt = 0;
 
-  self.onGlobalCooldown = false;
-  self.gcdAt = 0;
-
-  self.triggerGlobalCooldown = function() {
-    self.onGlobalCooldown = true;
-    self.gcdAt = BASE_GCD;
+  this.triggerGlobalCooldown = function() {
+    onGlobalCooldown = true;
+    gcdAt = BASE_GCD;
   }
 
-  self.resetGlobalCooldown = function(timer) {
+  this.resetGlobalCooldown = function(timer) {
     if (BASE_GCD <= timer) {
-      self.onGlobalCooldown = false;
-      self.gcdAt = 0;
+      onGlobalCooldown = false;
+      gcdAt = 0;
     } else {
-      self.onGlobalCooldown = true;
-      self.gcdAt = self.gcdAt - timer;
+      onGlobalCooldown = true;
+      gcdAt = gcdAt - timer;
     }
+  }
+
+  this.isGcdLocked = function() {
+    return onGlobalCooldown;
   }
 
 }
