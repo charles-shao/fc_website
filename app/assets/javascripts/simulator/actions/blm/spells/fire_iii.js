@@ -13,7 +13,7 @@ blm.actions.FireIII = function(observers) {
   var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
   // Apply Umbral Ice multipliers before handling Astral Fire stacks
   multiplier = multiplier * uiMultiplier;
-  
+
   var potency = jobActions.utils.calculatePotency(action, multiplier);
 
   // Remove Umbral Ice
@@ -29,12 +29,19 @@ blm.actions.FireIII = function(observers) {
     effect = observers.effectObserver.effects[indexOfAstralFire];
     astralFire = effect.obj;
     astralFire.maxStack();
+
+    // Update damage multipliers and refresh duration
+    effect.updateDmgMultiplier(astralFire.attributes().fireDmgMultiplier);
     effect.refreshDuration(astralFire.attributes().duration);
   } else {
+    // Apply maximum stacks
     astralFire = new blm.traits.AstralFire();
     astralFire.maxStack();
 
+    // Apply multipliers
     effect = new Effect(astralFire);
+    effect.updateDmgMultiplier(astralFire.attributes().fireDmgMultiplier);
+
     observers.effectObserver.add(effect);
   }
 

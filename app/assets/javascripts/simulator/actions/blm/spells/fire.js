@@ -13,7 +13,7 @@ blm.actions.Fire = function(observers) {
   var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
   // Apply Umbral Ice multipliers before handling Astral Fire stacks
   multiplier = multiplier * uiMultiplier;
-  
+
   var potency = jobActions.utils.calculatePotency(action, multiplier);
 
   // Trigger Firestarter proc; if Sharpcast is active then set the proc chance
