@@ -34,6 +34,9 @@ blm.actions.BlizzardIII = function(observers) {
     umbralIce = effect.obj;
     umbralIce.maxStack();
     effect.refreshDuration(umbralIce.attributes().duration);
+
+    // Update observer
+    observers.effectObserver.replaceAtIndex(indexOfUmbralIce, new Effect(umbralIce));    
   } else {
     umbralIce = new blm.traits.UmbralIce();
     umbralIce.maxStack();

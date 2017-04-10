@@ -42,6 +42,9 @@ blm.actions.FireIII = function(observers) {
     astralFire.maxStack();
 
     effect.refreshDuration(astralFire.attributes().duration);
+
+    // Update observer
+    observers.effectObserver.replaceAtIndex(indexOfAstralFire, new Effect(astralFire));
   } else {
     // Apply maximum stacks
     astralFire = new blm.traits.AstralFire();
