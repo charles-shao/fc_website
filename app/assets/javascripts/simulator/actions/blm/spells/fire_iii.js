@@ -55,6 +55,9 @@ blm.actions.FireIII = function(observers) {
     observers.effectObserver.add(effect);
   }
 
+  // Apply cast time
+  observers.encounterObserver.extend(castTime);
+
   this.viewer = new Viewer({
     name: action.name,
     potency: potency,

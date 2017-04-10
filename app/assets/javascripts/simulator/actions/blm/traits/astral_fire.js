@@ -30,7 +30,7 @@ blm.traits.AstralFire = function() {
       iceDmgMultiplier: 0.7,
       fireMpCostScaler: 2.0,
       iceMpCostScaler: 0.25,
-      iceCastTimeMultiplier: 1.5,
+      iceCastTimeMultiplier: 0.5,
       mpRegen: false,
       imagePath: simulation.trait_images.blm.astral_fire_iii
     }

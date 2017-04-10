@@ -36,7 +36,7 @@ blm.actions.BlizzardIII = function(observers) {
     effect.refreshDuration(umbralIce.attributes().duration);
 
     // Update observer
-    observers.effectObserver.replaceAtIndex(indexOfUmbralIce, new Effect(umbralIce));    
+    observers.effectObserver.replaceAtIndex(indexOfUmbralIce, new Effect(umbralIce));
   } else {
     umbralIce = new blm.traits.UmbralIce();
     umbralIce.maxStack();
@@ -44,6 +44,9 @@ blm.actions.BlizzardIII = function(observers) {
     effect = new Effect(umbralIce);
     observers.effectObserver.add(effect);
   }
+
+  // Apply cast time
+  observers.encounterObserver.extend(castTime);
 
   this.viewer = new Viewer({
     name: action.name,
