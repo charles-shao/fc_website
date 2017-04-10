@@ -7,13 +7,11 @@ var utils = {
   calculateDamageBuffs: function(effects) {
     base = 1.0;
 
-    // for (var i in effects) {
-    //   effect = effects[i];
-    //
-    //   if (effect.isDmgBuff()) {
-    //     base = base * effect.modifier;
-    //   }
-    // }
+    for (var i in effects) {
+      effect = effects[i];
+      console.log(effect)
+      base = base * effect.dmgMultiplier;
+    }
 
     return base;
   },
