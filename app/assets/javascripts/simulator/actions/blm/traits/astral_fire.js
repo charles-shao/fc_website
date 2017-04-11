@@ -37,7 +37,7 @@ blm.traits.AstralFire = function() {
   ]
 
   this.increaseStack = function() {
-    if (currentStack() < 2) {
+    if (stack < 2) {
       stack += 1;
     }
   }

@@ -20,14 +20,17 @@ function EffectObserver() {
   }
 
   this.tick = function(time) {
+    // console.log(effects.length);
+    removeAtIndexes = [];
     $.each(effects, function(index, effect) {
-      console.log(effects)
       effect.duration = effect.duration - time;
+      if (expirable(effect.duration, time)) { removeAtIndexes.push(index); }
 
-      if (expirable(effect.duration, time)) {
-        remove(index);
-      }
     });
+
+    for(var i in removeAtIndexes) {
+      remove(removeAtIndexes[i]);
+    }
   }
 
   this.indexOf = function(klass) {
