@@ -47,11 +47,11 @@
             <th>Time</th>
             <th class="col-4">Effects (after execution)</th>
             <th>Potency</th>
-            <th>P/s</th>
+            <th>d(Potency)/dt</th>
             <th>Self-multipliers</th>
             <th>Target Multipliers</th>
             <th>Crit Chance</th>
-            <th>Clear</th>
+            <th></th>
           </tr>
         </thead>
         <tbody data-bind="foreach: { data: routine.slots, as: 'slot' }">
@@ -70,13 +70,13 @@
               </figure>
             </td>
             <td data-bind="text: effectivePotency"></td>
-            <th></th>
+            <td data-bind="text: potencyPerSecond"></td>
             <td data-bind="text: multiplier"></td>
             <td data-bind="text: targetMultiplier"></td>
-            <td></td>
+            <td data-bind="text: criticalChance"></td>
             <!-- /ko -->
             <td>
-              <a href="#" data-bind="click: $root.removeSlotFromRoutine" class="btn btn-sm btn-outline-danger">Clear<a>
+              <!-- <a href="#" data-bind="click: $root.removeSlotFromRoutine" class="btn btn-sm btn-outline-danger">Clear<a> -->
             </td>
           </tr>
         </tbody>

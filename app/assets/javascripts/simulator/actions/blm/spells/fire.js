@@ -73,6 +73,7 @@ blm.actions.Fire = function(observers) {
   this.viewer = new Viewer({
     name: action.name,
     potency: potency,
+    potencyPerSecond: (potency / castTime),
     multiplier: multiplier,
     activeEffects: effects,
     encounterTime: observers.encounterObserver.timeAt()

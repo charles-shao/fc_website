@@ -23,6 +23,7 @@ blm.actions.Enochian = function(observers) {
   this.viewer = new Viewer({
     name: action.name,
     potency: 0,
+    potencyPerSecond: 0,
     multiplier: multiplier,
     activeEffects: effects,
     encounterTime: observers.encounterObserver.timeAt()
