@@ -29,6 +29,7 @@ function Slot(index, observers) {
     }
   }
 
+  console.log(observers.actionObserver.action);
   // Execute ability
   try {
     var actionBehaviour = new jobActions[jobIdentifier].actions[actionObjectName](observers);
@@ -41,7 +42,7 @@ function Slot(index, observers) {
 
   // Evaluate global cooldown after cast; casts shorter than GCD will still need
   // to wait the full duration
-  // observers.gcdObserver.tickGlobalCooldown(2.5)
+  observers.gcdObserver.tickGlobalCooldown(this.viewer.castTime);
 
   this.isValidAction = function() {
     return validAction;

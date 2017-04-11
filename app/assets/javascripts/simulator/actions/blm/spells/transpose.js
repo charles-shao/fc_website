@@ -20,10 +20,10 @@ blm.actions.Transpose = function(observers) {
   }
 
   // If weaved between GCDs then do not count towards encounter time
-
   this.viewer = new Viewer({
     name: action.name,
     potency: 0,
+    castTime: castTime,
     potencyPerSecond: 0,
     multiplier: multiplier,
     activeEffects: effects,
