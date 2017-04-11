@@ -32,7 +32,8 @@ class SimulationsController < ApplicationController
           astral_fire_iii: ActionController::Base.helpers.image_path("traits/astral_fire_iii.png"),
           umbral_ice: ActionController::Base.helpers.image_path("traits/umbral_ice.png"),
           umbral_ice_ii: ActionController::Base.helpers.image_path("traits/umbral_ice_ii.png"),
-          umbral_ice_iii: ActionController::Base.helpers.image_path("traits/umbral_ice_iii.png")
+          umbral_ice_iii: ActionController::Base.helpers.image_path("traits/umbral_ice_iii.png"),
+          enochian: ActionController::Base.helpers.image_path("actions/enochian.png")
         }
       }
     end

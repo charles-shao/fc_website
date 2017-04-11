@@ -47,10 +47,7 @@ blm.traits.UmbralIce = function() {
   }
 
   this.attributes = function() {
-    return valuesAtStack[currentStack()];
+    return valuesAtStack[stack];
   }
 
-  var currentStack = function() {
-    return stack;
-  }
 }

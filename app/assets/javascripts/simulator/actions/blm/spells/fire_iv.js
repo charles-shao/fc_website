@@ -1,8 +1,8 @@
 blm.actions.FireIV = function(observers) {
   var action = observers.actionObserver.action;
-
-  var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
-  var potency = jobActions.utils.calculatePotency(action, multiplier);
+  var castTime = action.castTime;
+  var effects = observers.effectObserver.activeEffects();
+  var multiplier = jobActions.utils.calculateDamageBuffs(effects);
 
   indexOfUmbralIce = observers.effectObserver.indexOf(blm.traits.UmbralIce);
   indexOfEnochian = observers.effectObserver.indexOf(blm.traits.Enochian);
@@ -13,16 +13,23 @@ blm.actions.FireIV = function(observers) {
     throw("Fire IV cannot be casted under the presence of UI");
   }
 
-  // Requies Astral Fire and Enochain to cast, does not refresh AF duration
+  // Requies Astral Fire and Enochain to cast
   if (indexOfAstralFire > -1 && indexOfEnochian > -1) {
-    effect = observers.effectObserver.effects[indexOfAstralFire];
+    effect = effects[indexOfAstralFire];
     astralFire = effect.obj;
-
-    // Count the duration down depending on cast/gcd time
+    multiplier = multiplier * astralFire.attributes().fireDmgMultiplier;
   } else {
     // Raise Exception
     throw("Fire IV cannot be casted without AF and Enochian");
   }
+
+  // Does not refresh AF duration
+  observers.effectObserver.tick(castTime);
+
+  // Apply cast time
+  observers.encounterObserver.extend(castTime);
+
+  var potency = jobActions.utils.calculatePotency(action, multiplier);
 
   this.viewer = new Viewer({
     name: action.name,

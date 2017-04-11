@@ -17,7 +17,7 @@ blm.actions.Enochian = function(observers) {
   observers.effectObserver.add(effect);
 
   // If weaved between GCDs then do not count towards encounter time
-
+  // observers.effectObserver.tick(castTime);
 
   // Table viewer wrapper
   this.viewer = new Viewer({

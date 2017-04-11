@@ -7,7 +7,7 @@ function ActionBase(obj) {
   this.resource = obj.resource;
   this.castTime = parseFloat(obj.cast_time);
   this.animationLock = parseFloat(obj.animation_lock);
-  this.duration = obj.duration;
+  this.duration = parseFloat(obj.duration);
   this.cooldown = obj.cooldown;
   this.category = obj.category;
   this.modifier = parseFloat(obj.modifier);

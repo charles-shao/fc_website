@@ -1,15 +1,11 @@
 blm.actions.FireIII = function(observers) {
   var action = observers.actionObserver.action;
   var castTime = action.castTime;
-  var uiMultiplier = blm.utils.baseDmgMultiplier;
-  var afMultiplier = blm.utils.baseDmgMultiplier;
-
-  var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
+  var effects = observers.effectObserver.activeEffects();
+  var multiplier = jobActions.utils.calculateDamageBuffs(effects);
 
   indexOfAstralFire = observers.effectObserver.indexOf(blm.traits.AstralFire);
   indexOfUmbralIce = observers.effectObserver.indexOf(blm.traits.UmbralIce);
-
-  var effects = observers.effectObserver.activeEffects();
 
   // The presence of Umbral Ice should reduce the potency of the fire action
   // by the base * scalar depending on the number of stacks
@@ -41,11 +37,18 @@ blm.actions.FireIII = function(observers) {
     astralFire = effect.obj;
     astralFire.maxStack();
 
+    // Reduce all effect timers
+    observers.effectObserver.tick(castTime);
+
+    // Refresh AF after ticks
     effect.refreshDuration(astralFire.attributes().duration);
 
     // Update observer
     observers.effectObserver.replaceAtIndex(indexOfAstralFire, new Effect(astralFire));
   } else {
+    // Reduce all effect timers
+    observers.effectObserver.tick(castTime);
+
     // Apply maximum stacks
     astralFire = new blm.traits.AstralFire();
     astralFire.maxStack();

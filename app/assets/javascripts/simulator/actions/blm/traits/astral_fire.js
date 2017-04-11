@@ -47,11 +47,7 @@ blm.traits.AstralFire = function() {
   }
 
   this.attributes = function() {
-    return valuesAtStack[currentStack()];
-  }
-
-  var currentStack = function() {
-    return stack;
+    return valuesAtStack[stack];
   }
 
 }

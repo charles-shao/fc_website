@@ -1,12 +1,11 @@
 blm.actions.Fire = function(observers) {
   var action = observers.actionObserver.action;
   var castTime = action.castTime;
-  var multiplier = jobActions.utils.calculateDamageBuffs(observers.effectObserver.effects);
+  var effects = observers.effectObserver.activeEffects();
+  var multiplier = jobActions.utils.calculateDamageBuffs(effects);
 
   indexOfAstralFire = observers.effectObserver.indexOf(blm.traits.AstralFire);
   indexOfUmbralIce = observers.effectObserver.indexOf(blm.traits.UmbralIce);
-
-  var effects = observers.effectObserver.activeEffects();
 
   // The presence of Umbral Ice should reduce the potency of the fire action
   // by the base * scalar depending on the number of stacks
@@ -39,14 +38,21 @@ blm.actions.Fire = function(observers) {
       // Grant additional stack, up to a maximum of 3
       astralFire.increaseStack();
 
+      // Reduce all effect timers
+      observers.effectObserver.tick(castTime);
+
       effect.refreshDuration(astralFire.attributes().duration);
 
       // Update observer
       observers.effectObserver.replaceAtIndex(indexOfAstralFire, new Effect(astralFire));
     } else {
       astralFire = new blm.traits.AstralFire();
-
       effect = new Effect(astralFire);
+
+      // Reduce all effect timers
+      observers.effectObserver.tick(castTime);
+
+      // Add AF after tick
       observers.effectObserver.add(effect);
     }
   }
@@ -56,6 +62,12 @@ blm.actions.Fire = function(observers) {
 
   // Trigger Firestarter proc; if Sharpcast is active then set the proc chance
   // to 100%
+
+  // Check GCD lockout
+  if (observers.gcdObserver.isGcdLocked()) {
+    // timeRemaining
+  }
+  observers.gcdObserver.tickGlobalCooldown(castTime);
 
   // Table viewer wrapper
   this.viewer = new Viewer({

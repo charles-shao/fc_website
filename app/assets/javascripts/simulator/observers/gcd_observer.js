@@ -10,7 +10,7 @@ function GcdObserver(baseGcd) {
     gcdAt = BASE_GCD;
   }
 
-  this.resetGlobalCooldown = function(timer) {
+  this.tickGlobalCooldown = function(timer) {
     if (BASE_GCD <= timer) {
       onGlobalCooldown = false;
       gcdAt = 0;
@@ -18,6 +18,10 @@ function GcdObserver(baseGcd) {
       onGlobalCooldown = true;
       gcdAt = gcdAt - timer;
     }
+  }
+
+  this.timeRemaining = function() {
+    return gcdAt;
   }
 
   this.isGcdLocked = function() {

@@ -10,11 +10,7 @@ function EffectObserver() {
   }
 
   this.removeAtIndex = function(index) {
-    if (index > - 1) {
-      effects.splice(index, 1);
-    } else {
-      console.log("Error removing element at index");
-    }
+    remove(index);
   }
 
   this.replaceAtIndex = function(index, effect) {
@@ -25,10 +21,11 @@ function EffectObserver() {
 
   this.tick = function(time) {
     $.each(effects, function(index, effect) {
+      console.log(effects)
       effect.duration = effect.duration - time;
 
       if (expirable(effect.duration, time)) {
-        this.remove(effect);
+        remove(index);
       }
     });
   }
@@ -52,4 +49,13 @@ function EffectObserver() {
   function expirable(duration, time) {
     return (duration <= 0) || (duration < time);
   }
+
+  function remove(index) {
+    if (index > - 1) {
+      effects.splice(index, 1);
+    } else {
+      console.log("Error removing element at index");
+    }
+  }
+
 }
