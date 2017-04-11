@@ -63,12 +63,6 @@ blm.actions.Fire = function(observers) {
   // Trigger Firestarter proc; if Sharpcast is active then set the proc chance
   // to 100%
 
-  // Check GCD lockout
-  if (observers.gcdObserver.isGcdLocked()) {
-    // timeRemaining
-  }
-  observers.gcdObserver.tickGlobalCooldown(castTime);
-
   // Table viewer wrapper
   this.viewer = new Viewer({
     name: action.name,

@@ -1,5 +1,7 @@
 function ActionObserver(action) {
-  var self = this;
+  this.action = action;
 
-  self.action = action;
+  this.isGcdAbility = function() {
+    return this.action.gcdLocked;
+  }
 }

@@ -20,11 +20,16 @@ function GcdObserver(baseGcd) {
     }
   }
 
+  this.overtime = function(time) {
+    overtime = gcdAt - time;
+    return (overtime >= 0) ? 0 : Math.abs(overtime);
+  }
+
   this.timeRemaining = function() {
     return gcdAt;
   }
 
-  this.isGcdLocked = function() {
+  this.isCoolingDown = function() {
     return onGlobalCooldown;
   }
 
