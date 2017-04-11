@@ -20,12 +20,14 @@ function Slot(index, observers) {
     // If we are still in GCD lock, check if any instant cast abiltiies are made.
     // They should cost no time to the encounter if woven.
     if (observers.gcdObserver.isCoolingDown()) {
-      // If time bleeds over GCD then take the overtime value and add as a
-      // cast time.
+      // If time bleeds over GCD then take the overtime value and add as a cast time.
       overtime = observers.gcdObserver.overtime(action.animationLock);
       if (overtime > 0) {
         observers.actionObserver.action.castTime = overtime;
       }
+    } else {
+      // oGCDs are clipping into GCDs
+      observers.actionObserver.action.castTime = observers.actionObserver.action.animationLock;
     }
   }
 
