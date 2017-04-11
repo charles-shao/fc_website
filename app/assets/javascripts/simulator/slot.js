@@ -8,10 +8,17 @@ function Slot(index, observers) {
   // TODO: check for any haste effects active and make that the base GCD
   // for as long as it is active for
   observers.gcdObserver.triggerGlobalCooldown();
-  var actionBehaviour = new jobActions[jobIdentifier].actions[actionObjectName](observers);
 
-  // TODO: check if the action behaviour is valid before passing it to the view
-  this.viewer = actionBehaviour.viewer;
+  try {
+    var actionBehaviour = new jobActions[jobIdentifier].actions[actionObjectName](observers);
+
+    // TODO: check if the action behaviour is valid before passing it to the view
+    this.viewer = actionBehaviour.viewer;
+  }
+  catch(message) {
+    // TODO: trigger modal because its nicer
+    console.log(message)
+  }
 
   this.isValidAction = function() {
     return validAction;

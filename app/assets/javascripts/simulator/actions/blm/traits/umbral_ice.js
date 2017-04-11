@@ -37,17 +37,21 @@ blm.traits.UmbralIce = function() {
   ]
 
   this.increaseStack = function() {
-    if (stack < 2) {
+    if (stack < maximumAllowableStack()) {
       stack += 1;
     }
   }
 
   this.maxStack = function() {
-    stack = 2;
+    stack = maximumAllowableStack();
   }
 
   this.attributes = function() {
     return valuesAtStack[stack];
+  }
+
+  function maximumAllowableStack() {
+    return valuesAtStack.length - 1;
   }
 
 }

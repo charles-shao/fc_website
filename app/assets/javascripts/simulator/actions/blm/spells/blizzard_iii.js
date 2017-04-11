@@ -7,8 +7,6 @@ blm.actions.BlizzardIII = function(observers) {
   indexOfAstralFire = observers.effectObserver.indexOf(blm.traits.AstralFire);
   indexOfUmbralIce = observers.effectObserver.indexOf(blm.traits.UmbralIce);
 
-
-
   // The presence of Astral Fire should reduce the potency of the fire action
   // by the base * scalar depending on the number of stacks
   if (indexOfAstralFire > -1) {
