@@ -13,7 +13,7 @@ class Ability
       can :manage, StaticProgression
       can :manage, UserApplication
     elsif user.role.member?
-
+      can [:edit, :update], User
     elsif user.role.guest?
       can [:edit, :update], User
     end
