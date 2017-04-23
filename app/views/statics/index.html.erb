@@ -28,6 +28,7 @@
                   <td>
                     <% if can? :manage, static %>
                       <%= link_to "Edit", edit_static_path(static), class: "btn btn-outline-warning" %>
+                      <%= link_to "Remove", static_path(static), method: :delete, class: "btn btn-outline-danger" %>
                     <% end %>
 
                     <% if can? :manage, StaticCharacter %>

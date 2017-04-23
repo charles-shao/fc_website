@@ -37,6 +37,15 @@ class StaticsController < ApplicationController
   end
 
   def destroy
+    @static = Static.find_by(id: params[:id])
+
+    if @static.destroy
+      flash[:success] = "Successfully removed static."
+    else
+      flash[:danger] = @static.errors.full_messages.to_sentence
+    end
+
+    redirect_to statics_path
   end
 
   private
