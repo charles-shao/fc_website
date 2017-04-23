@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-12">
 
       <div class="card">
         <h3 class="card-header">Profile Details</h3>
@@ -36,7 +36,7 @@
 
       <div class="row">
         <% @characters.each do |character| %>
-          <div class="col-sm-6 mt-2">
+          <div class="col-sm-4 mt-2">
             <div class="card">
               <%= image_tag "default-avatar.png", class: "card-img-top img-fluid" %>
 
@@ -60,7 +60,7 @@
         <% end %>
 
         <!-- New character panel -->
-        <div class="col-sm-6 mt-2">
+        <div class="col-sm-4 mt-2">
           <%= link_to "Add new character", new_character_path, class: "btn btn-primary btn-lg btn-block" %>
         </div>
 

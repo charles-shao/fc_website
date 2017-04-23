@@ -6,18 +6,14 @@
       <table class="table">
         <thead class="thead-default">
             <th>Name</th>
-            <th>Characters</th>
         </thead>
 
         <tbody>
-          <% @users.each do |user| %>
+          <% Character.all.each do |character| %>
             <tr>
-                <td><%= link_to user.name, "#" %></td>
-                <td>
-                  <% user.characters.each do |character| %>
-                    <p><%= character.name %></p>
-                  <% end %>
-                </td>
+              <td>
+                <%= character.name %>
+              </td>
             </tr>
           <% end %>
         </tbody>
