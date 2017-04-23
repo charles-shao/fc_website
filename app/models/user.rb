@@ -18,4 +18,8 @@ class User < ApplicationRecord
     user_applications.pending_applications.any?
   end
 
+  def has_approved_application?
+    user_applications.approved_applications.any?
+  end
+
 end

@@ -28,7 +28,14 @@ Rails.application.routes.draw do
   resources :characters do
     resources :character_jobs, only: [:create, :update, :destroy]
   end
-  resources :user_applications
+  resources :user_applications do
+    member do
+      patch :approve
+      put :approve
+      patch :reject
+      put :reject
+    end
+  end
   resources :application_questions
   resources :notices do
     get :view, on: :collection

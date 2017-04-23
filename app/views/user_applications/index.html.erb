@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="pt-5">User Applications</h2>
+
+      <div class="pb-5">
+        <div class="list-group">
+          <% if @user_applications.empty? %>
+            No pending applications.
+          <% end %>
+
+          <% @user_applications.each do |application| %>
+
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title"><%= application.user.name %></h4>
+                <h6 class="card-subtitle mb-2 text-muted"><%= "Applied #{time_ago_in_words(application.created_at)} ago" %></h6>
+
+                <% application.answers.includes(:application_question).each do |answer| %>
+                  <p class="card-text">
+                    <b><%= answer.application_question.content %></b>
+                    <%= answer.content %>
+                  </p>
+                <% end %>
+
+                <%= link_to "Approve", approve_user_application_path(application), method: :patch, class: "card-link" %>
+                <%= link_to "Reject", reject_user_application_path(application), method: :patch, class: "card-link" %>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

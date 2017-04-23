@@ -6,7 +6,7 @@
       Reviewing FC Application...
       <span class="badge badge-warning badge-pill">Pending</span>
     </li>
-  <% else %>
+  <% elsif !current_user.has_approved_application? %>
     <%= link_to new_user_application_path, class: "list-group-item" do %>
       Apply for FC
     <% end %>
@@ -16,6 +16,13 @@
   <%= link_to "Members", members_path, class: "list-group-item" %>
   <%= link_to "Statics", statics_path, class: "list-group-item" %>
   <%= link_to "Simulations (alpha)", simulations_path, class: "list-group-item" %>
+
+  <% if can? :mange, UserApplication %>
+    <%= link_to user_applications_path, class: "list-group-item justify-content-between" do %>
+      Pending Applications
+      <span class="badge badge-danger badge-pill">Admin</span>
+    <% end %>
+  <% end %>
 
   <% if can? :manage, Notice %>
     <%= link_to notices_path, class: "list-group-item justify-content-between" do %>

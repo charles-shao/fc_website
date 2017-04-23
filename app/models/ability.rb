@@ -11,6 +11,7 @@ class Ability
       can :manage, Static
       can :manage, StaticCharacter
       can :manage, StaticProgression
+      can :manage, UserApplication
     elsif user.role.member?
 
     elsif user.role.guest?
