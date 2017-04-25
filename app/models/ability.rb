@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     # Default to guest role permissions
     if user.role.nil?
-      can [:edit, :update], User
+      can [:update], User, id: user.id
     elsif user.role.admin?
       can :manage, :all
     elsif user.role.static_lead?
@@ -13,9 +13,9 @@ class Ability
       can :manage, StaticProgression
       can :manage, UserApplication
     elsif user.role.member?
-      can [:edit, :update], User
+      can [:update], User, id: user.id
     elsif user.role.guest?
-      can [:edit, :update], User
+      can :update, User, id: user.id
     end
   end
 

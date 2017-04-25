@@ -1,5 +1,8 @@
 class UsersController < Clearance::UsersController
 
+  authorize_resource
+  skip_authorize_resource only: [:create]
+
   def index
     @active_users = User.active
     @inactive_users = User.inactive
@@ -9,6 +12,8 @@ class UsersController < Clearance::UsersController
 
   def edit
     @user = User.find_by(id: params[:id])
+    authorize! :edit, @user, id: current_user.id
+
     @user.build_user_role if @user.role.nil?
   end
 
@@ -62,8 +67,14 @@ class UsersController < Clearance::UsersController
     end
 
     def updateable_params
-      params.require(:user).permit(:name, :email, :timezone, :current_state,
-        user_role_attributes: [:role_id])
+      permitted_paramters = [:name, :email, :timezone]
+
+      if current_user.role.admin?
+        permitted_paramters.push(:current_state)
+        permitted_paramters.push(user_role_attributes: [:id, :role_id])
+      end
+
+      params.require(:user).permit(*permitted_paramters)
     end
 
 end

@@ -11,9 +11,6 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_role, allow_destroy: true
 
-  scope :active, -> { where(current_state: :active) }
-  scope :inactive, -> { where(current_state: :inactive) }
-  scope :rejected, -> { where(current_state: :rejected) }
   scope :stateless, -> { where(current_state: nil) }
 
   enum current_state: {

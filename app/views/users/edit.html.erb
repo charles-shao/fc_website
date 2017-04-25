@@ -15,17 +15,19 @@
           <%= form.text_field :email, type: 'email', class: 'form-control' %>
         </div>
 
-        <div class="form-group">
-          <%= form.label :current_state %>
-          <%= form.select :current_state, options_for_select(User.aasm(:current_state).states_for_select), {}, class: 'form-control' %>
-        </div>
+        <% if current_user.role.admin? %>
+          <div class="form-group">
+            <%= form.label :current_state %>
+            <%= form.select :current_state, options_for_select(User.aasm(:current_state).states_for_select), {}, class: 'form-control' %>
+          </div>
 
-        <div class="form-group">
-          <%= form.fields_for :user_role do |builder| %>
-            <%= builder.label :role %>
-            <%= builder.select :role_id, options_from_collection_for_select(Role.all, :id, :name, @user.role&.id), { include_blank: true }, class: 'form-control' %>
-          <% end %>
-        </div>
+          <div class="form-group">
+            <%= form.fields_for :user_role do |builder| %>
+              <%= builder.label :role %>
+              <%= builder.select :role_id, options_from_collection_for_select(Role.all, :id, :name, @user.role&.id), { include_blank: true }, class: 'form-control' %>
+            <% end %>
+          </div>
+        <% end %>
 
         <%= form.submit class: 'btn btn-outline-primary' %>
         <%= link_to "Back", users_path, class: 'btn btn-secondary' %>
