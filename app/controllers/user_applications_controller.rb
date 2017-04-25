@@ -52,6 +52,15 @@ class UserApplicationsController < ApplicationController
     redirect_to user_applications_path
   end
 
+  def destroy
+    user_application = UserApplication.find_by(id: params[:id])
+
+    user_application.destroy
+
+    flash[:success] = "Deleted user application." 
+    redirect_to user_applications_path
+  end
+
   private
 
     def user_application_answers

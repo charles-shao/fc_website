@@ -34,4 +34,8 @@ class UserApplication < ApplicationRecord
     end
   end
 
+  def stateless? 
+    current_state.blank?
+  end
+
 end
