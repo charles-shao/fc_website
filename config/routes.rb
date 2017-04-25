@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   resources :roles
 
   resources :statics do
-    resources :static_progressions, only: [:index, :create, :destroy]
+    resources :static_progressions, only: [:index, :create, :edit, :update, :destroy]
     resources :static_characters, only: [:index, :create, :destroy]
   end
 

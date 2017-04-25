@@ -16,6 +16,7 @@
                   <td><%= static_progression.raid_content.name %></td>
                   <td><%= static_progression.cleared_at %></td>
                   <td>
+                    <%= link_to "Edit", edit_static_static_progression_path(@static, static_progression), class: "btn btn-outline-warning" %>
                     <%= link_to "Remove", static_static_progression_path(@static, static_progression), method: :delete, class: "btn btn-outline-danger" %>
                   </td>
               </tr>

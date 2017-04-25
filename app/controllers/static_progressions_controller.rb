@@ -19,6 +19,24 @@ class StaticProgressionsController < ApplicationController
     redirect_to static_static_progressions_path(@static)
   end
 
+  def edit
+    @static = Static.find_by(id: params[:static_id])
+    @progression = @static.static_progressions.find_by(id: params[:id])
+  end
+
+  def update
+    @static = Static.find_by(id: params[:static_id])
+    @progression = @static.static_progressions.find_by(id: params[:id])
+
+    if @progression.update_attributes(static_progression_params)
+      flash[:success] = "Successfully updated progression details."
+      redirect_to static_static_progressions_path(@static)
+    else
+      flash[:danger] = @progression.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   def destroy
     @static = Static.find_by(id: params[:static_id])
     @static_progression = @static.static_progressions.find_by(id: params[:id])
