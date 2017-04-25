@@ -21,7 +21,7 @@ class UserApplicationsController < ApplicationController
     @user_application = current_user.user_applications.build(user_application_answers)
 
     if @user_application.save
-      hook_details = DiscordWebhook.find_by(channel_name: "#applications")
+      hook_details = DiscordWebhook.find_by(channel_name: "#fc-recruitment")
 
       if hook_details.present?
         webhook = Discord::Webhook.new("New FC application from #{current_user.email}", hook_details)
@@ -57,7 +57,7 @@ class UserApplicationsController < ApplicationController
 
     user_application.destroy
 
-    flash[:success] = "Deleted user application." 
+    flash[:success] = "Deleted user application."
     redirect_to user_applications_path
   end
 
