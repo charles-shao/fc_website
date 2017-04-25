@@ -1,5 +1,6 @@
 class StaticCharactersController < ApplicationController
 
+  authorize_resource
   before_action :load_static_characters
 
   def index

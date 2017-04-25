@@ -1,5 +1,7 @@
 class StaticProgressionsController < ApplicationController
 
+  authorize_resource
+  
   def index
     @static = Static.find_by(id: params[:static_id])
     @static_progressions = @static.static_progressions

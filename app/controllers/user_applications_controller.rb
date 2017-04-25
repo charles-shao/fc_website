@@ -1,5 +1,8 @@
 class UserApplicationsController < ApplicationController
 
+  authorize_resource
+  skip_authorize_resource only: [:new, :create]
+
   before_action :has_user_applied?, only: [:new, :create]
 
   def index
