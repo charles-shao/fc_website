@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
       flash[:success] = "Successfully updated your details."
       redirect_to profiles_path
     else
-      flash[:danger] = current_user.errors.full_messages.to_sentence
+      flash.now[:danger] = current_user.errors.full_messages.to_sentence
       render :show
     end
   end

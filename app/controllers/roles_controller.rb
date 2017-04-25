@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
 
   authorize_resource
-  
+
   def index
     @roles = Role.all
   end
@@ -17,7 +17,7 @@ class RolesController < ApplicationController
       flash[:success] = "Successfully created role."
       redirect_to roles_path
     else
-      flash[:danger] = @role.errors.full_messages.to_sentence
+      flash.now[:danger] = @role.errors.full_messages.to_sentence
       render :new
     end
   end

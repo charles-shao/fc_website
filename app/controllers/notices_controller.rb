@@ -30,7 +30,7 @@ class NoticesController < ApplicationController
       flash[:success] = "Successfully created notice."
       redirect_to notices_path
     else
-      flash[:danger] = @notice.errors.full_messages.to_sentence
+      flash.now[:danger] = @notice.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -46,7 +46,7 @@ class NoticesController < ApplicationController
       flash[:success] = "Successfully updated notice."
       redirect_to notices_path
     else
-      flash[:danger] = @notice.errors.full_messages.to_sentence
+      flash.now[:danger] = @notice.errors.full_messages.to_sentence
       render :edit
     end
   end

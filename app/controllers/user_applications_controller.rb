@@ -31,7 +31,7 @@ class UserApplicationsController < ApplicationController
       flash[:success] = "Thanks for applying, we'll get back to you soon!"
       redirect_to dashboard_index_path
     else
-      flash[:danger] = @user_application.errors.full_messages.to_sentence
+      flash.now[:danger] = @user_application.errors.full_messages.to_sentence
       render :new
     end
   end

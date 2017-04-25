@@ -24,7 +24,7 @@ class UsersController < Clearance::UsersController
       flash[:success] = "Successfully updated details."
       redirect_to users_path
     else
-      flash[:danger] = @user.errors.full_messages.to_sentence
+      flash.now[:danger] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -43,6 +43,7 @@ class UsersController < Clearance::UsersController
       sign_in @user
       redirect_back_or url_after_create
     else
+      flash.now[:danger] = @user.errors.full_messages.to_sentence
       render template: "users/new"
     end
   end

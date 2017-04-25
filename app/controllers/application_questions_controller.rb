@@ -1,7 +1,7 @@
 class ApplicationQuestionsController < ApplicationController
 
   authorize_resource
-  
+
   def index
     @application_questions = ApplicationQuestion.ordered_by_rank
   end
@@ -17,7 +17,7 @@ class ApplicationQuestionsController < ApplicationController
       flash[:success] = "Successfully created application question."
       redirect_to application_questions_path
     else
-      flash[:danger] = @application_question.errors.full_messages.to_sentence
+      flash.now[:danger] = @application_question.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -33,7 +33,7 @@ class ApplicationQuestionsController < ApplicationController
       flash[:success] = "Successfully updated application question."
       redirect_to application_questions_path
     else
-      flash[:danger] = @application_question.errors.full_messages.to_sentence
+      flash.now[:danger] = @application_question.errors.full_messages.to_sentence
       render :edit
     end
   end

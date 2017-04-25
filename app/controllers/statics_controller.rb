@@ -15,7 +15,7 @@ class StaticsController < ApplicationController
       flash[:success] = "Successfully created static."
       redirect_to statics_path
     else
-      flash[:danger] = @static.errors.full_messages.to_sentence
+      flash.now[:danger] = @static.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -31,7 +31,7 @@ class StaticsController < ApplicationController
       flash[:success] = "Successfully updated static."
       redirect_to statics_path
     else
-      flash[:danger] = @static.errors.full_messages.to_sentence
+      flash.now[:danger] = @static.errors.full_messages.to_sentence
       render :edit
     end
   end

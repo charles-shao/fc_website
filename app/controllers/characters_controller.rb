@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
       flash[:success] = "Successfully updated character."
       redirect_to profiles_path
     else
-      flash[:danger] = @character.errors.full_messages.to_sentence
+      flash.now[:danger] = @character.errors.full_messages.to_sentence
       render :edit
     end
   end

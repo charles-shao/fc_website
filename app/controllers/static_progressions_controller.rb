@@ -32,7 +32,7 @@ class StaticProgressionsController < ApplicationController
       flash[:success] = "Successfully updated progression details."
       redirect_to static_static_progressions_path(@static)
     else
-      flash[:danger] = @progression.errors.full_messages.to_sentence
+      flash.now[:danger] = @progression.errors.full_messages.to_sentence
       render :edit
     end
   end
