@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
+  include AASM
 
   has_one :user_role
   has_one :role, through: :user_role
@@ -9,6 +10,30 @@ class User < ApplicationRecord
   has_many :user_applications, dependent: :destroy
 
   accepts_nested_attributes_for :user_role, allow_destroy: true
+
+  scope :active, -> { where(current_state: :active) }
+  scope :inactive, -> { where(current_state: :inactive) }
+  scope :rejected, -> { where(current_state: :rejected) }
+
+  enum current_state: {
+    active:  1,
+    inactive: 2,
+    rejected: 3
+  }
+
+  aasm(:current_state, enum: true) do
+    state :active, initial: true
+    state :inactive
+    state :rejected
+
+    event :deactivate do
+      transitions from: :active, to: :inactive
+    end
+
+    event :reject do
+      transitions from: :active, to: :rejected
+    end
+  end
 
   def friendly_name
     name || email

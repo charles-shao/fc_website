@@ -1,7 +1,9 @@
 class UsersController < Clearance::UsersController
 
   def index
-    @users = User.all
+    @active_users = User.active
+    @inactive_users = User.inactive
+    @rejected_users = User.rejected
   end
 
   def edit
@@ -52,7 +54,8 @@ class UsersController < Clearance::UsersController
     end
 
     def updateable_params
-      params.require(:user).permit(:name, :email, :timezone, user_role_attributes: [:role_id])
+      params.require(:user).permit(:name, :email, :timezone, :current_state,
+        user_role_attributes: [:role_id])
     end
 
 end
