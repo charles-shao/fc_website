@@ -24,7 +24,7 @@ class UserApplicationsController < ApplicationController
       hook_details = DiscordWebhook.find_by(channel_name: "#fc-recruitment")
 
       if hook_details.present?
-        webhook = Discord::Webhook.new("New FC application from #{current_user.email}", hook_details)
+        webhook = Discord::Webhook.new("New FC application from #{current_user.name}", hook_details)
         webhook.post
       end
 

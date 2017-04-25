@@ -28,6 +28,13 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
 
     if @user.save
+      hook_details = DiscordWebhook.find_by(channel_name: "#fc-recruitment")
+
+      if hook_details.present?
+        webhook = Discord::Webhook.new("New user registration from #{@user.email}", hook_details)
+        webhook.post
+      end
+
       sign_in @user
       redirect_back_or url_after_create
     else
