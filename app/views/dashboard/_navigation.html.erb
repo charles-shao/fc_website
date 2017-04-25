@@ -24,7 +24,7 @@
     <% end %>
   <% end %>
 
-  <% if can? :manage, RaidContent %>
+  <% if can? :manage, User %>
     <%= link_to users_path, class: "list-group-item justify-content-between" do %>
       Users
       <span class="badge badge-danger badge-pill">Admin</span>
