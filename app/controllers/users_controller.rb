@@ -1,5 +1,26 @@
 class UsersController < Clearance::UsersController
 
+  def index
+    @users = User.all
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+    @user.build_user_role if @user.role.nil?
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+
+    if @user.update_attributes(updateable_params)
+      flash[:success] = "Successfully updated details."
+      redirect_to users_path
+    else
+      flash[:danger] = @user.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
   def create
     @user = user_from_params
 
@@ -28,6 +49,10 @@ class UsersController < Clearance::UsersController
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def updateable_params
+      params.require(:user).permit(:name, :email, :timezone, user_role_attributes: [:role_id])
     end
 
 end
