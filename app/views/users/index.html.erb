@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#rejected" role="tab">Rejected</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#stateless" role="tab">Stateless</a>
+        </li>
       </ul>
 
       <div class="tab-content">
@@ -27,9 +30,12 @@
           <h2 class="pt-5">Rejected Users</h2>
           <%= render partial: "users", locals: { users: @rejected_users } %>
         </div>
+        <div class="tab-pane" id="stateless" role="tabpanel">
+          <h2 class="pt-5">Stateless Users</h2>
+          <%= render partial: "users", locals: { users: @stateless_users } %>
+        </div>
       </div>
 
-      <%# link_to "Create", new_application_question_path, class: "btn btn-outline-primary" %>
       <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
     </div>
   </div>

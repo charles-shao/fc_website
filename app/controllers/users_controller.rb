@@ -4,6 +4,7 @@ class UsersController < Clearance::UsersController
     @active_users = User.active
     @inactive_users = User.inactive
     @rejected_users = User.rejected
+    @stateless_users = User.stateless
   end
 
   def edit
