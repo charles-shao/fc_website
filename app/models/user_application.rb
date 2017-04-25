@@ -9,6 +9,8 @@ class UserApplication < ApplicationRecord
 
   scope :pending_applications, -> { where(current_state: :pending) }
   scope :approved_applications, -> { where(current_state: :approved) }
+  scope :rejected_applications, -> { where(current_state: :rejected) }
+  scope :stateless_applications, -> { where(current_state: nil) }
 
   alias answers user_application_answers
 

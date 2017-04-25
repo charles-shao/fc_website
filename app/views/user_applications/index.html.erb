@@ -1,34 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="pt-5">User Applications</h2>
 
-      <div class="pb-5">
-        <div class="list-group">
-          <% if @user_applications.empty? %>
-            No pending applications.
-          <% end %>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#pending" role="tab">Pending</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#approved" role="tab">Approved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#rejected" role="tab">Rejected</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#stateless" role="tab">Stateless</a>
+        </li>
+      </ul>
 
-          <% @user_applications.each do |application| %>
-
-            <div class="card">
-              <div class="card-block">
-                <h4 class="card-title"><%= application.user.name %></h4>
-                <h6 class="card-subtitle mb-2 text-muted"><%= "Applied #{time_ago_in_words(application.created_at)} ago" %></h6>
-
-                <% application.answers.includes(:application_question).each do |answer| %>
-                  <p class="card-text">
-                    <b><%= answer.application_question.content %></b>
-                    <%= answer.content %>
-                  </p>
-                <% end %>
-
-                <%= link_to "Approve", approve_user_application_path(application), method: :patch, class: "card-link" %>
-                <%= link_to "Reject", reject_user_application_path(application), method: :patch, class: "card-link" %>
-              </div>
-            </div>
-
-          <% end %>
+      <div class="tab-content pb-5">
+        <div class="tab-pane active" id="pending" role="tabpanel">
+          <h2 class="pt-5">Pending Applications</h2>
+          <%= render partial: "applications", locals: { applications: @pending_applications } %>
+        </div>
+        <div class="tab-pane" id="approved" role="tabpanel">
+          <h2 class="pt-5">Approved Applications</h2>
+          <%= render partial: "applications", locals: { applications: @approved_applications } %>
+        </div>
+        <div class="tab-pane" id="rejected" role="tabpanel">
+          <h2 class="pt-5">Rejected Applications</h2>
+          <%= render partial: "applications", locals: { applications: @rejected_applications } %>
+        </div>
+        <div class="tab-pane" id="stateless" role="tabpanel">
+          <h2 class="pt-5">Stateless Applications</h2>
+          <%= render partial: "applications", locals: { applications: @stateless_applications } %>
         </div>
       </div>
 

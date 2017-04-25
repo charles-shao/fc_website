@@ -1,0 +1,28 @@
+<% if applications.empty? %>
+  No results.
+<% end %>
+
+<% applications.each do |application| %>
+  <div class="card mb-2">
+    <div class="card-block">
+      <h4 class="card-title"><%= application.user.name %></h4>
+      <h6 class="card-subtitle mb-2 text-muted"><%= "Applied #{time_ago_in_words(application.created_at)} ago" %></h6>
+
+      <% application.answers.includes(:application_question).each do |answer| %>
+        <p class="card-text">
+          <b><%= answer.application_question.content %></b>
+          <% if answer.content.present? %>
+            <%= answer.content %>
+          <% else %>
+            Unanswered.
+          <% end %>
+        </p>
+      <% end %>
+
+      <% if application.pending? %>
+        <%= link_to "Approve", approve_user_application_path(application), method: :patch, class: "card-link" %>
+        <%= link_to "Reject", reject_user_application_path(application), method: :patch, class: "card-link" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -3,7 +3,10 @@ class UserApplicationsController < ApplicationController
   before_action :has_user_applied?, only: [:new, :create]
 
   def index
-    @user_applications = UserApplication.pending_applications
+    @pending_applications = UserApplication.pending_applications
+    @approved_applications = UserApplication.approved_applications
+    @rejected_applications = UserApplication.rejected_applications
+    @stateless_applications = UserApplication.stateless_applications
   end
 
   def new
@@ -45,7 +48,7 @@ class UserApplicationsController < ApplicationController
     user_application = UserApplication.find_by(id: params[:id])
 
     user_application.reject!
-    
+
     redirect_to user_applications_path
   end
 
