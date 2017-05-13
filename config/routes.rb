@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :characters do
     resources :character_jobs, only: [:create, :update, :destroy]
   end
+  resources :unassigned_characters do
+  end
   resources :user_applications do
     member do
       patch :approve

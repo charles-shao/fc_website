@@ -13,13 +13,27 @@
           <% @characters.each do |character| %>
             <tr>
               <td><%= character.name %></td>
-              <td><%= character.statics.map(&:name).join(", ") %></td>
+              <td><%= character.statics.pluck(:name).join(", ") %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
     </div>
+
+    <% if current_user.role.admin? %>
+      <div class="col-md-6">
+        <%= form_for Character.new, url: unassigned_characters_path, class: "" do |form| %>
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+
+          <%= form.submit "Add", class: 'btn btn-outline-primary' %>
+          <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 </div>
