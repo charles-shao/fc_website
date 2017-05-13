@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="pt-5">Characters</h2>
+
+      <table class="table">
+        <thead class="thead-default">
+            <th>Name</th>
+            <th>Static(s)</th>
+        </thead>
+
+        <tbody>
+          <% @characters.each do |character| %>
+            <tr>
+              <td><%= character.name %></td>
+              <td><%= character.statics.map(&:name).join(", ") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Back", dashboard_index_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

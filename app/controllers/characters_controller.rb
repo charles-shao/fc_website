@@ -1,5 +1,9 @@
 class CharactersController < ApplicationController
 
+  def index
+    @characters = Character.all
+  end
+
   def new
     @character = current_user.characters.build
   end

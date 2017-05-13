@@ -1,9 +1,5 @@
 class MembersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   private
 
     def member_params
