@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col col-6">
+
+      <h2>Editing Action</h2>
+
+      <%= form_for [:admin, @job, @action], class: "form-inline" do |form| %>
+        <div class="form-group row">
+          <%= form.label :name, class: "col-3" %>
+          <%= form.text_field :name, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :potency, class: "col-3" %>
+          <%= form.number_field :potency, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :cast_time, class: "col-3" %>
+          <%= form.number_field :cast_time, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :animation_lock, class: "col-3" %>
+          <%= form.number_field :animation_lock, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :resource, "Resource Type", class: "col-3" %>
+          <%= form.select :resource, [["MP", "mp"], ["TP", "tp"], ["Gauge", "gauge"]], {}, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :cost, "Resource Cost", class: "col-3" %>
+          <%= form.number_field :cost, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :duration, class: "col-3" %>
+          <%= form.number_field :duration, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :cooldown, class: "col-3" %>
+          <%= form.number_field :cooldown, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :modifier, "Modifier ATTR", class: "col-3" %>
+          <%= form.number_field :modifier, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :category, class: "col-3" %>
+          <%= form.text_field :category, class: 'form-control col-9' %>
+        </div>
+
+        <div class="form-group">
+          <label class="custom-control custom-checkbox">
+            <%= form.check_box :gcd_locked, class: "custom-control-input" %>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">GCD Locked</span>
+          </label>
+        </div>
+
+        <%= form.submit class: 'btn btn-outline-primary' %>
+        <%= link_to "Back", edit_admin_job_path(@job), class: 'btn btn-secondary' %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

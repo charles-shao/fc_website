@@ -6,8 +6,15 @@
   <div class="row">
 
     <div class="col-3">
+      <h2>Configuration</h2>
+      <div class="pb-5">
+        <ul class="list-group">
+          <li class="list-group-item"><%= link_to "Edit Job Actions", admin_jobs_path %></li>
+        </ul>
+      </div>
+
       <h2>Player Options</h2>
-      <form>
+      <form class="pb-5">
         <div class="form-group">
           <label>Job</label>
           <select data-bind="options: jobs, optionsText: 'name', value: selectedJob" class="form-control"></select>
@@ -24,7 +31,6 @@
           </li>
         </ul>
       </div>
-
     </div>
 
     <div class="col-9">

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="pt-5">Jobs</h2>
+      <table class="table table-sm">
+        <thead class="thead-default">
+            <th>Name</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+          <% @jobs.each do |job| %>
+            <tr>
+                <td><%= job.name %></td>
+                <td>
+                  <%= link_to "Edit Actions", edit_admin_job_path(job), class: "btn btn-outline-warning" %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Back", simulations_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

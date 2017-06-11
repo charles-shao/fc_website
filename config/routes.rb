@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :characters
+
+    resources :jobs do
+      resources :actions 
+    end
   end
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

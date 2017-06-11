@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="pt-5">Job Actions</h2>
+      <table class="table table-sm">
+        <thead class="thead-default">
+            <th>Name</th>
+            <th>Potency</th>
+            <th>Cost</th>
+            <th>Cast time</th>
+            <th>Cooldown</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+          <% @job.actions.each do |action| %>
+            <tr>
+                <td><%= action.name %></td>
+                <td><%= action.potency %></td>
+                <td><%= action.cost %></td>
+                <td><%= action.cast_time %></td>
+                <td><%= action.cooldown %></td>
+                <td>
+                  <%= link_to "Edit", edit_admin_job_action_path(@job, action) %>
+                  | <%= link_to "Delete", admin_job_action_path(@job, action), method: :delete %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Back", simulations_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
