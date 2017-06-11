@@ -6,14 +6,19 @@
       <table class="table">
         <thead class="thead-default">
             <th>Name</th>
+            <th>Account Registered</th>
             <th>Static(s)</th>
+            <th></th>
         </thead>
 
         <tbody>
           <% @characters.each do |character| %>
             <tr>
               <td><%= character.name %></td>
+              <td><%= character.user.present? ? "Yes" : "No" %></td>
               <td><%= character.statics.pluck(:name).join(", ") %></td>
+              <td>
+                <%= link_to 'Edit', edit_admin_character_path(character) if current_user.role.admin? %></td>
             </tr>
           <% end %>
         </tbody>
