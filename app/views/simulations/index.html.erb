@@ -1,13 +1,8 @@
 <%= include_gon(namespace: 'simulation', init: true) %>
-<%= javascript_include_tag "simulator/manifest.js" %>
+<%# javascript_include_tag "simulator/manifest.js" %>
+<%= javascript_include_tag "stormblood/manifest.js" %>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <div id="simulation-chart" style="min-width: 100%; height: 240px; margin 0 auto;"></div>
-    </div>
-  </div>
-
   <div class="row">
 
     <div class="col-3">
@@ -17,22 +12,17 @@
           <label>Job</label>
           <select data-bind="options: jobs, optionsText: 'name', value: selectedJob" class="form-control"></select>
         </div>
-
-        <div class="form-group">
-          <label>Player Name</label>
-          <input type="text" class="form-control" data-bind="value: playerName"></input>
-        </div>
-
-        <button class="btn btn-outline-primary" data-bind="click: savePlayerScript">Save Script</button>
       </form>
 
       <h2>Actions</h2>
       <div data-bind="with: selectedJob">
-        <div data-bind="foreach: { data: actions, as: 'action' }">
-          <a href="" data-bind="click: $root.addActionToRoutine">
-            <img data-bind="attr: { src: action.imagePath }" style="width: 40px; height: 40px;">
-          </a>
-        </div>
+
+        <ul class="list-group" data-bind="foreach: { data: actions, as: 'action' }">
+          <li class="list-group-item justify-content-between">
+            <span data-bind="text: action.name"></span>
+            <span class="badge badge-default badge-pill">0</span>
+          </li>
+        </ul>
       </div>
 
     </div>
@@ -51,34 +41,9 @@
             <th>Self-multipliers</th>
             <th>Target Multipliers</th>
             <th>Crit Chance</th>
-            <th></th>
           </tr>
         </thead>
-        <tbody data-bind="foreach: { data: routine.slots, as: 'slot' }">
-          <tr>
-            <td data-bind="text: slot.id"></td>
-            <!-- ko with: slot.viewer -->
-            <td data-bind="text: name"></td>
-            <td data-bind="text: encounterTime"></td>
-
-            <td data-bind="foreach: { data: effects, as: 'action' }">
-              <figure class="figure">
-                <img src="" data-bind="attr: { src: action.imagePath }">
-                <figcaption class="figure-caption text-center">
-                  <sub data-bind="text: duration"></sub>
-                </figcaption>
-              </figure>
-            </td>
-            <td data-bind="text: effectivePotency"></td>
-            <td data-bind="text: potencyPerSecond"></td>
-            <td data-bind="text: multiplier"></td>
-            <td data-bind="text: targetMultiplier"></td>
-            <td data-bind="text: criticalChance"></td>
-            <!-- /ko -->
-            <td>
-              <!-- <a href="#" data-bind="click: $root.removeSlotFromRoutine" class="btn btn-sm btn-outline-danger">Clear<a> -->
-            </td>
-          </tr>
+        <tbody>
         </tbody>
       </table>
 

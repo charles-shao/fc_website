@@ -9,4 +9,4 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "im
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( simulator/manifest.js )
+Rails.application.config.assets.precompile += %w( stormblood/manifest.js )
