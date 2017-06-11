@@ -19,7 +19,7 @@ class Admin::CharactersController < AdminController
   private
 
     def character_params
-      params.require(:character).permit(:name)
+      params.require(:character).permit(:name, :role)
     end
 
 end

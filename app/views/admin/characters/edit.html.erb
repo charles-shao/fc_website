@@ -10,6 +10,11 @@
           <%= form.text_field :name, class: 'form-control' %>
         </div>
 
+        <div class="form-group">
+          <%= form.label :role %>
+          <%= form.select :role, role_options, {}, class: 'form-control' %>
+        </div>
+
         <div class="d-flex justify-content-end">
           <div><%= form.submit class: 'btn btn-outline-primary' %></div>
           <div class="pl-1"><%= link_to "Back", characters_path, class: 'btn btn-secondary' %></div>
