@@ -49,13 +49,13 @@ cross_class = [
 
 actions = [
   # THM specific spells
-  { name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard.png', objectName: 'Blizzard'},
-  { name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire.png', objectName: 'Fire'},
-  { name: "Transpose", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 12, category: 'alter', modifier: 0, image_name: 'transpose.png', objectName: 'Transpose'},
-  { name: "Thunder", potency: 30, cost: 0, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder.png', objectName: 'Thunder'},
-  { name: "Surecast", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 10, cooldown: 30, category: 'alter', modifier: 0, image_name: 'surecast.png', objectName: 'Surecast'},
-  { name: "Sleep", potency: 0, cost: 0, resource: nil, cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'crowd_control', modifier: 0, image_name: 'sleep.png', objectName: 'Sleep'},
-  { name: "Blizzard II", potency: 50, cost: 0, resource: 'mp', cast_time: 2.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard_ii.png', objectName: 'Blizzard2'},
+  { name: "Blizzard", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard.png', object_name: 'Blizzard'},
+  { name: "Fire", potency: 180, cost: 156, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire.png', object_name: 'Fire'},
+  { name: "Transpose", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 12, category: 'alter', modifier: 0, image_name: 'transpose.png', object_name: 'Transpose'},
+  { name: "Thunder", potency: 30, cost: 0, resource: 'mp', cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder.png', object_name: 'Thunder'},
+  { name: "Surecast", potency: 0, cost: 0, resource: nil, cast_time: 0, animation_lock: 0.75, duration: 10, cooldown: 30, category: 'alter', modifier: 0, image_name: 'surecast.png', object_name: 'Surecast'},
+  { name: "Sleep", potency: 0, cost: 0, resource: nil, cast_time: 2.5, animation_lock: 0, duration: 0, cooldown: 0, category: 'crowd_control', modifier: 0, image_name: 'sleep.png', object_name: 'Sleep'},
+  { name: "Blizzard II", potency: 50, cost: 0, resource: 'mp', cast_time: 2.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'blizzard_ii.png', object_name: 'Blizzard2'},
   { name: "Scathe", potency: 100, cost: 0, resource: 'mp', cast_time: 0, animation_lock: 0.75, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'scathe.png'},
   { name: "Fire II", potency: 100, cost: 0, resource: 'mp', cast_time: 3.0, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'fire_ii.png'},
   { name: "Thunder II", potency: 50, cost: 0, resource: 'mp', cast_time: 3, animation_lock: 0, duration: 0, cooldown: 0, category: 'spell', modifier: 0, image_name: 'thunder_ii.png'},
