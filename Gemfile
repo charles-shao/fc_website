@@ -10,14 +10,19 @@ end
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
+
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 #  Use bootstrap as default style
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0.beta'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
 gem 'font-awesome-rails'
+
+gem 'webpacker', '~> 2.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
@@ -69,12 +74,21 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'pg'
+# Manage Procfile-based applications
+gem 'foreman'
+
 gem 'therubyracer'
+# Rails authentication with email & password.
 gem 'clearance'
+# Makes http fun again!
 gem 'httparty'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem 'kaminari'
+# Authorization library
 gem 'cancancan'
+# State machine
 gem 'aasm'
+# Knockout JS
 gem 'knockoutjs-rails'
+# Ruby variables in JS
 gem 'gon'

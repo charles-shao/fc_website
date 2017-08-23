@@ -43,3 +43,5 @@ bower.json
 
 /config/ec2.yml
 /config/local_env.yml
+/public/packs
+/node_modules
