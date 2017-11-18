@@ -1,8 +1,14 @@
 class SimulationsController < ApplicationController
 
+  before_action :require_login, only: [:index]
+
   def index
     load_jobs
     load_trait_images
+  end
+
+  def ucob
+
   end
 
   private

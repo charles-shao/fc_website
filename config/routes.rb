@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :characters
 
     resources :jobs do
-      resources :actions 
+      resources :actions
     end
   end
 
@@ -60,5 +60,9 @@ Rails.application.routes.draw do
 
   resources :raid_contents
   resources :members, only: [:index, :show, :edit, :update]
-  resources :simulations, only: [:index]
+  resources :simulations, only: [:index] do
+    collection do
+      get :ucob
+    end 
+  end
 end
